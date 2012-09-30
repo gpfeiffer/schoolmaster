@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @academic.title %>
+</p>
+
+<p>
+  <b>First:</b>
+  <%= @academic.first %>
+</p>
+
+<p>
+  <b>Last:</b>
+  <%= @academic.last %>
+</p>
+
+<p>
+  <b>Work phone:</b>
+  <%= @academic.work_phone %>
+</p>
+
+<p>
+  <b>Work mail:</b>
+  <%= @academic.work_mail %>
+</p>
+
+<p>
+  <b>Home url:</b>
+  <%= @academic.home_url %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @academic.image_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_academic_path(@academic) %> |
+<%= link_to 'Back', academics_path %>
