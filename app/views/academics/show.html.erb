@@ -37,4 +37,5 @@
 
 
 <%= link_to 'Edit', edit_academic_path(@academic) %> |
+<%= link_to 'Delete', @academic, :confirm => 'Are you sure?', :method => :delete %> |
 <%= link_to 'Back', academics_path %>
