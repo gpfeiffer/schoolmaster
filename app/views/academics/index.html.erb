@@ -3,6 +3,7 @@
 <table>
 <% @academics.each do |academic| %>
   <tr>  
+<td><%= image_tag academic.image_url, :size => "16x16", :alt => '[img]' %></td>
     <td><%= link_to academic, academic %></td>
       <td> x<%= academic.work_phone %></td>
       <td><%= link_to '[Mail]', academic.mailto %></td>

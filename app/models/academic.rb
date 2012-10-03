@@ -10,7 +10,7 @@ class Academic < ActiveRecord::Base
   end
 
   def email
-    "#{work_mail}.nuigalway.ie"
+    "#{work_mail}@nuigalway.ie"
   end
 
   def mailto

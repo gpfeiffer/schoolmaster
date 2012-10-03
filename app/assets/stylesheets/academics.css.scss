@@ -1,3 +1,22 @@
 // Place all the styles related to the academics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#headline {
+}
+
+#banner {
+  background: #B03060;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid;
+  font: small-caps 40px/40px Verdana,"Helvetica",sans-serif;
+  font-weight: bold;
+  color: white;
+  text-align:center;
+}
+
+#navigation {
+  background: #B03060;
+  color: white;
+  text-align:right;
+}

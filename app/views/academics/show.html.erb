@@ -1,19 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @academic.title %>
-</p>
+<h2><%= @academic %></h2>
 
-<p>
-  <b>First:</b>
-  <%= @academic.first %>
-</p>
-
-<p>
-  <b>Last:</b>
-  <%= @academic.last %>
-</p>
+<%= image_tag @academic.image_url, :align => :right, :size => "96x96", :alt => "[image]" %>
 
 <p>
   <b>Work phone:</b>
@@ -22,18 +11,15 @@
 
 <p>
   <b>Work mail:</b>
-  <%= @academic.work_mail %>
+  <%= link_to @academic.email, @academic.mailto %>
 </p>
 
 <p>
-  <b>Home url:</b>
-  <%= @academic.home_url %>
+  <b>Home Page:</b>
+  <%= link_to nil, @academic.home_url %>
 </p>
 
-<p>
-  <b>Image url:</b>
-  <%= @academic.image_url %>
-</p>
+
 
 
 <%= link_to 'Edit', edit_academic_path(@academic) %> |
