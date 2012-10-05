@@ -11,34 +11,67 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :first %><br />
-    <%= f.text_field :first %>
-  </div>
-  <div class="field">
-    <%= f.label :last %><br />
-    <%= f.text_field :last %>
-  </div>
-  <div class="field">
-    <%= f.label :work_phone %><br />
-    <%= f.text_field :work_phone %>
-  </div>
-  <div class="field">
-    <%= f.label :work_mail %><br />
-    <%= f.text_field :work_mail %>
-  </div>
-  <div class="field">
-    <%= f.label :home_url %><br />
-    <%= f.text_field :home_url %>
-  </div>
-  <div class="field">
-    <%= f.label :image_url %><br />
-    <%= f.text_field :image_url %>
-  </div>
+  <table>
+    <div class="field">
+      <tr>
+	<td>
+	  <%= f.label :title %>
+	</td>
+	<td>
+	  <%= f.select :title, TITLES, :include_blank => true %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :first %>
+	</td>
+	<td>
+	  <%= f.text_field :first %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :last %>
+	</td>
+	<td>
+	  <%= f.text_field :last %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :work_phone %>
+	</td>
+	<td>
+	  <%= f.text_field :work_phone %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :work_mail %>
+	</td>
+	<td>
+	  <%= f.text_field :work_mail, :size => 16 %>
+	  @nuigalway.ie
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :home_url %>
+	</td>
+	<td>
+	  <%= f.text_field :home_url %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :image_url %>
+	</td>
+	<td>
+	  <%= f.text_field :image_url %>
+	</td>
+      </tr>
+    </div>
+  </table>
   <div class="actions">
     <%= f.submit %>
   </div>
