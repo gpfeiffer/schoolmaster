@@ -1,0 +1,89 @@
+<%= form_for(@student) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first %><br />
+    <%= f.text_field :first %>
+  </div>
+  <div class="field">
+    <%= f.label :last %><br />
+    <%= f.text_field :last %>
+  </div>
+  <div class="field">
+    <%= f.label :registration %><br />
+    <%= f.text_field :registration %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :photo_url %><br />
+    <%= f.text_field :photo_url %>
+  </div>
+  <div class="field">
+    <%= f.label :interests %><br />
+    <%= f.text_area :interests %>
+  </div>
+  <div class="field">
+    <%= f.label :programme %><br />
+    <%= f.text_field :programme %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :home_url %><br />
+    <%= f.text_field :home_url %>
+  </div>
+  <div class="field">
+    <%= f.label :work_phone %><br />
+    <%= f.text_field :work_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :funder %><br />
+    <%= f.text_field :funder %>
+  </div>
+  <div class="field">
+    <%= f.label :supervisor %><br />
+    <%= f.text_field :supervisor %>
+  </div>
+  <div class="field">
+    <%= f.label :cosupervisor %><br />
+    <%= f.text_field :cosupervisor %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :started_on %><br />
+    <%= f.date_select :started_on %>
+  </div>
+  <div class="field">
+    <%= f.label :expected_on %><br />
+    <%= f.date_select :expected_on %>
+  </div>
+  <div class="field">
+    <%= f.label :completed_on %><br />
+    <%= f.date_select :completed_on %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,6 @@
 Schoolmaster::Application.routes.draw do
+  resources :students
+
   resources :academics
 
   # The priority is based upon order of creation:

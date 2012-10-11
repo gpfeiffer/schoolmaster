@@ -1,0 +1,57 @@
+<h1>Listing students</h1>
+
+<table>
+  <tr>
+    <th>First</th>
+    <th>Last</th>
+    <th>Registration</th>
+    <th>Location</th>
+    <th>Photo url</th>
+    <th>Interests</th>
+    <th>Programme</th>
+    <th>Email</th>
+    <th>Home url</th>
+    <th>Work phone</th>
+    <th>Title</th>
+    <th>Funder</th>
+    <th>Supervisor</th>
+    <th>Cosupervisor</th>
+    <th>Status</th>
+    <th>Started on</th>
+    <th>Expected on</th>
+    <th>Completed on</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @students.each do |student| %>
+  <tr>
+    <td><%= student.first %></td>
+    <td><%= student.last %></td>
+    <td><%= student.registration %></td>
+    <td><%= student.location %></td>
+    <td><%= student.photo_url %></td>
+    <td><%= student.interests %></td>
+    <td><%= student.programme %></td>
+    <td><%= student.email %></td>
+    <td><%= student.home_url %></td>
+    <td><%= student.work_phone %></td>
+    <td><%= student.title %></td>
+    <td><%= student.funder %></td>
+    <td><%= student.supervisor %></td>
+    <td><%= student.cosupervisor %></td>
+    <td><%= student.status %></td>
+    <td><%= student.started_on %></td>
+    <td><%= student.expected_on %></td>
+    <td><%= student.completed_on %></td>
+    <td><%= link_to 'Show', student %></td>
+    <td><%= link_to 'Edit', edit_student_path(student) %></td>
+    <td><%= link_to 'Destroy', student, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Student', new_student_path %>

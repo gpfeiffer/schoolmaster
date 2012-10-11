@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  first: MyString
+  last: MyString
+  registration: MyString
+  location: MyString
+  photo_url: MyString
+  interests: MyText
+  programme: MyString
+  email: MyString
+  home_url: MyString
+  work_phone: MyString
+  title: MyString
+  funder: MyString
+  supervisor: MyString
+  cosupervisor: MyString
+  status: MyString
+  started_on: 2012-10-11
+  expected_on: 2012-10-11
+  completed_on: 2012-10-11
+
+two:
+  first: MyString
+  last: MyString
+  registration: MyString
+  location: MyString
+  photo_url: MyString
+  interests: MyText
+  programme: MyString
+  email: MyString
+  home_url: MyString
+  work_phone: MyString
+  title: MyString
+  funder: MyString
+  supervisor: MyString
+  cosupervisor: MyString
+  status: MyString
+  started_on: 2012-10-11
+  expected_on: 2012-10-11
+  completed_on: 2012-10-11
