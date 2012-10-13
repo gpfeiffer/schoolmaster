@@ -1,6 +1,8 @@
 class Academic < ActiveRecord::Base
   attr_accessible :first, :home_url, :image_url, :last, :title, :work_mail, :work_phone
 
+  default_scope :order => [:last, :first]
+
   def first_last
     "#{first} #{last}"
   end
