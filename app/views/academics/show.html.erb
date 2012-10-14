@@ -1,3 +1,9 @@
+<div id="side">
+  <h3>Academic Staff</h3>
+  <ul><%= render Academic.all %></ul>
+</div>
+<div id="main">
+
 <p id="notice"><%= notice %></p>
 
 <h2><%= @academic %></h2>
@@ -32,3 +38,5 @@
 <%= link_to 'Edit', edit_academic_path(@academic) %> |
 <%= link_to 'Delete', @academic, :confirm => 'Are you sure?', :method => :delete %> |
 <%= link_to 'Back', academics_path %>
+
+</div>

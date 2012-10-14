@@ -1,6 +1,10 @@
-<p id="notice"><%= notice %></p>
+<div id="side">
+  <h3>Graduate Students</h3>
+  <ul><%= render Student.all %></ul>
+</div>
+<div id="main">
 
-<h3>Graduate Students</h3>
+<p id="notice"><%= notice %></p>
 
 <h2><%= @student %></h2>
 
@@ -68,3 +72,5 @@
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Delete', @student, :method => :delete, :data => { :confirm => 'Are you sure?' } %> |
 <%= link_to 'Back', students_path %>
+
+</div>
