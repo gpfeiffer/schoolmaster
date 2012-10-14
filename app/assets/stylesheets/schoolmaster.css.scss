@@ -1,0 +1,65 @@
+// Place all the styles related to the schoolmaster application here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#headline {
+}
+
+#banner {
+  background: #B03060;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid;
+  font: small-caps 40px/40px Verdana,"Helvetica",sans-serif;
+  font-weight: bold;
+  color: white;
+  text-align:center;
+}
+
+#navigation {
+  background: #B03060;
+  color: white;
+}
+
+#navigation #home {
+  a {
+      color: #FFFFFF;
+      text-decoration: none;
+  }
+  float: left;
+  width: 26em;
+}
+
+#navigation #login { 
+  margin-left: 27em;
+  text-align: right;
+}
+
+#side {
+  a {
+      color: #FFFFFF;
+      text-decoration: none;
+  }
+  h3 {
+    color: #FFFFFF;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0pt;
+    margin: 0pt;
+    font-size: 12px;
+    line-height: 15px;
+  }
+  float: left;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  width: 16em;
+  background: #B03060;
+}
+
+#main {
+  margin-left: 17em;
+  padding-top: 4ex;
+  padding-left: 2em;
+}

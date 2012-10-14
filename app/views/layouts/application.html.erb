@@ -8,15 +8,26 @@
 </head>
 <body>
 <div id="header">
-<div id="banner">
-  <%= @page_title || "SchoolMaster" %>
+  <div id="banner">
+    <%= @page_title || "SchoolMaster" %>
+  </div>
+  <div id="navigation">
+    <div id="home">
+      <%= link_to 'Home', root_path %> 
+    </div>
+    <div id="login">
+      Sign in
+    </div>
+  </div>
 </div>
-<div id="navigation">
-<%= link_to 'Home', root_path %> | Sign in
+<div id="columns">
+  <div id="side">
+    <h3>Graduate Students</h3>
+    <ul><%= render Student.all %></ul>
+  </div>
+  <div id="main">
+    <%= yield %>
+  </div>
 </div>
-</div>
-
-<%= yield %>
-
 </body>
 </html>
