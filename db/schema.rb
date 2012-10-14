@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013131952) do
+ActiveRecord::Schema.define(:version => 20121014101343) do
 
   create_table "academics", :force => true do |t|
     t.string   "title"
@@ -37,8 +37,6 @@ ActiveRecord::Schema.define(:version => 20121013131952) do
     t.string   "work_phone"
     t.string   "title"
     t.string   "funder"
-    t.string   "supervisor"
-    t.string   "cosupervisor"
     t.string   "status"
     t.date     "started_on"
     t.date     "expected_on"

@@ -19,8 +19,15 @@
   <%= link_to nil, @academic.home_url %>
 </p>
 
+<h3>Students</h3>
 
+<ul>
+<% @academic.supervisions.each do |s| %>
+<li><%= link_to s.student, s.student %> (<%= s.status %>)</li>
+<% end %>
+</ul>
 
+<hr />
 
 <%= link_to 'Edit', edit_academic_path(@academic) %> |
 <%= link_to 'Delete', @academic, :confirm => 'Are you sure?', :method => :delete %> |

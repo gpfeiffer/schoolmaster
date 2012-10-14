@@ -13,8 +13,6 @@ one:
   work_phone: MyString
   title: MyString
   funder: MyString
-  supervisor: MyString
-  cosupervisor: MyString
   status: MyString
   started_on: 2012-10-11
   expected_on: 2012-10-11
@@ -33,8 +31,6 @@ two:
   work_phone: MyString
   title: MyString
   funder: MyString
-  supervisor: MyString
-  cosupervisor: MyString
   status: MyString
   started_on: 2012-10-11
   expected_on: 2012-10-11

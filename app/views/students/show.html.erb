@@ -55,16 +55,6 @@
 </p>
 
 <p>
-  <b>Supervisor:</b>
-  <%= @student.supervisor %>
-</p>
-
-<p>
-  <b>Cosupervisor:</b>
-  <%= @student.cosupervisor %>
-</p>
-
-<p>
   <b>Status:</b>
   <%= @student.status %>
 </p>
@@ -83,6 +73,16 @@
   <b>Completed on:</b>
   <%= @student.completed_on %>
 </p>
+
+<h3>Supervisors</h3>
+
+<ul>
+<% @student.supervisions.each do |s| %>
+<li><%= link_to s.academic, s.academic %> (<%= s.status %>)</li>
+<% end %>
+</ul>
+
+<hr />
 
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
