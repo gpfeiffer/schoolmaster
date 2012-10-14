@@ -11,70 +11,144 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first %><br />
-    <%= f.text_field :first %>
-  </div>
-  <div class="field">
-    <%= f.label :last %><br />
-    <%= f.text_field :last %>
-  </div>
-  <div class="field">
-    <%= f.label :registration %><br />
-    <%= f.text_field :registration %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :photo_url %><br />
-    <%= f.text_field :photo_url %>
-  </div>
-  <div class="field">
-    <%= f.label :interests %><br />
-    <%= f.text_area :interests %>
-  </div>
-  <div class="field">
-    <%= f.label :programme %><br />
-    <%= f.text_field :programme %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :home_url %><br />
-    <%= f.text_field :home_url %>
-  </div>
-  <div class="field">
-    <%= f.label :work_phone %><br />
-    <%= f.text_field :work_phone %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :funder %><br />
-    <%= f.text_field :funder %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :started_on %><br />
-    <%= f.date_select :started_on %>
-  </div>
-  <div class="field">
-    <%= f.label :expected_on %><br />
-    <%= f.date_select :expected_on %>
-  </div>
-  <div class="field">
-    <%= f.label :completed_on %><br />
-    <%= f.date_select :completed_on %>
-  </div>
+  <table>
+    <div class="field">
+      <tr>
+	<td>
+	  <%= f.label :first, 'First Name' %>
+	</td>
+	<td>
+	  <%= f.text_field :first %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :last, 'Last Name' %>
+	</td>
+	<td>
+	  <%= f.text_field :last %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :registration, 'Student ID' %>
+	</td>
+	<td>
+	  <%= f.text_field :registration %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :location %>
+	</td>
+	<td>
+	  <%= f.text_field :location %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :photo_url %>
+	</td>
+	<td>
+	  <%= f.text_field :photo_url %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :interests %>
+	</td>
+	<td>
+	  <%= f.text_area :interests, :rows  => 4 %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :programme %>
+	</td>
+	<td>
+	  <%= f.select :programme, PROGRAMMES, :include_blank => true %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :status %>
+	</td>
+	<td>
+	  <%= f.select :status, STATUSES, :include_blank => true %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :email %>
+	</td>
+	<td>
+	  <%= f.text_field :email %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :home_url %>
+	</td>
+	<td>
+	  <%= f.text_field :home_url %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :work_phone %>
+	</td>
+	<td>
+	  <%= f.text_field :work_phone %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :title %>
+	</td>
+	<td>
+	  <%= f.text_field :title %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :funder %>
+	</td>
+	<td>
+	  <%= f.text_field :funder %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :started_on %>
+	</td>
+	<td>
+	  <%= f.date_select :started_on,
+                :include_blank => true, 
+                :order => [:day, :month, :year] %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :expected_on %>
+	</td>
+	<td>
+	  <%= f.date_select :expected_on,
+                :include_blank => true, 
+                :order => [:day, :month, :year] %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= f.label :completed_on %>
+	</td>
+	<td>
+	  <%= f.date_select :completed_on,
+	        :include_blank => true, 
+	        :order => [:day, :month, :year] %>
+	</td>
+      </tr>
+    </div>
+  </table>
   <div class="actions">
     <%= f.submit %>
   </div>

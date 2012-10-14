@@ -4,77 +4,57 @@
 
 <h2><%= @student %></h2>
 
-<p>
-  <b>Registration:</b>
-  <%= @student.registration %>
-</p>
+<%= image_tag @student.photo_url, :align => :right, :size => "96x96", :alt => "[image]" %>
 
 <p>
-  <b>Location:</b>
-  <%= @student.location %>
-</p>
-
-<p>
-  <b>Photo url:</b>
-  <%= @student.photo_url %>
-</p>
-
-<p>
-  <b>Interests:</b>
-  <%= @student.interests %>
-</p>
-
-<p>
-  <b>Programme:</b>
   <%= @student.programme %>
+  (<%= @student.status %>)
 </p>
 
+<hr />
 <p>
-  <b>Email:</b>
-  <%= @student.email %>
+  <%= @student.registration || '... add student id ...' %>
+  | x<%= @student.work_phone %>
+  | <%= @student.email %>
+<% if not @student.home_url.blank? %>
+  | <%= @student.home_url %>
+<% end %>
+  | <%= @student.location %>
 </p>
+<hr />
 
 <p>
-  <b>Home url:</b>
-  <%= @student.home_url %>
-</p>
-
-<p>
-  <b>Work phone:</b>
-  <%= @student.work_phone %>
-</p>
-
-<p>
-  <b>Title:</b>
+  <b>Dissertation Title:</b>
   <%= @student.title %>
 </p>
 
 <p>
-  <b>Funder:</b>
+  <b>Research Interests:</b>
+  <%= @student.interests %>
+</p>
+
+<p>
+  <b>Funding Source:</b>
   <%= @student.funder %>
 </p>
 
-<p>
-  <b>Status:</b>
-  <%= @student.status %>
-</p>
 
-<p>
-  <b>Started on:</b>
-  <%= @student.started_on %>
-</p>
+<table class="dates">
+<tr>
+  <th>Started on:</th>
+  <td><%= @student.started_on %></td>
+</tr>
+<tr>
+  <th>Expected on:</th>
+  <td><%= @student.expected_on %></td>
+</tr>
+<tr>
+  <th>Completed on:</th>
+  <td><%= @student.completed_on %></td>
+</tr>
+</table>
 
-<p>
-  <b>Expected on:</b>
-  <%= @student.expected_on %>
-</p>
-
-<p>
-  <b>Completed on:</b>
-  <%= @student.completed_on %>
-</p>
-
-<h3>Supervisors</h3>
+<h3><%= 'Supervisor'.pluralize @student.supervisions.count %></h3>
 
 <ul>
 <% @student.supervisions.each do |s| %>
