@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>Location</th>
     <th>Capacity</th>
     <th></th>
     <th></th>
@@ -11,7 +11,7 @@
 
 <% @rooms.each do |room| %>
   <tr>
-    <td><%= room.name %></td>
+    <td><%= room.location %></td>
     <td><%= room.capacity %></td>
     <td><%= link_to 'Show', room %></td>
     <td><%= link_to 'Edit', edit_room_path(room) %></td>
