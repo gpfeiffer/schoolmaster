@@ -1,4 +1,6 @@
 Schoolmaster::Application.routes.draw do
+  resources :rooms
+
   get "home/index"
 
   resources :students
