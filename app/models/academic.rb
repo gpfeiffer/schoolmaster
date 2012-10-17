@@ -3,6 +3,7 @@ class Academic < ActiveRecord::Base
 
   has_many :supervisions, :dependent => :destroy
   has_many :students, :through => :supervisions
+  has_many :publication_records
 
   default_scope :order => [:last, :first]
 

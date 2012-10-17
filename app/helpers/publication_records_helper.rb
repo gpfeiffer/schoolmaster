@@ -1,0 +1,2 @@
+module PublicationRecordsHelper
+end

@@ -1,0 +1,27 @@
+<h1>Listing publication_records</h1>
+
+<table>
+  <tr>
+    <th>Resource</th>
+    <th>Authorid</th>
+    <th>Academic</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @publication_records.each do |publication_record| %>
+  <tr>
+    <td><%= publication_record.resource %></td>
+    <td><%= publication_record.authorid %></td>
+    <td><%= publication_record.academic_id %></td>
+    <td><%= link_to 'Show', publication_record %></td>
+    <td><%= link_to 'Edit', edit_publication_record_path(publication_record) %></td>
+    <td><%= link_to 'Destroy', publication_record, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Publication record', new_publication_record_path %>

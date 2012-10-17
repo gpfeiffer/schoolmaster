@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Resource:</b>
+  <%= @publication_record.resource %>
+</p>
+
+<p>
+  <b>Authorid:</b>
+  <%= @publication_record.authorid %>
+</p>
+
+<p>
+  <b>Academic:</b>
+  <%= @publication_record.academic_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_publication_record_path(@publication_record) %> |
+<%= link_to 'Back', publication_records_path %>

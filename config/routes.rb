@@ -1,4 +1,6 @@
 Schoolmaster::Application.routes.draw do
+  resources :publication_records
+
   resources :rooms
 
   get "home/index"
