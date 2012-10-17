@@ -66,6 +66,21 @@
 <% end %>
 </ul>
 
+<h3 class="edit-head">GRC</h3>
+<div class="edit">
+(<%= link_to 'Add', new_committee_path(:student_id => @student) %>)
+</div>
+<ul>
+<% @student.committees.each do |committee| %>
+<li>
+<%= link_to committee.academic, committee.academic %>
+<div class="edit">
+(<%= link_to 'Delete', committee, :confirm => 'Are you sure?', :method => :delete %>)
+</div>
+</li>
+<% end %>
+</ul>
+
 <hr />
 
 

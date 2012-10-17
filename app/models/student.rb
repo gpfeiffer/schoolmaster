@@ -3,6 +3,7 @@ class Student < ActiveRecord::Base
 
   has_many :supervisions, :dependent => :destroy
   has_many :academics, :through => :supervisions
+  has_many :committees, :dependent => :destroy
 
   default_scope :order => [:last, :first]
 
