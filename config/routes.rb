@@ -1,4 +1,6 @@
 Schoolmaster::Application.routes.draw do
+  resources :supervisions
+
   resources :committees
 
   resources :publication_records

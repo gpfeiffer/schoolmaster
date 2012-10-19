@@ -3,4 +3,10 @@ class Supervision < ActiveRecord::Base
 
   belongs_to :academic
   belongs_to :student
+
+  STATUSES = [
+    "Main",
+    "Co",
+  ]
+
 end
