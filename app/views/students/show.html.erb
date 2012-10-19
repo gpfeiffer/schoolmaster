@@ -58,24 +58,33 @@
 </tr>
 </table>
 
-<h3><%= 'Supervisor'.pluralize @student.supervisions.count %></h3>
+<h3 class="edit-head"><%= 'Supervisor'.pluralize @student.supervisions.count %></h3>
+<div class="edit">
+<%= link_to '[+]', new_supervision_path(:student_id => @student) %>
+</div>
 
 <ul>
-<% @student.supervisions.each do |s| %>
-<li><%= link_to s.academic, s.academic %> (<%= s.status %>)</li>
+<% @student.supervisions.each do |supervision| %>
+<li>
+<%= link_to supervision.academic, supervision.academic %> 
+(<%= supervision.status %>)
+<div class="edit">
+<%= link_to '[-]', supervision, :confirm => 'Are you sure?', :method => :delete %>
+</div>
+</li>
 <% end %>
 </ul>
 
 <h3 class="edit-head">GRC</h3>
 <div class="edit">
-(<%= link_to 'Add', new_committee_path(:student_id => @student) %>)
+<%= link_to '[+]', new_committee_path(:student_id => @student) %>
 </div>
 <ul>
 <% @student.committees.each do |committee| %>
 <li>
 <%= link_to committee.academic, committee.academic %>
 <div class="edit">
-(<%= link_to 'Delete', committee, :confirm => 'Are you sure?', :method => :delete %>)
+<%= link_to '[-]', committee, :confirm => 'Are you sure?', :method => :delete %>
 </div>
 </li>
 <% end %>
