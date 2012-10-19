@@ -61,7 +61,7 @@ class CommitteesController < ApplicationController
 
     respond_to do |format|
       if @committee.update_attributes(params[:committee])
-        format.html { redirect_to @committee, :notice => 'Committee was successfully updated.' }
+        format.html { redirect_to @committee.student, :notice => 'Committee was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }
@@ -77,7 +77,7 @@ class CommitteesController < ApplicationController
     @committee.destroy
 
     respond_to do |format|
-      format.html { redirect_to committees_url }
+      format.html { redirect_to @committee.student }
       format.json { head :no_content }
     end
   end

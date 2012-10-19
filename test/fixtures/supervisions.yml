@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  academic_id: 1
-  student_id: 1
+  academic: one
+  student: one
   status: MyString
 
 two:
-  academic_id: 1
-  student_id: 1
+  academic: two
+  student: two
   status: MyString

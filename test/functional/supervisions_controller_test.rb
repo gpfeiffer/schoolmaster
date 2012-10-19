@@ -12,16 +12,16 @@ class SupervisionsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, :student_id => @supervision.student_id
     assert_response :success
   end
 
   test "should create supervision" do
     assert_difference('Supervision.count') do
-      post :create, :supervision => {  }
+      post :create, :supervision => { :academic_id => @supervision.academic_id, :student_id => @supervision.student_id, :status => @supervision.status }
     end
 
-    assert_redirected_to supervision_path(assigns(:supervision))
+    assert_redirected_to @supervision.student
   end
 
   test "should show supervision" do
@@ -36,7 +36,7 @@ class SupervisionsControllerTest < ActionController::TestCase
 
   test "should update supervision" do
     put :update, :id => @supervision, :supervision => {  }
-    assert_redirected_to supervision_path(assigns(:supervision))
+    assert_redirected_to @supervision.student
   end
 
   test "should destroy supervision" do
@@ -44,6 +44,6 @@ class SupervisionsControllerTest < ActionController::TestCase
       delete :destroy, :id => @supervision
     end
 
-    assert_redirected_to supervisions_path
+    assert_redirected_to @supervision.student
   end
 end

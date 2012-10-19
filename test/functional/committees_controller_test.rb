@@ -12,7 +12,7 @@ class CommitteesControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, :student_id => @committee.student_id
     assert_response :success
   end
 
@@ -21,7 +21,7 @@ class CommitteesControllerTest < ActionController::TestCase
       post :create, :committee => { :academic_id => @committee.academic_id, :student_id => @committee.student_id }
     end
 
-    assert_redirected_to committee_path(assigns(:committee))
+    assert_redirected_to @committee.student
   end
 
   test "should show committee" do
@@ -36,7 +36,7 @@ class CommitteesControllerTest < ActionController::TestCase
 
   test "should update committee" do
     put :update, :id => @committee, :committee => { :academic_id => @committee.academic_id, :student_id => @committee.student_id }
-    assert_redirected_to committee_path(assigns(:committee))
+    assert_redirected_to @committee.student
   end
 
   test "should destroy committee" do
@@ -44,6 +44,6 @@ class CommitteesControllerTest < ActionController::TestCase
       delete :destroy, :id => @committee
     end
 
-    assert_redirected_to committees_path
+    assert_redirected_to @committee.student
   end
 end
