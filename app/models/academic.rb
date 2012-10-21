@@ -1,6 +1,9 @@
 class Academic < ActiveRecord::Base
   attr_accessible :first, :home_url, :image_url, :last, :title, :work_mail, :work_phone
 
+  validates :first, :last, :title, :presence => true
+  validates :title, :inclusion => TITLES
+
   has_many :supervisions, :dependent => :destroy
   has_many :students, :through => :supervisions
   has_many :committees, :dependent => :destroy
