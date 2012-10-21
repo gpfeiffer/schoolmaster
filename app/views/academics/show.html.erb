@@ -6,6 +6,8 @@
 
 <p id="notice"><%= notice %></p>
 
+<h3><%= @academic.school %></h3>
+
 <h2><%= @academic %></h2>
 
 <%= image_tag @academic.image_url, :align => :right, :size => "96x96", :alt => "[image]" %>
@@ -25,13 +27,18 @@
   <%= link_to nil, @academic.home_url %>
 </p>
 
+<% if @academic.supervisions.any? or @academic.committees.any? %>
 <h3>Students</h3>
 
 <ul>
 <% @academic.supervisions.each do |s| %>
 <li><%= link_to s.student, s.student %> (<%= s.status %>)</li>
 <% end %>
+<% @academic.committees.each do |s| %>
+<li><%= link_to s.student, s.student %> (GRC)</li>
+<% end %>
 </ul>
+<% end %>
 
 <h3>Records</h3>
 <ul>

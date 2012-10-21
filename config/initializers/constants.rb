@@ -8,6 +8,13 @@ TITLES = [
   'Prof.',
 ]
 
+# schools
+SCHOOLS = [
+  'Mathematics',
+  'Medicine',
+  'Natural Sciences',
+]
+
 # postgraduate programmes
 PROGRAMMES = [
   "MSc",

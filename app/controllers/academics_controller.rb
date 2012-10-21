@@ -25,6 +25,7 @@ class AcademicsController < ApplicationController
   # GET /academics/new.json
   def new
     @academic = Academic.new
+    @academic.image_url = "photo.png"
 
     respond_to do |format|
       format.html # new.html.erb
