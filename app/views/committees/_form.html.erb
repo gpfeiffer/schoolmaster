@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :academic_id %><br />
-    <%= f.select :academic_id, options_from_collection_for_select(Academic.all, 'id', 'name') %>
+    <%= f.select :academic_id, options_from_collection_for_select(Academic.all, 'id', 'name'), :include_blank => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

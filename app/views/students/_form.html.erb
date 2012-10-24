@@ -39,10 +39,10 @@
       </tr>
       <tr>
 	<td>
-	  <%= f.label :location %>
+	  <%= f.label :room_id, "Desk Location" %>
 	</td>
 	<td>
-	  <%= f.text_field :location %>
+	  <%= f.select :room_id, Room.all.map { |x| [x.location, x.id] } %>
 	</td>
       </tr>
       <tr>

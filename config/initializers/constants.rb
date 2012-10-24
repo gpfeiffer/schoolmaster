@@ -11,6 +11,7 @@ TITLES = [
 # schools
 SCHOOLS = [
   'Mathematics',
+  'Engineering',
   'Medicine',
   'Natural Sciences',
 ]

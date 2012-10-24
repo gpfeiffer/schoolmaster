@@ -12,8 +12,11 @@
     <%= @page_title || "SchoolMaster" %>
   </div>
   <div id="navigation">
-    <div id="home">
-      <%= link_to 'Home', root_path %> 
+    <div id="home"> |
+      <%= link_to 'Home', root_path %> |
+      <%= link_to 'Academics', academics_path %> |
+      <%= link_to 'Students', students_path %> |
+      <%= link_to 'Rooms', rooms_path %> |
     </div>
     <div id="login">
       Sign in
