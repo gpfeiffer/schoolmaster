@@ -4,12 +4,14 @@
   <tr>
     <th>Location</th>
     <th>Capacity</th>
+    <th>Students</th>
   </tr>
 
 <% @rooms.each do |room| %>
   <tr>
-    <td><%= link_to room.location, room %></td>
+    <td><%= link_to room, room %></td>
     <td><%= room.capacity %></td>
+    <td><%= room.students.count %></td>
   </tr>
 <% end %>
 </table>

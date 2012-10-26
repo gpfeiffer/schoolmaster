@@ -30,3 +30,10 @@ STATUSES = [
   "Completed", 
   "On leave",
 ]
+
+# room locations
+LOCATIONS = [
+  "Arus de Brun",
+  "Riverside Terrapin",
+]
+

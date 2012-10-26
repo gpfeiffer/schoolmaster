@@ -1,11 +1,11 @@
 class Room < ActiveRecord::Base
-  attr_accessible :capacity, :location
+  attr_accessible :capacity, :location, :number
 
   has_many :students
 
-  default_scope :order => :location
+  default_scope :order => [:location, :number]
 
   def to_s
-    location
+    "#{number}, #{location}"
   end
 end
