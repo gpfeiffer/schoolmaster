@@ -1,17 +1,20 @@
 <h1>Academic Staff</h1>
 
+<% @academics_by_school.each do |school, academics| %>
+<h3><%= school %></h3>
 <table>
-<% @academics.each do |academic| %>
+<% academics.each do |academic| %>
   <tr>  
 <td><%= image_tag academic.image_url, :size => "16x16", :alt => '[img]' %></td>
     <td><%= link_to academic, academic %></td>
+<td><%= academic.students.count %></td>
       <td> x<%= academic.work_phone %></td>
       <td><%= link_to '[Mail]', academic.mailto %></td>
       <td><%= link_to '[Home]', academic.home_url %></td>
   </tr>
 <% end %>
 </table>
-
+<% end %>
 <br />
 
 <%= link_to 'New Academic', new_academic_path %>

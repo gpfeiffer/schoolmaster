@@ -1,6 +1,6 @@
 <div id="side">
   <h3>Academic Staff</h3>
-    <% Academic.all.group_by(&:school).each do |school, academics| %>
+    <% @academics_by_school.each do |school, academics| %>
       <h4><%= school %></h4>
       <ul><%= render academics %></ul>
     <% end %>
