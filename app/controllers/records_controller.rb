@@ -61,7 +61,7 @@ class RecordsController < ApplicationController
 
     respond_to do |format|
       if @record.update_attributes(params[:record])
-        format.html { redirect_to @record.acadmic, notice: 'Record was successfully updated.' }
+        format.html { redirect_to @record.academic, notice: 'Record was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
