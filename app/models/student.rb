@@ -7,6 +7,9 @@ class Student < ActiveRecord::Base
 
   belongs_to :room
 
+  validates :first, :last, :programme, :status, :presence=> true
+  validates :status, :inclusion => STATUSES
+
   default_scope :order => [:last, :first]
 
   def name

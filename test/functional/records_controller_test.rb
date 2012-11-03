@@ -3,6 +3,7 @@ require 'test_helper'
 class RecordsControllerTest < ActionController::TestCase
   setup do
     @record = records(:one)
+    @academic = academics(:one)
   end
 
   test "should get index" do
@@ -12,7 +13,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, :academic_id => @academic.to_param
     assert_response :success
   end
 
@@ -21,7 +22,7 @@ class RecordsControllerTest < ActionController::TestCase
       post :create, record: { academic_id: @record.academic_id, authorid: @record.authorid, broker_id: @record.broker_id }
     end
 
-    assert_redirected_to record_path(assigns(:record))
+    assert_redirected_to academic_path(assigns(:record).academic)
   end
 
   test "should show record" do
@@ -36,7 +37,7 @@ class RecordsControllerTest < ActionController::TestCase
 
   test "should update record" do
     put :update, id: @record, record: { academic_id: @record.academic_id, authorid: @record.authorid, broker_id: @record.broker_id }
-    assert_redirected_to record_path(assigns(:record))
+    assert_redirected_to academic_path(assigns(:record).academic)
   end
 
   test "should destroy record" do

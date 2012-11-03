@@ -1,7 +1,7 @@
 class Academic < ActiveRecord::Base
   attr_accessible :first, :home_url, :image_url, :last, :school, :title, :work_mail, :work_phone
 
-  validates :first, :last, :title, :presence => true
+  validates :first, :last, :title, :school, :presence => true
   validates :title, :inclusion => TITLES
   validates :school, :inclusion => SCHOOLS
 

@@ -3,9 +3,9 @@
 one:
   academic: one
   student: one
-  status: MyString
+  status: Main
 
 two:
   academic: two
   student: two
-  status: MyString
+  status: Co

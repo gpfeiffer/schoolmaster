@@ -3,6 +3,8 @@ class Room < ActiveRecord::Base
 
   has_many :students
 
+  validates :location, :presence => true
+
   default_scope :order => [:location, :number]
 
   def to_s

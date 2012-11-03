@@ -3,6 +3,7 @@ require 'test_helper'
 class SupervisionsControllerTest < ActionController::TestCase
   setup do
     @supervision = supervisions(:one)
+    @student = students(:one)
   end
 
   test "should get index" do
@@ -12,7 +13,7 @@ class SupervisionsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new, :student_id => @supervision.student_id
+    get :new, :student_id => @student.to_param
     assert_response :success
   end
 

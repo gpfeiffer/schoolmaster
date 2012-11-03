@@ -18,7 +18,7 @@ class AcademicsControllerTest < ActionController::TestCase
 
   test "should create academic" do
     assert_difference('Academic.count') do
-      post :create, :academic => { :first => @academic.first, :home_url => @academic.home_url, :image_url => @academic.image_url, :last => @academic.last, :title => @academic.title, :work_mail => @academic.work_mail, :work_phone => @academic.work_phone }
+      post :create, :academic => { :first => @academic.first, :home_url => @academic.home_url, :image_url => @academic.image_url, :last => @academic.last, :title => @academic.title, :work_mail => @academic.work_mail, :work_phone => @academic.work_phone, :school => @academic.school }
     end
 
     assert_redirected_to academic_path(assigns(:academic))

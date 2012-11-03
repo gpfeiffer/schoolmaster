@@ -3,4 +3,6 @@ class Committee < ActiveRecord::Base
 
   belongs_to :academic
   belongs_to :student
+
+  validates :academic_id, :student_id, :presence => true
 end
