@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121026000710) do
+ActiveRecord::Schema.define(:version => 20121103153732) do
 
   create_table "academics", :force => true do |t|
     t.string   "title"
@@ -25,6 +26,13 @@ ActiveRecord::Schema.define(:version => 20121026000710) do
     t.string   "school"
   end
 
+  create_table "brokers", :force => true do |t|
+    t.string   "name"
+    t.string   "template"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "committees", :force => true do |t|
     t.integer  "academic_id"
     t.integer  "student_id"
@@ -32,10 +40,10 @@ ActiveRecord::Schema.define(:version => 20121026000710) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "publication_records", :force => true do |t|
-    t.string   "resource"
-    t.string   "authorid"
+  create_table "records", :force => true do |t|
     t.integer  "academic_id"
+    t.integer  "broker_id"
+    t.string   "authorid"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

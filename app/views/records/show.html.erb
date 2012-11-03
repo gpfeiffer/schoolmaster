@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Academic:</b>
+  <%= @record.academic_id %>
+</p>
+
+<p>
+  <b>Broker:</b>
+  <%= @record.broker_id %>
+</p>
+
+<p>
+  <b>Authorid:</b>
+  <%= @record.authorid %>
+</p>
+
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', records_path %>

@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  resource: MyString
-  authorid: MyString
   academic_id: 1
+  broker_id: 1
+  authorid: MyString
 
 two:
-  resource: MyString
-  authorid: MyString
   academic_id: 1
+  broker_id: 1
+  authorid: MyString

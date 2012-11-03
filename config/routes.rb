@@ -1,9 +1,11 @@
 Schoolmaster::Application.routes.draw do
+  resources :records
+
+  resources :brokers
+
   resources :supervisions
 
   resources :committees
-
-  resources :publication_records
 
   resources :rooms
 

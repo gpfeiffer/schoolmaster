@@ -43,11 +43,11 @@
 </ul>
 <% end %>
 
-<% if @academic.publication_records.any? %>
+<% if @academic.records.any? %>
 <h3>Records</h3>
 <ul>
-<% @academic.publication_records.each do |pr| %>
-<li><%= link_to nil, pr.url %></li>
+<% @academic.records.each do |record| %>
+<li><%= link_to record.broker.name, record.broker.template % record.authorid %></li>
 <% end %>
 </ul>
 <% end %>
@@ -55,6 +55,7 @@
 <hr />
 
 <%= link_to 'Edit', edit_academic_path(@academic) %> |
+<%= link_to 'Add Record', new_record_path(:academic_id => @academic) %> |
 <%= link_to 'Delete', @academic, :confirm => 'Are you sure?', :method => :delete %> |
 <%= link_to 'Back', academics_path %>
 
