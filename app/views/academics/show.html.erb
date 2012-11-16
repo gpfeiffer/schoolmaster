@@ -47,7 +47,7 @@
 <h3>Records</h3>
 <ul>
 <% @academic.records.each do |record| %>
-<li><%= link_to record.broker.name, record.broker.template % record.authorid %></li>
+<li><%= link_to record.broker.name, record.broker.template % record.authorid, :target => "_blank" %></li>
 <% end %>
 </ul>
 <% end %>

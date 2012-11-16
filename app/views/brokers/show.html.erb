@@ -1,15 +1,23 @@
+<div id="main">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @broker.name %>
-</p>
+<h2><%= @broker.name %></h2>
 
 <p>
   <b>Template:</b>
   <%= @broker.template %>
 </p>
 
+<table>
+<% @broker.records.sort_by { |x| x.authorid.to_i }.each do |record| %>
+<tr>
+<td align="right"><%= record.authorid %></td>
+<td><%= record.academic %></td>
+</tr>
+<% end %>
+</table>
+
 
 <%= link_to 'Edit', edit_broker_path(@broker) %> |
 <%= link_to 'Back', brokers_path %>
+</div>
