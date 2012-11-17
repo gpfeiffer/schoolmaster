@@ -6,6 +6,10 @@
 }
 
 #banner {
+  a {
+      color: #FFFFFF;
+      text-decoration: none;
+  }
   background: #B03060;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -31,6 +35,10 @@
 }
 
 #navigation #login { 
+  a {
+      color: #FFFFFF;
+      text-decoration: none;
+  }
   margin-left: 27em;
   text-align: right;
 }
