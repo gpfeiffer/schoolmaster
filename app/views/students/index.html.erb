@@ -1,6 +1,7 @@
 <div id="main">
 <h1>Graduate Students</h1>
 
+
 <table>
 <% @students.each do |student| %>
   <tr>
@@ -15,5 +16,6 @@
 
 <br />
 
+<%= mail_to @students.map(&:email).join(','), "Mail all", :cc => "goetz.pfeiffer@nuigalway.ie" %> |
 <%= link_to 'New Student', new_student_path %>
 </div>
