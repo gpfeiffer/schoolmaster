@@ -2,7 +2,8 @@
 <h1>Academic Staff</h1>
 
 <% @academics_by_school.each do |school, academics| %>
-<h3><%= school %></h3>
+<h3 class="edit-head"><%= school %></h3>
+[<%= mail_to academics.map(&:email).join(','), "Mail All", :cc => "goetz.pfeiffer@nuigalway.ie" %>]
 <table>
 <% academics.each do |academic| %>
   <tr>  
