@@ -42,7 +42,7 @@
 	  <%= f.label :room_id, "Desk Location" %>
 	</td>
 	<td>
-	  <%= f.select :room_id, Room.all.map { |x| [x.location, x.id] } %>
+	  <%= f.select :room_id, Room.all.map { |x| [x, x.id] } %>
 	</td>
       </tr>
       <tr>
