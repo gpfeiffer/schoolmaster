@@ -15,6 +15,11 @@
     <td><%= room.students.count %></td>
   </tr>
 <% end %>
+  <tr>
+    <th>Total:</th>
+    <td><%= @rooms.map{ |x| x.capacity || 0 }.sum %></td>
+    <td><%= @rooms.map{ |x| x.students.count }.sum %></td>
+  </tr>
 </table>
 
 <br />
