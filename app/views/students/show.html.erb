@@ -23,7 +23,7 @@
 <% if not @student.home_url.blank? %>
   | <%= @student.home_url %>
 <% end %>
-  | <%= @student.room %>
+  | <%= if @student.room then link_to @student.room, @student.room else '...' end %>
 </p>
 <hr />
 
