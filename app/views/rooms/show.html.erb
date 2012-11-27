@@ -11,9 +11,10 @@
 <p>
   <b>Capacity:</b>
   <%= @room.capacity %>
+  (<%= (@room.capacity || 0) - @room.students.count %> free)
 </p>
 
-<h3>Students:</h3>
+<h3><%= @room.students.count %> Students:</h3>
 <ul>
 <%= render @room.students %>
 </ul>
