@@ -35,7 +35,7 @@
 
 <ul>
 <% @academic.supervisions.each do |s| %>
-<li><%= link_to s.student, s.student %> (<%= s.status %>)</li>
+<li><%= link_to s.student, s.student %> (<%= s.status %>, <%= s.student.programme %>, <%= s.student.status %>)</li>
 <% end %>
 <% @academic.committees.each do |s| %>
 <li><%= link_to s.student, s.student %> (GRC)</li>
