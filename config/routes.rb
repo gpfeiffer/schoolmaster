@@ -1,4 +1,8 @@
 Schoolmaster::Application.routes.draw do
+  resources :assignments
+
+  resources :roles
+
   devise_for :users
 
   resources :records
