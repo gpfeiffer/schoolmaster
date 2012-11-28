@@ -2,7 +2,9 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    students_by_currency = Student.all.group_by { |x| x.current? }
+    @students = students_by_currency[true] 
+    @former_students = students_by_currency[false] 
 
     respond_to do |format|
       format.html # index.html.erb

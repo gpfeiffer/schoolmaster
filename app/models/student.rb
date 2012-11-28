@@ -12,6 +12,10 @@ class Student < ActiveRecord::Base
 
   default_scope :order => [:last, :first]
 
+  def current?
+    status !~ /[Cc]omplete/
+  end
+
   def name
     "#{first} #{last}"
   end
