@@ -4,6 +4,9 @@ Schoolmaster::Application.routes.draw do
   resources :roles
 
   devise_for :users
+  scope "/admin" do
+    resources :users
+  end
 
   resources :records
 
