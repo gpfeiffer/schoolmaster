@@ -11,13 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
+  <%= f.hidden_field :user_id %>
+
   <div class="field">
     <%= f.label :role_id %><br />
-    <%= f.number_field :role_id %>
+    <%= f.select :role_id, options_from_collection_for_select(Role.all, 'id', 'name') %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
 
   has_many :assignments
   has_many :roles, :through => :assignments
+
+  def to_s
+    email
+  end
 end
