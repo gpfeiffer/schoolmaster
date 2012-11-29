@@ -1,22 +1,22 @@
 <div id="main">
 <h1>SchoolMaster</h1>
 <p>
-  Welcome to the School's digital self.
+  Welcome to the World of Postgraduate Supervision!
 </p>
 
 <p>It is now <%= Time.now.strftime('%H:%M:%S (%Z) on %A, %B %d, %Y') %>.</p>
 
 <p>
-From  here you can access
+From  here you can access:
 <ul>
 <li>
-a list of <%= Academic.all.count %> <%= link_to 'academics', academics_path %>
+a list of <%= Academic.all.count %> <%= link_to 'academics', academics_path %>,
 </li>
 <li>
-a list of <%= Student.all.count %> <%= link_to 'postgraduate students', students_path %>
+a list of <%= Student.all.count %> <%= link_to 'postgraduate students', students_path %>,
 </li>
 <li>
-a list of <%= Room.all.count %> <%= link_to 'postgrad rooms', rooms_path %>
+a list of <%= Room.all.count %> <%= link_to 'postgrad rooms', rooms_path %>.
 </li>
 </ul>
 </p>
