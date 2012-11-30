@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   has_many :assignments
   has_many :roles, :through => :assignments
 
+  def admin?
+    roles.include? Role.find_by_name("Admin")
+  end
+
   def to_s
     email
   end
