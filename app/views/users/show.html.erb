@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<h3 class="edit-head"><%= 'Role'.pluralize @user.roles.count %></h3>
+<div class="edit">
+<%= link_to '[+]', new_assignment_path(:user_id => @user) %>
+</div>
+<ul>
+<% @user.assignments.each do |assignment| %>
+<li>
+<%= link_to assignment.role, assignment.role %>
+<div class="edit">
+<%= link_to '[-]', assignment, :confirm => 'Are you sure?', :method => :delete %>
+</div>
+</li>
+<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
