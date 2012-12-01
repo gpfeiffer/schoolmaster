@@ -1,9 +1,9 @@
 class RecordsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /records
   # GET /records.json
   def index
-    @records = Record.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json =>  @records }
@@ -13,8 +13,6 @@ class RecordsController < ApplicationController
   # GET /records/1
   # GET /records/1.json
   def show
-    @record = Record.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json =>  @record }
@@ -24,7 +22,6 @@ class RecordsController < ApplicationController
   # GET /records/new
   # GET /records/new.json
   def new
-    @record = Record.new
     @record.academic = Academic.find(params[:academic_id])
 
     respond_to do |format|
@@ -35,14 +32,11 @@ class RecordsController < ApplicationController
 
   # GET /records/1/edit
   def edit
-    @record = Record.find(params[:id])
   end
 
   # POST /records
   # POST /records.json
   def create
-    @record = Record.new(params[:record])
-
     respond_to do |format|
       if @record.save
         format.html { redirect_to @record.academic, :notice =>  'Record was successfully created.' }
@@ -57,8 +51,6 @@ class RecordsController < ApplicationController
   # PUT /records/1
   # PUT /records/1.json
   def update
-    @record = Record.find(params[:id])
-
     respond_to do |format|
       if @record.update_attributes(params[:record])
         format.html { redirect_to @record.academic, :notice =>  'Record was successfully updated.' }
@@ -73,7 +65,6 @@ class RecordsController < ApplicationController
   # DELETE /records/1
   # DELETE /records/1.json
   def destroy
-    @record = Record.find(params[:id])
     @record.destroy
 
     respond_to do |format|

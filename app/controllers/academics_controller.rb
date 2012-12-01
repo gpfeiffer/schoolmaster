@@ -1,9 +1,10 @@
 class AcademicsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /academics
   # GET /academics.json
   def index
-    @academics = Academic.all
-    @academics_by_school = Academic.all.group_by(&:school)
+    @academics_by_school = @academics.group_by(&:school)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +15,6 @@ class AcademicsController < ApplicationController
   # GET /academics/1
   # GET /academics/1.json
   def show
-    @academic = Academic.find(params[:id])
     @academics_by_school = Academic.all.group_by(&:school)
 
     respond_to do |format|
@@ -26,7 +26,6 @@ class AcademicsController < ApplicationController
   # GET /academics/new
   # GET /academics/new.json
   def new
-    @academic = Academic.new
     @academic.image_url = "photo.png"
 
     respond_to do |format|
@@ -37,14 +36,11 @@ class AcademicsController < ApplicationController
 
   # GET /academics/1/edit
   def edit
-    @academic = Academic.find(params[:id])
   end
 
   # POST /academics
   # POST /academics.json
   def create
-    @academic = Academic.new(params[:academic])
-
     respond_to do |format|
       if @academic.save
         format.html { redirect_to @academic, :notice => 'Academic was successfully created.' }
@@ -59,8 +55,6 @@ class AcademicsController < ApplicationController
   # PUT /academics/1
   # PUT /academics/1.json
   def update
-    @academic = Academic.find(params[:id])
-
     respond_to do |format|
       if @academic.update_attributes(params[:academic])
         format.html { redirect_to @academic, :notice => 'Academic was successfully updated.' }
@@ -75,7 +69,6 @@ class AcademicsController < ApplicationController
   # DELETE /academics/1
   # DELETE /academics/1.json
   def destroy
-    @academic = Academic.find(params[:id])
     @academic.destroy
 
     respond_to do |format|

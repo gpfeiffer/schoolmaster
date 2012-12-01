@@ -1,9 +1,9 @@
 class SupervisionsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /supervisions
   # GET /supervisions.json
   def index
-    @supervisions = Supervision.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @supervisions }
@@ -13,8 +13,6 @@ class SupervisionsController < ApplicationController
   # GET /supervisions/1
   # GET /supervisions/1.json
   def show
-    @supervision = Supervision.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @supervision }
@@ -24,7 +22,6 @@ class SupervisionsController < ApplicationController
   # GET /supervisions/new
   # GET /supervisions/new.json
   def new
-    @supervision = Supervision.new
     @supervision.student = Student.find(params[:student_id])
 
     respond_to do |format|
@@ -35,14 +32,11 @@ class SupervisionsController < ApplicationController
 
   # GET /supervisions/1/edit
   def edit
-    @supervision = Supervision.find(params[:id])
   end
 
   # POST /supervisions
   # POST /supervisions.json
   def create
-    @supervision = Supervision.new(params[:supervision])
-
     respond_to do |format|
       if @supervision.save
         format.html { redirect_to @supervision.student, :notice => 'Supervision was successfully created.' }
@@ -57,8 +51,6 @@ class SupervisionsController < ApplicationController
   # PUT /supervisions/1
   # PUT /supervisions/1.json
   def update
-    @supervision = Supervision.find(params[:id])
-
     respond_to do |format|
       if @supervision.update_attributes(params[:supervision])
         format.html { redirect_to @supervision.student, :notice => 'Supervision was successfully updated.' }
@@ -73,7 +65,6 @@ class SupervisionsController < ApplicationController
   # DELETE /supervisions/1
   # DELETE /supervisions/1.json
   def destroy
-    @supervision = Supervision.find(params[:id])
     @supervision.destroy
 
     respond_to do |format|
