@@ -3,9 +3,6 @@
   <ul><%= render Student.all %></ul>
 </div>
 <div id="main">
-
-<p id="notice"><%= notice %></p>
-
 <h2><%= @student %></h2>
 
 <%= image_tag @student.photo_url, :align => :right, :size => "96x96", :alt => "[image]" %>
@@ -92,9 +89,7 @@
 
 <hr />
 
-
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Delete', @student, :method => :delete, :data => { :confirm => 'Are you sure?' } %> |
 <%= link_to 'Back', students_path %>
-
 </div>
