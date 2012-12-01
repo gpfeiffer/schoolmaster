@@ -41,6 +41,7 @@
 </ul>
 <% end %>
 
+<% if can? :update, @academic %>
 <% if @academic.records.any? %>
 <h3>Records</h3>
 <ul>
@@ -49,12 +50,17 @@
 <% end %>
 </ul>
 <% end %>
+<% end %>
 
 <hr />
 
-<%= link_to 'Edit', edit_academic_path(@academic) %> |
-<%= link_to 'Add Record', new_record_path(:academic_id => @academic) %> |
-<%= link_to 'Delete', @academic, :confirm => 'Are you sure?', :method => :delete %> |
+<% if can? :update, @academic %>
+  <%= link_to 'Edit', edit_academic_path(@academic) %> |
+  <%= link_to 'Add Record', new_record_path(:academic_id => @academic) %> |
+<% end %>
+<% if can? :delete, @academic %>
+  <%= link_to 'Delete', @academic, :confirm => 'Are you sure?', :method => :delete %> |
+<% end %>
 <%= link_to 'Back', academics_path %>
 
 </div>

@@ -18,7 +18,11 @@
 
 <hr />
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Destroy', @room, :method => :delete, :data => { :confirm => 'Are you sure?' } %> |
+<% if can? :update, @room %>
+  <%= link_to 'Edit', edit_room_path(@room) %> |
+<% end %>
+<% if can? :destroy, @room %>
+  <%= link_to 'Destroy', @room, :method => :delete, :data => { :confirm => 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back', rooms_path %>
 </div>

@@ -20,6 +20,7 @@
 <table>
 <% @former_students.each do |student| %>
   <tr>
+    <td><%= image_tag student.image_url, :size => "16x16", :alt => '[img]' %></td>
     <td><%= link_to student, student %></td>
     <td><%= student.registration %></td>
     <td><%= student.programme %></td>
@@ -31,6 +32,8 @@
 
 <br />
 
-<%= mail_to @students.map(&:email).join(','), "Mail current", :cc => "goetz.pfeiffer@nuigalway.ie" %> |
-<%= link_to 'New Student', new_student_path %>
+<%= mail_to @students.map(&:email).join(','), "Mail current", :cc => "goetz.pfeiffer@nuigalway.ie" %> 
+<% if can? :create, Student %>
+  | <%= link_to 'New Student', new_student_path %>
+<% end %>
 </div>

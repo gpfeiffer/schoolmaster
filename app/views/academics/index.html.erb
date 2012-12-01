@@ -4,20 +4,25 @@
 <% @academics_by_school.each do |school, academics| %>
 <h3 class="edit-head"><%= school %></h3>
 [<%= mail_to academics.map(&:email).join(','), "Mail All", :cc => "goetz.pfeiffer@nuigalway.ie" %>]
+<br />
+<br />
 <table>
 <% academics.each do |academic| %>
   <tr>  
-<td><%= image_tag academic.image_url, :size => "16x16", :alt => '[img]' %></td>
+
     <td><%= link_to academic, academic %></td>
-<td><%= academic.students.count %></td>
-      <td> x<%= academic.work_phone %></td>
-      <td><%= link_to '[Mail]', academic.mailto %></td>
-      <td><%= link_to '[Home]', academic.home_url %></td>
+    <td><%= academic.students.count %></td>
+    <td> x<%= academic.work_phone %></td>
+    <td><%= link_to '[Mail]', academic.mailto %></td>
+    <td><%= link_to '[Home]', academic.home_url %></td>
   </tr>
 <% end %>
 </table>
-<% end %>
 <br />
+<br />
+<% end %>
 
-<%= link_to 'New Academic', new_academic_path %>
+<% if can? :create, Academic %>
+  <%= link_to 'New Academic', new_academic_path %>
+<% end %>
 </div>

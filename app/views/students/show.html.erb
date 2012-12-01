@@ -55,41 +55,55 @@
 </tr>
 </table>
 
-<h3 class="edit-head"><%= 'Supervisor'.pluralize @student.supervisions.count %></h3>
-<div class="edit">
-<%= link_to '[+]', new_supervision_path(:student_id => @student) %>
-</div>
+<h3 class="edit-head">
+  <%= 'Supervisor'.pluralize @student.supervisions.count %>
+</h3>
+<% if can? :update, @student %>
+  <div class="edit">
+    <%= link_to '[+]', new_supervision_path(:student_id => @student) %>
+  </div>
+<% end %>
 
 <ul>
-<% @student.supervisions.each do |supervision| %>
-<li>
-<%= link_to supervision.academic, supervision.academic %> 
-(<%= supervision.status %>)
-<div class="edit">
-<%= link_to '[-]', supervision, :confirm => 'Are you sure?', :method => :delete %>
-</div>
-</li>
-<% end %>
+  <% @student.supervisions.each do |supervision| %>
+    <li>
+      <%= link_to supervision.academic, supervision.academic %> 
+      (<%= supervision.status %>)
+      <% if can? :update, @student %>
+        <div class="edit">
+          <%= link_to '[-]', supervision, :confirm => 'Are you sure?', :method => :delete %>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
 </ul>
 
 <h3 class="edit-head">GRC</h3>
-<div class="edit">
-<%= link_to '[+]', new_committee_path(:student_id => @student) %>
-</div>
-<ul>
-<% @student.committees.each do |committee| %>
-<li>
-<%= link_to committee.academic, committee.academic %>
-<div class="edit">
-<%= link_to '[-]', committee, :confirm => 'Are you sure?', :method => :delete %>
-</div>
-</li>
+<% if can? :update, @student %>
+  <div class="edit">
+    <%= link_to '[+]', new_committee_path(:student_id => @student) %>
+  </div>
 <% end %>
+<ul>
+  <% @student.committees.each do |committee| %>
+    <li>
+      <%= link_to committee.academic, committee.academic %>
+      <% if can? :update, @student %>
+        <div class="edit">
+          <%= link_to '[-]', committee, :confirm => 'Are you sure?', :method => :delete %>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
 </ul>
 
 <hr />
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Delete', @student, :method => :delete, :data => { :confirm => 'Are you sure?' } %> |
+<% if can? :update, @student %>
+  <%= link_to 'Edit', edit_student_path(@student) %> |
+<% end %>
+<% if can? :destroy, @student %>
+  <%= link_to 'Delete', @student, :method => :delete, :data => { :confirm => 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back', students_path %>
 </div>

@@ -24,5 +24,7 @@
 
 <br />
 
-<%= link_to 'New Room', new_room_path %>
+<% if can? :create, Room %>
+  <%= link_to 'New Room', new_room_path %>
+<% end %>
 </div>
