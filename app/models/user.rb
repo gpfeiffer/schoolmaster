@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   has_many :assignments
   has_many :roles, :through => :assignments
 
-  def admin?
-    roles.include? Role.find_by_name("Admin")
+  def role? symbol
+    roles.map(&:name).include? symbol.to_s.camelcase
   end
 
   def to_s
