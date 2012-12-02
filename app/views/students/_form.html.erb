@@ -139,6 +139,16 @@
       </tr>
       <tr>
 	<td>
+	  <%= f.label :viva_date %>
+	</td>
+	<td>
+	  <%= f.date_select :viva_date,
+                :include_blank => true, 
+                :order => [:day, :month, :year] %>
+	</td>
+      </tr>
+      <tr>
+	<td>
 	  <%= f.label :completed_on %>
 	</td>
 	<td>
