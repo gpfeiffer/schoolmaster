@@ -24,6 +24,14 @@ class Academic < ActiveRecord::Base
     name
   end
 
+  def extension
+    if work_phone.blank?
+      "... extension ..."
+    else
+      "x#{work_phone}"
+    end
+  end
+
   def email
     "#{work_mail}@nuigalway.ie"
   end

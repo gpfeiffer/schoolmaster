@@ -9,10 +9,9 @@
 <table>
 <% academics.each do |academic| %>
   <tr>  
-
+    <td><%= image_tag academic.image_url, :size => "16x16", :alt => '[img]' %></td>
     <td><%= link_to academic, academic %></td>
-    <td><%= academic.students.count %></td>
-    <td> x<%= academic.work_phone %></td>
+    <td><%= academic.extension %></td>
     <td><%= link_to '[Mail]', academic.mailto %></td>
     <td><%= link_to '[Home]', academic.home_url %></td>
   </tr>

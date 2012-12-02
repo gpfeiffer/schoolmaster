@@ -3,29 +3,29 @@
 
 <h2><%= @students.count %> Current Students</h2>
 
-<table>
-<% @students.each do |student| %>
-  <tr>
-    <td><%= link_to student, student %></td>
-    <td><%= student.registration %></td>
-    <td><%= student.programme %></td>
-    <td><%= student.room %></td>
-    <td><%= student.work_phone %></td>
-  </tr>
+<% @students.group_by(&:programme).each do |programme, students| %>
+  <h3><%= programme %></h3>
+  <table>
+    <% students.each do |student| %>
+      <tr>
+        <td><%= image_tag student.photo_url, :size => "16x16", :alt => '[img]' %></td>
+        <td><%= link_to student, student %></td>
+        <td><%= student.registration_or_blank %></td>
+        <td><%= link_to '[Mail]', student.mailto %></td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>
-</table>
 
 <h2><%= @former_students.count %> Former Students</h2>
 
 <table>
 <% @former_students.each do |student| %>
   <tr>
-    <td><%= image_tag student.image_url, :size => "16x16", :alt => '[img]' %></td>
+    <td><%= image_tag student.photo_url, :size => "16x16", :alt => '[img]' %></td>
     <td><%= link_to student, student %></td>
-    <td><%= student.registration %></td>
+    <td><%= student.registration_or_blank %></td>
     <td><%= student.programme %></td>
-    <td><%= student.room %></td>
-    <td><%= student.work_phone %></td>
   </tr>
 <% end %>
 </table>

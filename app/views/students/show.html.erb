@@ -9,13 +9,13 @@
 
 <p>
   <%= @student.programme %>
-  (<%= @student.status %>)
+  (<%= @student.status_or_blank %>)
 </p>
 
 <hr />
 <p>
-  <%= @student.registration || '... add student id ...' %>
-  | x<%= @student.work_phone %>
+  <%= @student.registration_or_blank %>
+  | <%= @student.extension %>
   | <%= @student.email %>
 <% if not @student.home_url.blank? %>
   | <%= @student.home_url %>

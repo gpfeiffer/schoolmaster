@@ -12,6 +12,31 @@ class Student < ActiveRecord::Base
 
   default_scope :order => [:last, :first]
 
+  def registration_or_blank
+    if registration.blank?
+      "... ID ..."
+    else
+      registration
+    end
+  end
+
+  def status_or_blank
+    if status.blank?
+      "... status ..."
+    else
+      status
+    end
+  end
+
+
+  def extension
+    if work_phone.blank?
+      "... extension ..."
+    else
+      "x#{work_phone}"
+    end
+  end
+
   def current?
     status !~ /[Cc]omplete/
   end
@@ -22,5 +47,9 @@ class Student < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def mailto
+    "mailto:#{email}"
   end
 end
