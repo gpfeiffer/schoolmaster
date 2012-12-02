@@ -2,23 +2,17 @@
 <h1>Postgraduate rooms</h1>
 
 <table>
-  <tr>
-    <th>Location</th>
-    <th>Capacity</th>
-    <th>Students</th>
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= link_to room, room %></td>
+      <td align="right"><%= room.capacity %> desks</td>
+      <td align="right">(<%= room.students.count %> busy, <%= room.capacity - room.students.count %> free)</td>
   </tr>
-
-<% @rooms.each do |room| %>
-  <tr>
-    <td><%= link_to room, room %></td>
-    <td align="right"><%= room.capacity %> (<%= room.capacity - room.students.count %> free)</td>
-    <td align="right"><%= room.students.count %></td>
-  </tr>
-<% end %>
+  <% end %>
   <tr>
     <th>Total:</th>
-    <td align="right"><%= @rooms.map{ |x| x.capacity || 0 }.sum %></td>
-    <td align="right"><%= @rooms.map{ |x| x.students.count }.sum %></td>
+    <td align="right"><%= @rooms.map{ |x| x.capacity || 0 }.sum %> desks</td>
+    <td align="right"><%= @rooms.map{ |x| x.students.count }.sum %> busy</td>
   </tr>
 </table>
 
