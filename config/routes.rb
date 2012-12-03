@@ -3,7 +3,12 @@ Schoolmaster::Application.routes.draw do
 
   resources :roles
 
-  devise_for :users
+  devise_for :users, :skip => [:registrations]
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  end
+
   scope "/admin" do
     resources :users
   end
