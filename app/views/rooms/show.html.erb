@@ -24,5 +24,6 @@
 <% if can? :destroy, @room %>
   <%= link_to 'Destroy', @room, :method => :delete, :data => { :confirm => 'Are you sure?' } %> |
 <% end %>
+<%= mail_to @room.students.map(&:email).join(','), "Mail All", :cc => "goetz.pfeiffer@nuigalway.ie" %> |
 <%= link_to 'Back', rooms_path %>
 </div>
