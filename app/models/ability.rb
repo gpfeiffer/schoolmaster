@@ -7,6 +7,11 @@ class Ability
       can :manage, :all
     elsif user.role? :supervisor
       can :read, [Academic, Student, Room]
+
+      can :update, Academic do |academic|
+        academic == user.academic
+      end
+
       can :update, Student do |student|
         student.academics.include? user.academic
       end
