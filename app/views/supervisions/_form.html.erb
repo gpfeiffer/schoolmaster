@@ -14,16 +14,16 @@
   <%= f.hidden_field :student_id %>
 
   <div class="field">
-    <%= f.label :academic_id %><br />
-    <%= f.select :academic_id, options_from_collection_for_select(Academic.all, 'id', 'name') %>
+    <%= f.label :academic_id, "Name" %><br />
+    <%= f.select :academic_id, options_from_collection_for_select(Academic.all, 'id', 'name'), :include_blank => true %>
   </div>
 
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.select :status, Supervision::STATUSES %>
+    <%= f.select :status, Supervision::STATUSES, :include_blank => true %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add supervisor" %>
   </div>
 <% end %>

@@ -55,6 +55,14 @@
       </tr>
       <tr>
 	<td>
+	  <%= f.label :title, "Dissertation Title" %>
+	</td>
+	<td>
+	  <%= f.text_field :title %>
+	</td>
+      </tr>
+      <tr>
+	<td>
 	  <%= f.label :interests %>
 	</td>
 	<td>
@@ -87,7 +95,7 @@
       </tr>
       <tr>
 	<td>
-	  <%= f.label :home_url %>
+	  <%= f.label :home_url, "Home Page" %>
 	</td>
 	<td>
 	  <%= f.text_field :home_url %>
@@ -95,18 +103,10 @@
       </tr>
       <tr>
 	<td>
-	  <%= f.label :work_phone %>
+	  <%= f.label :work_phone, "Phone" %>
 	</td>
 	<td>
 	  <%= f.text_field :work_phone %>
-	</td>
-      </tr>
-      <tr>
-	<td>
-	  <%= f.label :title %>
-	</td>
-	<td>
-	  <%= f.text_field :title %>
 	</td>
       </tr>
       <tr>
