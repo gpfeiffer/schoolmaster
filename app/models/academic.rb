@@ -40,4 +40,16 @@ class Academic < ActiveRecord::Base
   def mailto
     "mailto:#{email}"
   end
+
+  def active_supervisions
+    supervisions.select { |x| x.student.current? }
+  end
+
+  def complete_supervisions
+    supervisions.select { |x| x.student.complete? }
+  end
+
+  def active_committees
+    committees.select { |x| x.student.current? }
+  end
 end

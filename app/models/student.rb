@@ -41,6 +41,10 @@ class Student < ActiveRecord::Base
     status !~ /[Cc]omplete/
   end
 
+  def complete?
+    status == "Completed"
+  end
+
   def name
     "#{first} #{last}"
   end

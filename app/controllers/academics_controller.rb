@@ -16,6 +16,9 @@ class AcademicsController < ApplicationController
   # GET /academics/1.json
   def show
     @academics_by_school = Academic.all.group_by(&:school)
+    @active_supervisions = @academic.active_supervisions
+    @complete_supervisions = @academic.complete_supervisions
+    @active_committees = @academic.active_committees 
 
     respond_to do |format|
       format.html # show.html.erb

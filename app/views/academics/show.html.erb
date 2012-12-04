@@ -28,10 +28,10 @@
   <%= link_to nil, @academic.home_url %>
 </p>
 
-<% if @academic.supervisions.any? %>
+<% if @active_supervisions.any? %>
   <h3>Students</h3>
   <ul>
-    <% @academic.supervisions.each do |s| %>
+    <% @active_supervisions.each do |s| %>
       <li>
         <%= link_to s.student, s.student %> (<%= s.status %>, <%= s.student.programme %>, <%= s.student.status_or_blank %>)
       </li>
@@ -39,11 +39,22 @@
   </ul>
 <% end %>
 
-<% if @academic.committees.any? %>
+<% if @active_committees.any? %>
   <h3>GRC</h3>
   <ul>  
-    <% @academic.committees.each do |s| %>
+    <% @active_committees.each do |s| %>
       <li><%= link_to s.student, s.student %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @complete_supervisions.any? %>
+  <h3>Former Students</h3>
+  <ul>
+    <% @complete_supervisions.each do |s| %>
+      <li>
+        <%= link_to s.student, s.student %> (<%= s.student.programme %>)
+      </li>
     <% end %>
   </ul>
 <% end %>
