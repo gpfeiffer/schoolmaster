@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.text
       format.json { render :json => @students }
     end
   end
