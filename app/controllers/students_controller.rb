@@ -27,6 +27,8 @@ class StudentsController < ApplicationController
   # GET /students/new
   # GET /students/new.json
   def new
+    @student.image_url = "photo.png"
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @student }
