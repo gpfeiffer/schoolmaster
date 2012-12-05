@@ -6,6 +6,7 @@ class Academic < ActiveRecord::Base
   validates :school, :inclusion => SCHOOLS
 
   belongs_to :user
+  belongs_to :school
   has_many :supervisions, :dependent => :destroy
   has_many :students, :through => :supervisions
   has_many :committees, :dependent => :destroy
