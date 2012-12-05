@@ -4,7 +4,7 @@ class AcademicsController < ApplicationController
   # GET /academics
   # GET /academics.json
   def index
-    @academics_by_school = @academics.group_by(&:school)
+    @schools = School.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class AcademicsController < ApplicationController
   # GET /academics/1
   # GET /academics/1.json
   def show
-    @academics_by_school = Academic.all.group_by(&:school)
+    @schools = School.all
     @active_supervisions = @academic.active_supervisions
     @complete_supervisions = @academic.complete_supervisions
     @active_committees = @academic.active_committees 

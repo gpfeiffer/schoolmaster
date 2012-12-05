@@ -1,8 +1,8 @@
 <div id="side">
   <h3>Academic Staff</h3>
-    <% @academics_by_school.each do |school, academics| %>
+    <% @schools.each do |school| %>
       <h4><%= school %></h4>
-      <ul><%= render academics %></ul>
+      <ul><%= render school.academics %></ul>
     <% end %>
 </div>
 <div id="main">

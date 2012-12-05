@@ -1,13 +1,13 @@
 <div id="main">
 <h1>Academic Staff</h1>
 
-<% @academics_by_school.each do |school, academics| %>
+<% @schools.each do |school| %>
 <h3 class="edit-head"><%= school %></h3>
-[<%= mail_to academics.map(&:email).join(','), "Mail All", :cc => "goetz.pfeiffer@nuigalway.ie" %>]
+[<%= mail_to school.academics.map(&:email).join(','), "Mail All", :cc => "goetz.pfeiffer@nuigalway.ie" %>]
 <br />
 <br />
 <table>
-<% academics.each do |academic| %>
+<% school.academics.each do |academic| %>
   <tr>  
     <td><%= image_tag academic.image_url, :size => "16x16", :alt => '[img]' %></td>
     <td><%= link_to academic, academic %></td>

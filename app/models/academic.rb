@@ -1,9 +1,8 @@
 class Academic < ActiveRecord::Base
-  attr_accessible :first, :home_url, :image_url, :last, :school, :title, :user_id, :work_mail, :work_phone
+  attr_accessible :first, :home_url, :image_url, :last, :school_id, :title, :user_id, :work_mail, :work_phone
 
-  validates :first, :last, :title, :school, :presence => true
+  validates :first, :last, :title, :school_id, :presence => true
   validates :title, :inclusion => TITLES
-  validates :school, :inclusion => SCHOOLS
 
   belongs_to :user
   belongs_to :school
