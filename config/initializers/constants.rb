@@ -8,12 +8,13 @@ TITLES = [
   'Prof.',
 ]
 
-# schools
+# schools and research institutes
 SCHOOLS = [
   'Mathematics',
   'Engineering',
   'Medicine',
   'Natural Sciences',
+  'NCBES',
 ]
 
 # postgraduate programmes
