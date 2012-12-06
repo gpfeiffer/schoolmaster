@@ -18,6 +18,8 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
+    @students = Student.all.select { |x| x.current? }
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @student }

@@ -1,6 +1,6 @@
 <div id="side">
   <h3>Graduate Students</h3>
-  <ul><%= render Student.all %></ul>
+  <ul><%= render @students %></ul>
 </div>
 <div id="main">
 <h2><%= @student %></h2>
@@ -37,6 +37,11 @@
 <p>
   <b>Funding Source:</b>
   <%= @student.funder %>
+</p>
+
+<p>
+  <b>Home Page:</b>
+  <%= @student.home_url %>
 </p>
 
 
