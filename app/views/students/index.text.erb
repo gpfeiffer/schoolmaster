@@ -6,8 +6,8 @@
 <% @students.each do |student| %>
   <tr>
     <td><%= student %></td>
-    <td><%= mail_to student.mailto %></td>
-    <td><%= student.work_phone %></td>
+    <td><%= mail_to student.email %></td>
     <td><%= student.room %></td>
+    <td><%= student.work_phone %></td>
   </tr>
 <% end %>
