@@ -1,35 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div id="main">
+<h1>Supervisor's Report</h1>
+
+<h3><%= @direction.project.author %>: <%= @direction.project.title %></h3>
 
 <p>
-  <b>Project:</b>
-  <%= @direction.project_id %>
+  <b>Supervisor:</b> <%= @direction.academic %>
 </p>
 
-<p>
-  <b>Academic:</b>
-  <%= @direction.academic_id %>
-</p>
+<table>
+<tr>
+  <td align="right"><b>Midterm mark (10%):</b></td>
+  <td align="right"><%= @direction.midterm_mark %></td>
+</tr>
+
+<tr>
+  <td align="right"><b>Presentation mark (10%):</b></td>
+  <td align="right"><%= @direction.presentation_mark %></td>
+</tr>
+
+<tr style="border-bottom: 1px solid #000;">
+  <td align="right"><b>Report mark (80%):</b></td>
+  <td align="right"><%= @direction.report_mark %></td>
+</tr>
+
+<tr>
+  <td align="right"><b>Total mark (100%):</b></td>
+  <td align="right"><%= @direction.total_mark %></td>
+</tr>
+</table>
 
 <p>
   <b>Comment:</b>
+</p>
+<p>
   <%= @direction.comment %>
 </p>
 
-<p>
-  <b>Midterm mark:</b>
-  <%= @direction.midterm_mark %>
-</p>
-
-<p>
-  <b>Presentation mark:</b>
-  <%= @direction.presentation_mark %>
-</p>
-
-<p>
-  <b>Report mark:</b>
-  <%= @direction.report_mark %>
-</p>
-
-
 <%= link_to 'Edit', edit_direction_path(@direction) %> |
 <%= link_to 'Back', directions_path %>
+</div>

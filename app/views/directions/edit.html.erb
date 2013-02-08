@@ -1,6 +1,14 @@
-<h1>Editing direction</h1>
+<div id="main">
+<h1>Supervisor's Report</h1>
+
+<h3><%= @direction.project.author %>: <%= @direction.project.title %></h3>
+
+<p>
+<b>Supervisor:</b> <%= @direction.academic %>
+</p>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @direction %> |
 <%= link_to 'Back', directions_path %>
+</div>
