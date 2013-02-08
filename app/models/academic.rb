@@ -12,6 +12,7 @@ class Academic < ActiveRecord::Base
   has_many :records
 
   has_many :directions
+  has_many :examinations
 
   default_scope :order => [:last, :first]
 

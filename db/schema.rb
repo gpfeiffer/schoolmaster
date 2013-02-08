@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130208180230) do
+ActiveRecord::Schema.define(:version => 20130208225438) do
 
   create_table "academics", :force => true do |t|
     t.string   "title"
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(:version => 20130208180230) do
     t.integer  "academic_id"
     t.text     "comment"
     t.integer  "midterm_mark"
+    t.integer  "presentation_mark"
+    t.integer  "report_mark"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "examinations", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "academic_id"
+    t.text     "comment"
     t.integer  "presentation_mark"
     t.integer  "report_mark"
     t.datetime "created_at",        :null => false

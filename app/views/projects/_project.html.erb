@@ -1,0 +1,5 @@
+<li>
+<%= link_to_unless_current(project.supervisor, project.supervisor) { "" } %>
+<%= link_to_unless_current(project.author, project.author) { "" } %>
+: <%= link_to project.title, project %>
+</li>

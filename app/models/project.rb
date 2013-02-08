@@ -4,4 +4,5 @@ class Project < ActiveRecord::Base
   belongs_to :author
   has_one :direction
   has_one :supervisor, :through => :direction, :source => :academic
+  has_many :examinations
 end

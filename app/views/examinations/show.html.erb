@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Project:</b>
+  <%= @examination.project_id %>
+</p>
+
+<p>
+  <b>Academic:</b>
+  <%= @examination.academic_id %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @examination.comment %>
+</p>
+
+<p>
+  <b>Presentation mark:</b>
+  <%= @examination.presentation_mark %>
+</p>
+
+<p>
+  <b>Report mark:</b>
+  <%= @examination.report_mark %>
+</p>
+
+
+<%= link_to 'Edit', edit_examination_path(@examination) %> |
+<%= link_to 'Back', examinations_path %>

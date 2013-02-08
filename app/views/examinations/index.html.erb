@@ -1,0 +1,31 @@
+<h1>Listing examinations</h1>
+
+<table>
+  <tr>
+    <th>Project</th>
+    <th>Academic</th>
+    <th>Comment</th>
+    <th>Presentation mark</th>
+    <th>Report mark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @examinations.each do |examination| %>
+  <tr>
+    <td><%= examination.project_id %></td>
+    <td><%= examination.academic_id %></td>
+    <td><%= examination.comment %></td>
+    <td><%= examination.presentation_mark %></td>
+    <td><%= examination.report_mark %></td>
+    <td><%= link_to 'Show', examination %></td>
+    <td><%= link_to 'Edit', edit_examination_path(examination) %></td>
+    <td><%= link_to 'Destroy', examination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Examination', new_examination_path %>

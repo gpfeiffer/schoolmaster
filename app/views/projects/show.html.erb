@@ -1,8 +1,11 @@
+<div id="main">
 <p id="notice"><%= notice %></p>
+
+<h1>Project.</h1>
 
 <p>
   <b>Author:</b>
-  <%= @project.author_id %>
+  <%= link_to @project.author, @project.author %> (ID: <%= @project.author.registration %>)
 </p>
 
 <p>
@@ -10,6 +13,31 @@
   <%= @project.title %>
 </p>
 
+<p>
+  <b>Supervisor:</b>
+  <%= link_to @project.direction.academic, @project.direction.academic %>
+</p>
+
+<h3 class="edit-head">Examiners:</h3>
+<% if can? :update, @project %>
+  <div class="edit">
+    <%= link_to '[+]', new_examination_path(:project_id => @project) %>
+  </div>
+<% end %>
+
+<ul>
+  <% @project.examinations.each do |examination| %>
+    <li>
+      <%= link_to examination.academic, examination.academic %> 
+      <% if can? :update, @project %>
+        <div class="edit">
+          <%= link_to '[-]', examination, :confirm => 'Are you sure?', :method => :delete %>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+<div>
