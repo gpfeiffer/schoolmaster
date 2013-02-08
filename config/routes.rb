@@ -1,4 +1,6 @@
 Schoolmaster::Application.routes.draw do
+  resources :authors
+
   resources :schools
 
   resources :assignments
