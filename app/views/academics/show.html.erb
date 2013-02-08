@@ -28,8 +28,20 @@
   <%= link_to nil, @academic.home_url %>
 </p>
 
+<% if @academic.directions.any? %>
+  <h3>Project Supervision</h3>
+  <ul>
+    <% @academic.directions.each do |direction| %>
+      <% author = direction.project.author %>
+      <li>
+        <%= link_to author, direction %> (<%= author.programme %>)
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <% if @active_supervisions.any? %>
-  <h3>Students</h3>
+  <h3>Graduate Students</h3>
   <ul>
     <% @active_supervisions.each do |s| %>
       <li>
