@@ -1,30 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div id="side">
+  <h3>Project Students</h3>
+  <ul><%= render @authors %></ul>
+</div>
+<div id="main">
+<h2><%= @author %></h2>
+
+<%= image_tag @author.photo_url, :align => :right, :size => "96x96", :alt => "[image]" %>
 
 <p>
-  <b>First:</b>
-  <%= @author.first %>
-</p>
-
-<p>
-  <b>Last:</b>
-  <%= @author.last %>
-</p>
-
-<p>
-  <b>Registration:</b>
-  <%= @author.registration %>
-</p>
-
-<p>
-  <b>Programme:</b>
   <%= @author.programme %>
 </p>
 
+<hr />
 <p>
-  <b>Email:</b>
-  <%= @author.email %>
+  <%= @author.registration_or_blank %>
+  | <%= @author.email %>
 </p>
+<hr />
 
+<h3 class="edit-head">
+  <%= 'Project'.pluralize @author.projects.count %>
+</h3>
+<% if can? :update, @author %>
+  <div class="edit">
+    <%= link_to '[+]', new_project_path(:author_id => @author) %>
+  </div>
+<% end %>
+
+<ul>
+<%= render @author.projects %>
+</ul>
+
+<hr/>
 
 <%= link_to 'Edit', edit_author_path(@author) %> |
 <%= link_to 'Back', authors_path %>
+</div>

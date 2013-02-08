@@ -13,6 +13,7 @@ class AuthorsController < ApplicationController
   # GET /authors/1
   # GET /authors/1.json
   def show
+    @authors = Author.all
     @author = Author.find(params[:id])
 
     respond_to do |format|
