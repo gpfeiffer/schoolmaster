@@ -1,31 +1,26 @@
-<h1>Listing authors</h1>
+<div id="main">
+<h1>Project Students</h1>
 
-<table>
-  <tr>
-    <th>First</th>
-    <th>Last</th>
-    <th>Registration</th>
-    <th>Programme</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h2><%= @authors.count %> Current Students</h2>
 
-<% @authors.each do |author| %>
-  <tr>
-    <td><%= author.first %></td>
-    <td><%= author.last %></td>
-    <td><%= author.registration %></td>
-    <td><%= author.programme %></td>
-    <td><%= author.email %></td>
-    <td><%= link_to 'Show', author %></td>
-    <td><%= link_to 'Edit', edit_author_path(author) %></td>
-    <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% @authors.group_by(&:programme).each do |programme, authors| %>
+  <h3><%= programme %></h3>
+  <table>
+    <% authors.each do |author| %>
+      <tr>
+        <td><%= image_tag author.photo_url, :size => "16x16", :alt => '[img]' %></td>
+        <td><%= link_to author, author %></td>
+        <td><%= author.registration_or_blank %></td>
+        <td><%= link_to '[Mail]', author.mailto %></td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>
-</table>
 
 <br />
 
-<%= link_to 'New Author', new_author_path %>
+<%= mail_to @authors.map(&:email).join(','), "Mail current", :cc => "goetz.pfeiffer@nuigalway.ie" %> 
+<% if can? :create, Author %>
+  | <%= link_to 'New Student', new_author_path %>
+<% end %>
+</div>
