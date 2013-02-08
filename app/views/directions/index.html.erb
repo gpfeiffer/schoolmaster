@@ -1,0 +1,33 @@
+<h1>Listing directions</h1>
+
+<table>
+  <tr>
+    <th>Project</th>
+    <th>Academic</th>
+    <th>Comment</th>
+    <th>Midterm mark</th>
+    <th>Presentation mark</th>
+    <th>Report mark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @directions.each do |direction| %>
+  <tr>
+    <td><%= direction.project_id %></td>
+    <td><%= direction.academic_id %></td>
+    <td><%= direction.comment %></td>
+    <td><%= direction.midterm_mark %></td>
+    <td><%= direction.presentation_mark %></td>
+    <td><%= direction.report_mark %></td>
+    <td><%= link_to 'Show', direction %></td>
+    <td><%= link_to 'Edit', edit_direction_path(direction) %></td>
+    <td><%= link_to 'Destroy', direction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Direction', new_direction_path %>

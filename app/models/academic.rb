@@ -11,6 +11,8 @@ class Academic < ActiveRecord::Base
   has_many :committees, :dependent => :destroy
   has_many :records
 
+  has_many :directions
+
   default_scope :order => [:last, :first]
 
   def first_last

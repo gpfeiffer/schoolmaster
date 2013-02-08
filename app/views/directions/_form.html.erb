@@ -1,0 +1,41 @@
+<%= form_for(@direction) do |f| %>
+  <% if @direction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@direction.errors.count, "error") %> prohibited this direction from being saved:</h2>
+
+      <ul>
+      <% @direction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :project_id %><br />
+    <%= f.number_field :project_id %>
+  </div>
+  <div class="field">
+    <%= f.label :academic_id %><br />
+    <%= f.number_field :academic_id %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :midterm_mark %><br />
+    <%= f.number_field :midterm_mark %>
+  </div>
+  <div class="field">
+    <%= f.label :presentation_mark %><br />
+    <%= f.number_field :presentation_mark %>
+  </div>
+  <div class="field">
+    <%= f.label :report_mark %><br />
+    <%= f.number_field :report_mark %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
