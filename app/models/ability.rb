@@ -6,7 +6,7 @@ class Ability
     if user.role? :admin
       can :manage, :all
     elsif user.role? :supervisor
-      can :read, [Academic, Student, Room]
+      can :read, [Academic, Student, Room, Author, Project]
 
       can :update, Academic do |academic|
         academic == user.academic
@@ -29,8 +29,18 @@ class Ability
       can :destroy, Supervision do |supervision|
         supervision.student.academics.include? user.academic
       end
+
+      can :update, Direction do |direction|
+        direction.academic == user.academic
+      end
+
+      can :update, Examination do |examination|
+        examination.academic == user.academic
+      end
+    elsif user.role? "Project Manager"
+      can :manage, [Author, Project, Direction, Examination]
     else
-      can :read [Academic, Student]
+      can :read, [Academic, Student, Author]
    end
   end
 end

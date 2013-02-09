@@ -1,9 +1,9 @@
 class DirectionsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /directions
   # GET /directions.json
   def index
-    @directions = Direction.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @directions }
@@ -13,8 +13,6 @@ class DirectionsController < ApplicationController
   # GET /directions/1
   # GET /directions/1.json
   def show
-    @direction = Direction.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @direction }
@@ -24,8 +22,6 @@ class DirectionsController < ApplicationController
   # GET /directions/new
   # GET /directions/new.json
   def new
-    @direction = Direction.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @direction }
@@ -34,14 +30,11 @@ class DirectionsController < ApplicationController
 
   # GET /directions/1/edit
   def edit
-    @direction = Direction.find(params[:id])
   end
 
   # POST /directions
   # POST /directions.json
   def create
-    @direction = Direction.new(params[:direction])
-
     respond_to do |format|
       if @direction.save
         format.html { redirect_to @direction, notice: 'Direction was successfully created.' }
@@ -56,8 +49,6 @@ class DirectionsController < ApplicationController
   # PUT /directions/1
   # PUT /directions/1.json
   def update
-    @direction = Direction.find(params[:id])
-
     respond_to do |format|
       if @direction.update_attributes(params[:direction])
         format.html { redirect_to @direction, notice: 'Direction was successfully updated.' }
@@ -72,7 +63,6 @@ class DirectionsController < ApplicationController
   # DELETE /directions/1
   # DELETE /directions/1.json
   def destroy
-    @direction = Direction.find(params[:id])
     @direction.destroy
 
     respond_to do |format|
