@@ -11,27 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :project_id %><br />
-    <%= f.number_field :project_id %>
-  </div>
-  <div class="field">
-    <%= f.label :academic_id %><br />
-    <%= f.number_field :academic_id %>
-  </div>
+    <%= f.hidden_field :project_id %>
+    <%= f.hidden_field :academic_id %>
+
+<table>
+  <tr>
+    <td align="right"><%= f.label :presentation_mark %></td>
+    <td><%= f.select :presentation_mark, (0..100).step(5), :include_blank => true %></td>
+  </tr>
+  <tr>
+    <td align="right"><%= f.label :report_mark %></td>
+    <td><%= f.select :report_mark, (0..100).step(5), :include_blank => true %></td>
+  </tr>
+</table>
+
   <div class="field">
     <%= f.label :comment %><br />
-    <%= f.text_area :comment %>
-  </div>
-  <div class="field">
-    <%= f.label :presentation_mark %><br />
-    <%= f.number_field :presentation_mark %>
-  </div>
-  <div class="field">
-    <%= f.label :report_mark %><br />
-    <%= f.number_field :report_mark %>
+    <%= f.text_area :comment, :cols => 70, :rows => 7 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit Report' %>
   </div>
 <% end %>

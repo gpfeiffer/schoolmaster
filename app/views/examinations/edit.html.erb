@@ -1,6 +1,14 @@
-<h1>Editing examination</h1>
+<div id="main">
+<h1>Examiner's Report</h1>
+
+<h3><%= @examination.project.author %>: <%= @examination.project.title %></h3>
+
+<p>
+<b>Supervisor:</b> <%= @examination.academic %>
+</p>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @examination %> |
 <%= link_to 'Back', examinations_path %>
+</div>
