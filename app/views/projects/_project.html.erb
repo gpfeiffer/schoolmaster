@@ -1,7 +1,6 @@
 <li>
-<%= link_to_unless_current(project.supervisor, project.supervisor) { "" } %>
-<%= link_to_unless_current(project.author, project.author) { "" } %>
-: <%= link_to project.title, project %>
+<%= link_to project.title_or_blank, project %>
+(<%= project.author %>)
   <% if can? :update, @author %>
     <div class="edit">
       <%= link_to '[-]', project, :confirm => 'Are you sure?', :method => :delete %>

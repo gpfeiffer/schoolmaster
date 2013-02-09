@@ -9,4 +9,13 @@ class Project < ActiveRecord::Base
   def supervisor_id
     supervisor.id if supervisor
   end
+
+  def title_or_blank
+    if title.blank?
+      "... title ..."
+    else
+      title
+    end
+  end
+
 end
