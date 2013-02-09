@@ -51,7 +51,7 @@ class DirectionsController < ApplicationController
   def update
     respond_to do |format|
       if @direction.update_attributes(params[:direction])
-        format.html { redirect_to @direction, notice: 'Direction was successfully updated.' }
+        format.html { redirect_to @direction, notice: 'Report was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

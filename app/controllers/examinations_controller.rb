@@ -53,7 +53,7 @@ class ExaminationsController < ApplicationController
   def update
     respond_to do |format|
       if @examination.update_attributes(params[:examination])
-        format.html { redirect_to @examination, notice: 'Examination was successfully updated.' }
+        format.html { redirect_to @examination, notice: 'Report was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
