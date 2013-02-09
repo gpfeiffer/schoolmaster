@@ -11,10 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :author_id %><br />
-    <%= f.number_field :author_id %>
-  </div>
+  <h3><%= @project.author %> (<%= @project.author.registration_or_blank %>)</h3>
+
+  <%= f.hidden_field :author_id %>
+
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
