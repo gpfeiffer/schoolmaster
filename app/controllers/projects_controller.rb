@@ -22,6 +22,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.json
   def new
+    @project.author = Author.find(params[:author_id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }
@@ -35,6 +36,9 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
+    supervisor = Academic.find(params[:supervisor_id])
+    @project.supervision = Supervision.new(:project => @project, :academic => supervisor)
+
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }

@@ -15,10 +15,32 @@
 
   <%= f.hidden_field :author_id %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
+  <table>
+    <div class="field">
+      <tr>
+	<td>
+	  <%= f.label :title %>
+	</td>
+	<td>
+	  <%= f.text_field :title %>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <%= label_tag :supervisor_id %>
+	</td>
+	<td>
+	  <%= select_tag :supervisor_id, 
+	  options_from_collection_for_select(Academic.all, 
+	  :id, 
+	  :name, 
+	  :selected => @project.supervisor_id), 
+	  :include_blank => true %>
+	</td>
+      </tr>
+    </div>
+  </table>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -40,6 +40,18 @@
   </ul>
 <% end %>
 
+<% if @academic.examinations.any? %>
+  <h3>Project Examination</h3>
+  <ul>
+    <% @academic.examinations.each do |examination| %>
+      <% author = examination.project.author %>
+      <li>
+        <%= link_to author, examination %> (<%= author.programme %>)
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <% if @active_supervisions.any? %>
   <h3>Graduate Students</h3>
   <ul>
