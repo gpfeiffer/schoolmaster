@@ -37,10 +37,11 @@ class Ability
       can :update, Examination do |examination|
         examination.academic == user.academic
       end
-    elsif user.role? "Project Manager"
-      can :manage, [Author, Project, Direction, Examination]
     else
       can :read, [Academic, Student, Author]
-   end
+    end
+    if user.role? "Project Manager"
+      can :manage, [Author, Project, Direction, Examination]
+    end
   end
 end
