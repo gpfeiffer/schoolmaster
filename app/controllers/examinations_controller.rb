@@ -39,7 +39,7 @@ class ExaminationsController < ApplicationController
   def create
     respond_to do |format|
       if @examination.save
-        format.html { redirect_to @examination, notice: 'Examination was successfully created.' }
+        format.html { redirect_to @examination.project, notice: 'Examination was successfully created.' }
         format.json { render json: @examination, status: :created, location: @examination }
       else
         format.html { render action: "new" }
