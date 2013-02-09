@@ -1,6 +1,6 @@
 <li>
 <%= link_to project.title_or_blank, project %>
-(<%= project.author %>)
+(<%= project.supervisor %>)
   <% if can? :update, @author %>
     <div class="edit">
       <%= link_to '[-]', project, :confirm => 'Are you sure?', :method => :delete %>
