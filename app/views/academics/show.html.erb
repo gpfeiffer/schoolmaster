@@ -34,7 +34,7 @@
     <% @academic.directions.each do |direction| %>
       <% author = direction.project.author %>
       <li>
-        <%= link_to author, direction %> (<%= author.programme %>)
+        <%= link_to_if can?(:read, direction), author, direction %> (<%= author.programme %>)
       </li>
     <% end %>
   </ul>
@@ -46,7 +46,7 @@
     <% @academic.examinations.each do |examination| %>
       <% author = examination.project.author %>
       <li>
-        <%= link_to author, examination %> (<%= author.programme %>)
+        <%= link_to_if can?(:read, examination), author, examination %> (<%= author.programme %>)
       </li>
     <% end %>
   </ul>
