@@ -1,7 +1,7 @@
 <div id="main">
 <h1>Examiner's Report</h1>
 
-<h3><%= @examination.project.author %>: <%= @examination.project.title %></h3>
+<h3><%= link_to @examination.project.author, @examination.project.author %>: <%= @examination.project.title_or_blank %></h3>
 
 <p>
   <b>Examiner:</b> <%= @examination.academic %>

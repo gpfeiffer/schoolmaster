@@ -1,7 +1,7 @@
 <div id="main">
 <h1>Supervisor's Report</h1>
 
-<h3><%= @direction.project.author %>: <%= @direction.project.title %></h3>
+<h3><%= link_to @direction.project.author, @direction.project.author %>: <%= @direction.project.title_or_blank %></h3>
 
 <p>
   <b>Supervisor:</b> <%= @direction.academic %>
