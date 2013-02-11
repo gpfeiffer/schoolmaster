@@ -1,6 +1,8 @@
 <div id="main">
 <h1>Examiner's Report</h1>
 
+<span <% if @examination.open %><%= raw 'style="color:red"' %><% end %>>
+
 <h3><%= link_to @examination.project.author, @examination.project.author %>: <%= @examination.project.title_or_blank %></h3>
 
 <p>
@@ -23,6 +25,8 @@
   <b>Comment:</b>
   <%= @examination.comment %>
 </p>
+
+</span>
 
 <%= link_to 'Edit', edit_examination_path(@examination) %> |
 <%= link_to 'Back', @examination.academic %>

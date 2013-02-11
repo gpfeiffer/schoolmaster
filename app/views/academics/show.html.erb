@@ -34,7 +34,13 @@
     <% @academic.directions.each do |direction| %>
       <% author = direction.project.author %>
       <li>
-        <%= link_to_if can?(:read, direction), author, direction %> (<%= author.programme %>)
+	<% if current_user == @academic.user and direction.open? %>
+	  <span style="color:red">
+            <%= link_to_if can?(:read, direction), author, direction, :style => "color:red" %> (<%= author.programme %>)
+          </span>
+        <% else %>
+          <%= link_to_if can?(:read, direction), author, direction %> (<%= author.programme %>)
+        <% end %>
       </li>
     <% end %>
   </ul>
@@ -46,7 +52,13 @@
     <% @academic.examinations.each do |examination| %>
       <% author = examination.project.author %>
       <li>
-        <%= link_to_if can?(:read, examination), author, examination %> (<%= author.programme %>)
+	<% if current_user == @academic.user and examination.open? %>
+	  <span style="color:red">
+            <%= link_to_if can?(:read, examination), author, examination, :style => "color:red" %> (<%= author.programme %>)
+          </span>
+        <% else %>
+          <%= link_to_if can?(:read, examination), author, examination %> (<%= author.programme %>)
+        <% end %>
       </li>
     <% end %>
   </ul>

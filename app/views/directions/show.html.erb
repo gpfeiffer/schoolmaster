@@ -1,6 +1,8 @@
 <div id="main">
 <h1>Supervisor's Report</h1>
 
+<span <% if @direction.open %><%= raw 'style="color:red"' %><% end %>>
+
 <h3><%= link_to @direction.project.author, @direction.project.author %>: <%= @direction.project.title_or_blank %></h3>
 
 <p>
@@ -36,6 +38,10 @@
   <%= @direction.comment %>
 </p>
 
-<%= link_to 'Edit', edit_direction_path(@direction) %> |
+</span>
+
+<% if can? :update, @direction %>
+  <%= link_to 'Edit', edit_direction_path(@direction) %> |
+<% end %>
 <%= link_to 'Back', @direction.academic %>
 </div>

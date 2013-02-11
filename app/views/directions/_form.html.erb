@@ -33,7 +33,14 @@
     <%= f.label :comment %><br />
     <%= f.text_area :comment, :cols => 70, :rows => 7 %>
   </div>
+<table>
+  <tr>
+    <td align="right"><%= f.label :open, "Save now and submit later?" %></td>
+    <td><%= f.check_box :open %></td>
+    <td>(Uncheck this box to submit the final version of your report.)</td>
+  </tr>
+</table>
   <div class="actions">
-    <%= f.submit 'Submit Report' %>
+    <%= f.submit 'Update Report' %>
   </div>
 <% end %>

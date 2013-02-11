@@ -30,12 +30,20 @@ class Ability
         supervision.student.academics.include? user.academic
       end
 
-      can [:read, :update], Direction do |direction|
+      can :read, Direction do |direction|
         direction.academic == user.academic
       end
 
-      can [:read, :update], Examination do |examination|
+      can :update, Direction do |direction|
+        direction.open? and direction.academic == user.academic
+      end
+
+      can :read, Examination do |examination|
         examination.academic == user.academic
+      end
+
+      can :update, Examination do |examination|
+        examination.open? and examination.academic == user.academic
       end
     else
       can :read, [Academic, Student, Author]
