@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  project_id: 1
+  slot_id: 1
+  venue_id: 1
+
+two:
+  project_id: 1
+  slot_id: 1
+  venue_id: 1

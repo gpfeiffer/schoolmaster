@@ -2,20 +2,16 @@
 
 <table>
   <tr>
-    <th>Author</th>
-    <th>Title</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Student</th>
+    <th>Supervisor</th>
+    <th>Examiner</th>
   </tr>
 
-<% @projects.each do |project| %>
+<% @projects.sort_by { |project| project.author.last_first }.each do |project| %>
   <tr>
-    <td><%= project.author_id %></td>
-    <td><%= project.title %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= project.author.last_first %></td>
+    <td><%= project.supervisor.a_last %></td>
+    <td><%= project.examiners.map { |x| x.a_last }.to_sentence %></td>
   </tr>
 <% end %>
 </table>

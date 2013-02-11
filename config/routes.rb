@@ -1,4 +1,13 @@
 Schoolmaster::Application.routes.draw do
+  resources :bookings
+
+
+  resources :slots
+
+
+  resources :venues
+
+
   resources :examinations
 
 

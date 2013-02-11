@@ -17,6 +17,10 @@ class Author < ActiveRecord::Base
     "#{first} #{last}"
   end
 
+  def last_first
+    "#{last}, #{first}"
+  end
+
   def to_s
     name
   end

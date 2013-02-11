@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130210194233) do
+ActiveRecord::Schema.define(:version => 20130211151734) do
 
   create_table "academics", :force => true do |t|
     t.string   "title"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(:version => 20130210194233) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "photo_url"
+  end
+
+  create_table "bookings", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "slot_id"
+    t.integer  "venue_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "brokers", :force => true do |t|
@@ -118,6 +126,12 @@ ActiveRecord::Schema.define(:version => 20130210194233) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "slots", :force => true do |t|
+    t.string   "time"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "students", :force => true do |t|
     t.string   "first"
     t.string   "last"
@@ -165,5 +179,11 @@ ActiveRecord::Schema.define(:version => 20130210194233) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "venues", :force => true do |t|
+    t.string   "location"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

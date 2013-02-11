@@ -1,0 +1,17 @@
+<%= venue %>
+<table>
+<tr>
+<th>Time</th>
+<th>Student</th>
+<th>Programme</th>
+<th>Project Title</th>
+<th>Supervisor</th>
+<th>Examiner</th>
+</tr>
+<% Slot.all.each do |slot| %>
+<tr>
+<td><%= slot %></td>
+<td></td>
+</tr>
+<% end %>
+</table>

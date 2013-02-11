@@ -24,6 +24,10 @@ class Academic < ActiveRecord::Base
     "#{title} #{first_last}"
   end
 
+  def a_last
+    "#{first[0]}. #{last}"
+  end
+
   def to_s
     name
   end
