@@ -21,4 +21,8 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def short
+    "#{author.last_first}: #{supervisor.short}; #{examiners.map { |x| x.short }.to_sentence}"
+  end
+
 end

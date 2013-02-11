@@ -1,23 +1,9 @@
-<h1>Listing venues</h1>
+<div id="main">
+<h3>Project Presentations</h3>
 
-<table>
-  <tr>
-    <th>Location</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @venues.each do |venue| %>
-  <tr>
-    <td><%= venue.location %></td>
-    <td><%= link_to 'Show', venue %></td>
-    <td><%= link_to 'Edit', edit_venue_path(venue) %></td>
-    <td><%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<%= render @venues %>
 
 <br />
 
 <%= link_to 'New Venue', new_venue_path %>
+</div>

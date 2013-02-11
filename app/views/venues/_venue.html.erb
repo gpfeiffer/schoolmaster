@@ -1,17 +1,25 @@
-<%= venue %>
-<table>
-<tr>
+<h1>Venue: <%= link_to venue, venue %></h1>
+<table class="bookings">
+<tr class="booking">
 <th>Time</th>
-<th>Student</th>
-<th>Programme</th>
+<th>Student (Programme)</th>
 <th>Project Title</th>
 <th>Supervisor</th>
 <th>Examiner</th>
 </tr>
 <% Slot.all.each do |slot| %>
-<tr>
+<tr class="booking">
 <td><%= slot %></td>
-<td></td>
+<% booking = Booking.find_by_slot_id_and_venue_id(slot.id, venue.id) %>
+<% if booking %>
+<% project = booking.project %>
+<td><%= project.author.last_first %> (<%= project.author.programme %>)</td>
+<td><%= truncate(project.title, :length => 51, :separator => ' ') %></td>
+<td><%= project.supervisor.a_last %></td>
+<td><%= project.examiners.map{ |x| x.a_last }.to_sentence %></td>
+<% else %>
+<td></td><td></td><td></td><td></td>
+<% end %>
 </tr>
 <% end %>
 </table>

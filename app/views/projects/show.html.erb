@@ -48,7 +48,7 @@
 <ul>
   <% @project.bookings.each do |booking| %>
     <li>
-      <%= link_to booking.academic, booking.academic %> 
+      <%= link_to booking, booking %> 
       <% if can? :update, @project %>
         <div class="edit">
           <%= link_to '[-]', booking, :confirm => 'Are you sure?', :method => :delete %>

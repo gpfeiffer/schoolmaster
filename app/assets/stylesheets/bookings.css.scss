@@ -1,3 +1,32 @@
 // Place all the styles related to the bookings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+table.bookings {
+    border-collapse: collapse;
+    display: inline;
+}
+
+table.bookings tbody {
+    border: 3px solid maroon;
+}
+
+table.bookings tr th {
+    border-top: 1px solid maroon;
+    border-bottom: 1px solid maroon;
+}
+
+tr.booking td {
+    padding-left: 12px;
+    padding-right: 12px;
+    font-family: Verdana,Courier,"Courier New",monospace;
+    background: #fffddd;
+    border: 1px solid maroon;
+}
+
+tr.booking th {
+    padding-left: 6px;
+    padding-right: 6px;
+    background: #D9B2B2;
+    border: 1px solid maroon;
+}
+

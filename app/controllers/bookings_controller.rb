@@ -25,6 +25,7 @@ class BookingsController < ApplicationController
   # GET /bookings/new.json
   def new
     @booking = Booking.new
+    @booking.project_id = params[:project_id]
 
     respond_to do |format|
       format.html # new.html.erb

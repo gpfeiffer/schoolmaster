@@ -13,14 +13,24 @@
   
   <%= f.hidden_field :project_id %>
 
-  <div class="field">
-    <%= f.label :slot_id %><br />
-    <%= f.number_field :slot_id %>
-  </div>
-  <div class="field">
-    <%= f.label :venue_id %><br />
-    <%= f.number_field :venue_id %>
-  </div>
+<table class="bookings">
+<tr class="booking">
+<th>Time</th>
+<% Venue.all.each do |venue| %>
+<th><%= venue %><%= f.radio_button(:venue_id, venue.id) %></th>
+<% end %>
+</tr>
+<% Slot.all.each do |slot| %>
+<tr class="booking">
+<td><%= slot %><%= f.radio_button(:slot_id, slot.id) %></td>
+<% Venue.all.each do |venue| %>
+<% booking = Booking.find_by_slot_id_and_venue_id(slot.id, venue.id) %>
+<td><%= if booking then booking.project.short else "---" end %></td>
+<% end %>
+</tr>
+<% end %>
+</table>
+
   <div class="actions">
     <%= f.submit %>
   </div>
