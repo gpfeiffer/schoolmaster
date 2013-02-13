@@ -37,7 +37,7 @@ class Ability
     elsif user.role? :supervisor
       can :read, [Author, Project]
 
-      can :view, Direction do |direction|
+      can :show, Direction do |direction|
         direction.academic == user.academic
       end
 
@@ -45,7 +45,7 @@ class Ability
         direction.open? and direction.academic == user.academic
       end
 
-      can :view, Examination do |examination|
+      can :show, Examination do |examination|
         examination.academic == user.academic
       end
 

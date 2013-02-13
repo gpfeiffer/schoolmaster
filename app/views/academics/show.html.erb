@@ -36,10 +36,10 @@
       <li>
 	<% if current_user == @academic.user and direction.open? %>
 	  <span style="color:red">
-            <%= link_to_if can?(:view, direction), author, direction, :style => "color:red" %> (<%= author.programme %>)
+            <%= link_to_if can?(:show, direction), author, direction, :style => "color:red" %> (<%= author.programme %>)
           </span>
         <% else %>
-          <%= link_to_if can?(:view, direction), author, direction %> (<%= author.programme %>)
+          <%= link_to_if can?(:show, direction), author, direction %> (<%= author.programme %>)
         <% end %>
       </li>
     <% end %>
@@ -54,10 +54,10 @@
       <li>
 	<% if current_user == @academic.user and examination.open? %>
 	  <span style="color:red">
-            <%= link_to_if can?(:view, examination), author, examination, :style => "color:red" %> (<%= author.programme %>)
+            <%= link_to_if can?(:show, examination), author, examination, :style => "color:red" %> (<%= author.programme %>)
           </span>
         <% else %>
-          <%= link_to_if can?(:view, examination), author, examination %> (<%= author.programme %>)
+          <%= link_to_if can?(:show, examination), author, examination %> (<%= author.programme %>)
         <% end %>
       </li>
     <% end %>
