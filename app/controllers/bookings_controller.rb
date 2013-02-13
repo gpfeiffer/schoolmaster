@@ -45,7 +45,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+        format.html { redirect_to new_booking_path(:project_id => @booking.project), notice: 'Booking was successfully created.' }
         format.json { render json: @booking, status: :created, location: @booking }
       else
         format.html { render action: "new" }
@@ -77,7 +77,7 @@ class BookingsController < ApplicationController
     @booking.destroy
 
     respond_to do |format|
-      format.html { redirect_to bookings_url }
+      format.html { redirect_to new_booking_path(:project_id => @booking.project) }
       format.json { head :no_content }
     end
   end

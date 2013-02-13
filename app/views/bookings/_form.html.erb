@@ -10,8 +10,23 @@
       </ul>
     </div>
   <% end %>
-  
-  <%= f.hidden_field :project_id %>
+
+<!--  
+<table><tr><td>
+-->
+<div id="side">
+<table>
+<% Project.all.select { |x| x.bookings.count < 1 }.sort_by { |x| x.author.last_first }.each do |project| %>
+<tr><td>
+<%= f.radio_button(:project_id, project.id) %><%= link_to project.short, project %>
+</td></tr>
+<% end %>
+</table>
+</div>
+<div id="main">
+<h1>New booking</h1>
+
+<h3><%= @booking.project.short %></h3>
 
 <table class="bookings">
 <tr class="booking">
@@ -25,13 +40,24 @@
 <td><%= slot %><%= f.radio_button(:slot_id, slot.id) %></td>
 <% Venue.all.each do |venue| %>
 <% booking = Booking.find_by_slot_id_and_venue_id(slot.id, venue.id) %>
-<td><%= if booking then booking.project.short else "---" end %></td>
+<td><%= if booking then link_to booking.project.short, booking, method: :delete, data: { confirm: 'Delete Booking: Are you sure?' } else "---" end %></td>
 <% end %>
 </tr>
 <% end %>
 </table>
-
+<!--
+</td>
+<td>
+-->
+<!--
+</td>
+</tr>
+</table>
+</div>
+-->
   <div class="actions">
     <%= f.submit %>
   </div>
+<%= link_to 'Back', @booking.project %>
+</div>
 <% end %>
