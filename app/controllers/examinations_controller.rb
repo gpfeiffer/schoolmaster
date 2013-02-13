@@ -23,6 +23,7 @@ class ExaminationsController < ApplicationController
   # GET /examinations/new.json
   def new
     @examination.project = Project.find(params[:project_id])
+    @examination.open = true
 
     respond_to do |format|
       format.html # new.html.erb
@@ -68,7 +69,7 @@ class ExaminationsController < ApplicationController
     @examination.destroy
 
     respond_to do |format|
-      format.html { redirect_to examinations_url }
+      format.html { redirect_to @examination.project }
       format.json { head :no_content }
     end
   end
