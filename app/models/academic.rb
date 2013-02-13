@@ -59,4 +59,13 @@ class Academic < ActiveRecord::Base
   def active_committees
     committees.select { |x| x.student.current? }
   end
+
+  # list all projects we are either supervising or examining.
+  def projects
+    directions.map(&:project) + examinations.map(&:project)
+  end
+
+  def slot_ids
+    projects.map { |x| x.bookings }.inject(:|).map(&:slot_id)
+  end
 end
