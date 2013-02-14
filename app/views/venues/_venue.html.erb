@@ -14,7 +14,7 @@
 <% if booking %>
 <% project = booking.project %>
 <td><%= project.author.last_first %> (<%= project.author.programme %>)</td>
-<td><%= truncate(project.title, :length => 51, :separator => ' ') %></td>
+<td><div title="<%= project.title %>"><%= truncate(project.title, :length => 51, :separator => ' ') %></div></td>
 <td><%= project.supervisor.a_last %></td>
 <td><%= project.examiners.map{ |x| x.a_last }.to_sentence %></td>
 <% else %>

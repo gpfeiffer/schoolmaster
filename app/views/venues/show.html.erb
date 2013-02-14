@@ -1,8 +1,10 @@
 <div id="main">
-<h3>Project Presentations</h3>
+<h3>Project Presentations 2012/13</h3>
 
 <%= render @venue %>
 
+<% if can? :update, @venue %>
 <%= link_to 'Edit', edit_venue_path(@venue) %> |
+<% end %>
 <%= link_to 'Back', venues_path %>
 </div>
