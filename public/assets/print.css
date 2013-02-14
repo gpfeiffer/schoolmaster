@@ -1,0 +1,15 @@
+#banner, #navigation, #side {
+  display: none;
+}
+
+#side {
+  width: 0em;
+}
+
+#main {
+  margin-left: 0em;
+}
+
+table {
+  display: table;
+}
