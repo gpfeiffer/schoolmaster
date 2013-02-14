@@ -22,7 +22,7 @@ class Project < ActiveRecord::Base
   end
 
   def short
-    "#{author.last_first}: #{supervisor.short}; #{examiners.map { |x| x.short }.to_sentence}"
+    "#{author.a_last}: #{supervisor.short}; #{examiners.map { |x| x.short }.to_sentence}"
   end
 
   # list all academics involved in assessing this project
