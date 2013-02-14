@@ -12,6 +12,15 @@
   margin-left: 0em;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #333333
+}
+
+
 table {
   display: block;
   page-break-after: always;
@@ -25,5 +34,5 @@ table {
 
 @page {
   size: landscape;
-  margin: 1cm;
+  margin: 2cm;
 }
