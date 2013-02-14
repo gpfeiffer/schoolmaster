@@ -1,9 +1,9 @@
 class SlotsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /slots
   # GET /slots.json
   def index
-    @slots = Slot.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @slots }
@@ -13,8 +13,6 @@ class SlotsController < ApplicationController
   # GET /slots/1
   # GET /slots/1.json
   def show
-    @slot = Slot.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @slot }
@@ -24,8 +22,6 @@ class SlotsController < ApplicationController
   # GET /slots/new
   # GET /slots/new.json
   def new
-    @slot = Slot.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @slot }
@@ -34,14 +30,11 @@ class SlotsController < ApplicationController
 
   # GET /slots/1/edit
   def edit
-    @slot = Slot.find(params[:id])
   end
 
   # POST /slots
   # POST /slots.json
   def create
-    @slot = Slot.new(params[:slot])
-
     respond_to do |format|
       if @slot.save
         format.html { redirect_to @slot, notice: 'Slot was successfully created.' }
@@ -56,8 +49,6 @@ class SlotsController < ApplicationController
   # PUT /slots/1
   # PUT /slots/1.json
   def update
-    @slot = Slot.find(params[:id])
-
     respond_to do |format|
       if @slot.update_attributes(params[:slot])
         format.html { redirect_to @slot, notice: 'Slot was successfully updated.' }
@@ -72,7 +63,6 @@ class SlotsController < ApplicationController
   # DELETE /slots/1
   # DELETE /slots/1.json
   def destroy
-    @slot = Slot.find(params[:id])
     @slot.destroy
 
     respond_to do |format|

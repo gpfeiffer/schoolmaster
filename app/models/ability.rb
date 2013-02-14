@@ -33,9 +33,9 @@ class Ability
       can :read, [Academic, Student, Author]
     end
     if user.role? "Project Manager"
-      can [:manage, :index], [Author, Project, Direction, Examination]
+      can [:manage, :index], [Author, Project, Direction, Examination, Venue, Slot, Booking]
     elsif user.role? :supervisor
-      can :read, [Author, Project]
+      can :read, [Author, Project, Venue]
 
       can :show, Direction do |direction|
         direction.academic == user.academic

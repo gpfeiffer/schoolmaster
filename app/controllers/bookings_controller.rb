@@ -1,9 +1,9 @@
 class BookingsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /bookings
   # GET /bookings.json
   def index
-    @bookings = Booking.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @bookings }
@@ -13,8 +13,6 @@ class BookingsController < ApplicationController
   # GET /bookings/1
   # GET /bookings/1.json
   def show
-    @booking = Booking.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @booking }
@@ -24,7 +22,6 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   # GET /bookings/new.json
   def new
-    @booking = Booking.new
     @booking.project_id = params[:project_id]
 
     respond_to do |format|
@@ -35,14 +32,11 @@ class BookingsController < ApplicationController
 
   # GET /bookings/1/edit
   def edit
-    @booking = Booking.find(params[:id])
   end
 
   # POST /bookings
   # POST /bookings.json
   def create
-    @booking = Booking.new(params[:booking])
-
     respond_to do |format|
       if @booking.save
         format.html { redirect_to new_booking_path(:project_id => @booking.project), notice: 'Booking was successfully created.' }
@@ -57,8 +51,6 @@ class BookingsController < ApplicationController
   # PUT /bookings/1
   # PUT /bookings/1.json
   def update
-    @booking = Booking.find(params[:id])
-
     respond_to do |format|
       if @booking.update_attributes(params[:booking])
         format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
@@ -73,7 +65,6 @@ class BookingsController < ApplicationController
   # DELETE /bookings/1
   # DELETE /bookings/1.json
   def destroy
-    @booking = Booking.find(params[:id])
     @booking.destroy
 
     respond_to do |format|
