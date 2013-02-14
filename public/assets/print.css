@@ -11,5 +11,17 @@
 }
 
 table {
-  display: table;
+  display: block;
+  page-break-after: always;
+  break-after: always;
+}
+
+.page-break { 
+  display: block;
+  page-break-before: always; 
+}
+
+@page {
+  size: landscape;
+  margin: 1cm;
 }

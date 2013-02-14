@@ -1,9 +1,10 @@
 <div id="main">
-<h3>Project Presentations 2012/13</h3>
 
 <%= render @venues %>
 
 <br />
 
+<% if can? :create, Venue %>
 <%= link_to 'New Venue', new_venue_path %>
+<% end %>
 </div>
