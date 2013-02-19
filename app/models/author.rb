@@ -1,7 +1,7 @@
 class Author < ActiveRecord::Base
-  attr_accessible :email, :first, :last, :programme, :registration
+  attr_accessible :email, :first, :last, :programme, :registration, :photo_url
 
-  has_many :projects
+  has_many :projects, :dependent => :destroy
 
   default_scope :order => [:last, :first]
 

@@ -36,5 +36,8 @@
 <% if can? :update, @author %>
   <%= link_to 'Edit', edit_author_path(@author) %> |
 <% end %>
-<%= link_to 'Back', authors_path %>
+<% if can? :delete, @author %>
+  <%= link_to 'Delete', @author, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
+<%= link_to 'Back', :back %>
 </div>

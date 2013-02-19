@@ -24,6 +24,8 @@ class AuthorsController < ApplicationController
   # GET /authors/new
   # GET /authors/new.json
   def new
+    @author.image_url = "photo.png"
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @author }

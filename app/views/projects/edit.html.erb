@@ -1,7 +1,40 @@
 <div id="main">
 <h1>Editing project title</h1>
 
-<%= render 'form' %>
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3><%= @project.author %> (<%= @project.author.registration_or_blank %>)</h3>
+
+  <%= f.hidden_field :author_id %>
+
+  <table>
+    <div class="field">
+      <tr>
+	<td>
+	  <%= f.label :title %>
+	</td>
+	<td>
+	  <%= f.text_field :title %>
+	</td>
+      </tr>
+    </div>
+  </table>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @project %> |
 <%= link_to 'Back', @project.author %>
