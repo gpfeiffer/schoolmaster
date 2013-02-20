@@ -4,6 +4,8 @@ class DirectionsController < ApplicationController
   # GET /directions
   # GET /directions.json
   def index
+
+    @directions_by_programme = @directions.group_by { |x| x.project.author.programme }
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @directions }

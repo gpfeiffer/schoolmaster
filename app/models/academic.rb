@@ -29,7 +29,7 @@ class Academic < ActiveRecord::Base
   end
 
   def to_s
-    name
+    first_last
   end
 
   def extension
