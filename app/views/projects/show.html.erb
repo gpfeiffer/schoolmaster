@@ -1,7 +1,9 @@
 <div id="main">
 <p id="notice"><%= notice %></p>
 
-<h1>Project.</h1>
+<h2>Project.</h2>
+
+<h1><%= @project.title %></h1>
 
 <p>
   <b>Author:</b>
@@ -9,16 +11,11 @@
 </p>
 
 <p>
-  <b>Title:</b>
-  <%= @project.title %>
-</p>
-
-<p>
   <b>Supervisor:</b>
   <%= link_to @project.direction.academic, @project.direction.academic %>
 </p>
 
-<h3 class="edit-head">Examiners:</h3>
+<h3 class="edit-head"><%= 'Examiner'.pluralize(@project.examinations.count) %>:</h3>
 <% if can? :update, @project %>
   <div class="edit">
     <%= link_to '[+]', new_examination_path(:project_id => @project) %>
@@ -58,8 +55,13 @@
   <% end %>
 </ul>
 
+<hr />
+
 <% if can? :update, @project %>
   <%= link_to 'Edit', edit_project_path(@project) %> |
 <% end %>
-<%= link_to 'Back', @project.author %>
+<% if can? :destroy, @project %>
+  <%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
+<%= link_to 'Back', :back %>
 <div>

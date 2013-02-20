@@ -9,7 +9,7 @@
 
 <h3><%= @academic.school %></h3>
 
-<h2><%= @academic %><%= if @academic.short then " (#{@academic.short})" end %></h2>
+<h2><%= @academic.name %><%= if can?(:destroy, @academic) and @academic.short then " (#{@academic.short})" end %></h2>
 
 <%= image_tag @academic.image_url, :align => :right, :size => "96x96", :alt => "[image]" %>
 
@@ -41,6 +41,7 @@
         <% else %>
           <%= link_to_if can?(:show, direction), author, direction %> (<%= author.programme %>)
         <% end %>
+	[<%= direction.project.bookings.first %>]
       </li>
     <% end %>
   </ul>
@@ -59,6 +60,7 @@
         <% else %>
           <%= link_to_if can?(:show, examination), author, examination %> (<%= author.programme %>)
         <% end %>
+	[<%= examination.project.bookings.first %>]
       </li>
     <% end %>
   </ul>

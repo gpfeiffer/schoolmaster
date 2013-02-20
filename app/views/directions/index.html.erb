@@ -5,7 +5,7 @@
 <h2><%= programme %></h2>
 <% directions.each do |direction| %>
   <% project = direction.project %>
-  <h3<%= raw ' class="alert"' if project.critical? %>>(<%= project.author.registration %>) <%= project.author %>: <%= project.title %></h3>
+  <h3<%= raw ' class="alert"' if project.critical? %>>(<%= project.author.registration %>) <%= project.author %>: <%= link_to project.title, project %></h3>
 <div style="color:blue">Final Mark: <%= project.total_mark %>%. (Penalties applied: ...)</div>
   <p><b><%= project.supervisor %> (Supervisor):</b>
     <%= direction.comment %>
