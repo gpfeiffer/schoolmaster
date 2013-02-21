@@ -5,21 +5,28 @@
 <h2><%= programme %></h2>
 <% directions.each do |direction| %>
   <% project = direction.project %>
-  <h3<%= raw ' class="alert"' if project.critical? %>>(<%= project.author.registration %>) <%= project.author %>: <%= link_to project.title, project %></h3>
-<div style="color:blue">Final Mark: <%= project.total_mark %>%. (Penalties applied: ...)</div>
+  <div style="display:inline"<%= raw ' class="alert"' if project.critical? %>><%= project.author.registration %>: <%= project.author %>.</div> 
+<div style="color:blue; display:inline">Final Mark: <%= project.total_mark %>%. (Penalties applied: ...)</div>
+
+<h3><%= link_to project.title, project %></h3>
+
   <p><b><%= project.supervisor %> (Supervisor):</b>
     <%= direction.comment %>
   <br />
+<div<%= raw ' class="alert"' if direction.open? %>>
 Midterm Report: <%= direction.midterm_mark %>%,
 Presentation: <%= direction.presentation_mark %>%,
 Report: <%= direction.report_mark %>%.
+</div>
 </p>
     <% project.examinations.each do |examination| %>
   <p><b><%= examination.academic %> (Examiner):</b>
     <%= examination.comment %>
 <br />
+<div<%= raw ' class="alert"' if examination.open? %>>
 Presentation: <%= examination.presentation_mark %>%,
 Report: <%= examination.report_mark %>%.
+</div>
 </p>
 
     <% end %>
