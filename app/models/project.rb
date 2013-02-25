@@ -9,6 +9,11 @@ class Project < ActiveRecord::Base
 
   has_many :bookings
 
+  # placeholder
+  def penalties
+    nil
+  end
+
   def supervisor_id
     supervisor.id if supervisor
   end
@@ -54,7 +59,11 @@ class Project < ActiveRecord::Base
   end
   
   def total_mark
-    (0.1 * midterm_mark + 0.1 * presentation_mark + 0.8 * report_mark).round if midterm_mark and presentation_mark and report_mark
+    if midterm_mark and presentation_mark and report_mark
+      (0.1 * midterm_mark + 0.1 * presentation_mark + 0.8 * report_mark).round 
+    else
+      "%"
+    end
   end
 
 

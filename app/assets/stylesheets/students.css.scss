@@ -9,9 +9,13 @@
 table.dates {
   border-collapse:collapse;
   float: right;
+  margin-left: 1em;
 }
+
 table.dates, table.dates th, table.dates td {
   border: 1px solid black;
+  padding-left: 1ex;
+  padding-right: 1ex;
 }
 
 h2 {
