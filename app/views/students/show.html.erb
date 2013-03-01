@@ -1,8 +1,8 @@
-<div id="side">
+<% content_for :side do %>
   <h3>Graduate Students</h3>
   <ul><%= render @students %></ul>
-</div>
-<div id="main">
+<% end %>
+
 <h2><%= @student %></h2>
 
 <%= image_tag @student.photo_url, :align => :right, :size => "96x96", :alt => "[image]" %>
@@ -115,4 +115,3 @@
   <%= link_to 'Delete', @student, :method => :delete, :data => { :confirm => 'Are you sure?' } %> |
 <% end %>
 <%= link_to 'Back', students_path %>
-</div>

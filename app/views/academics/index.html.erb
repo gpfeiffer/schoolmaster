@@ -1,4 +1,3 @@
-<div id="main">
 <h1>Academic Staff</h1>
 
 <% @schools.each do |school| %>
@@ -24,4 +23,3 @@
 <% if can? :create, Academic %>
   <%= link_to 'New Academic', new_academic_path %>
 <% end %>
-</div>

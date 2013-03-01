@@ -44,9 +44,14 @@ MathJax.Hub.Config({
   </div>
 </div>
 <div id="columns">
-  <p id="notice"><%= notice %></p>
-  <p id="alert"><%= alert %></p>
-  <%= yield %>
+  <div id="side">
+    <%= yield :side %>
+  </div>
+  <div id="main">
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
+    <%= yield %>
+  </div>
 </div>
 </body>
 </html>

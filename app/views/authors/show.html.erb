@@ -1,8 +1,8 @@
-<div id="side">
+<% content_for :side do %>
   <h3>Project Students</h3>
   <ul><%= render @authors %></ul>
-</div>
-<div id="main">
+<% end %>
+
 <h2><%= @author %></h2>
 
 <%= image_tag @author.photo_url, :align => :right, :size => "96x96", :alt => "[image]" %>
@@ -40,4 +40,3 @@
   <%= link_to 'Delete', @author, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <% end %>
 <%= link_to 'Back', :back %>
-</div>

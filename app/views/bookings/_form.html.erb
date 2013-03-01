@@ -11,10 +11,7 @@
     </div>
   <% end %>
 
-<!--  
-<table><tr><td>
--->
-<div id="side">
+<% content_for :side do %>
 <ul>
 <% Project.all.select { |x| x.bookings.count < 1 }.sort_by { |x| x.author.last_first }.each do |project| %>
 <li>
@@ -22,8 +19,8 @@
 </li>
 <% end %>
 </ul>
-</div>
-<div id="main">
+<% end %>
+
 <h1>New booking</h1>
 
 <h3><%= @booking.project.short %></h3>
@@ -45,19 +42,10 @@
 </tr>
 <% end %>
 </table>
-<!--
-</td>
-<td>
--->
-<!--
-</td>
-</tr>
-</table>
-</div>
--->
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <%= link_to 'Back', @booking.project %>
-</div>
+
 <% end %>

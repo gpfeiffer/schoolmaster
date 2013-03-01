@@ -1,5 +1,3 @@
-<div id="main">
-
 <%= render @venues %>
 
 <br />
@@ -7,4 +5,4 @@
 <% if can? :create, Venue %>
 <%= link_to 'New Venue', new_venue_path %>
 <% end %>
-</div>
+

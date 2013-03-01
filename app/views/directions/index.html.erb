@@ -1,9 +1,6 @@
-<div id="main">
 <h1>Project reports and marks.</h1>
 
 <% @directions_by_programme.each do |programme, directions| %>
-<h2><%= programme %></h2>
-<%= render directions %>
+  <h2><%= programme %></h2>
+  <%= render directions %>
 <% end %>
-
-</div>

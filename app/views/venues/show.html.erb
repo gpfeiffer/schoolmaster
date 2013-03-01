@@ -1,9 +1,6 @@
-<div id="main">
-
 <%= render @venue %>
 
 <% if can? :update, @venue %>
 <%= link_to 'Edit', edit_venue_path(@venue) %> |
 <% end %>
 <%= link_to 'Back', venues_path %>
-</div>
