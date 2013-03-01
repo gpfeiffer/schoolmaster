@@ -3,38 +3,7 @@
 
 <% @directions_by_programme.each do |programme, directions| %>
 <h2><%= programme %></h2>
-<% directions.each do |direction| %>
-  <% project = direction.project %>
-<div class="mark"><b> <%= project.total_mark %></b><%= "(Penalties applied: ...)" if project.penalties %></div>
-&nbsp;
-  <div style="display:inline"<%= raw ' class="alert"' if project.critical? %>> <%= project.author.registration %>: <%= project.author %>.</div> 
-
-<h3><%= link_to project.title, project %></h3>
-
-  <div<%= raw ' class="prelim"' if direction.open? %>>
-<table class="dates">
-<tr><td>Midterm Report</td><td> <%= direction.midterm_mark %></td></tr>
-<tr><td>Presentation</td><td> <%= direction.presentation_mark %></td></tr>
-<tr><td>Report</td><td> <%= direction.report_mark %></td></tr>
-</table>
-<b><%= project.supervisor %> (Supervisor):</b>
-    <%= direction.comment %>
-  <br />
-</div>
-    <% project.examinations.each do |examination| %>
-  <div<%= raw ' class="prelim"' if examination.open? %>>
-<table class="dates">
-<tr><td>Presentation</td><td> <%= examination.presentation_mark %></td></tr>
-<tr><td>Report</td><td> <%= examination.report_mark %></td></tr>
-</table>
-<b><%= examination.academic %> (Examiner):</b>
-    <%= examination.comment %>
-<br />
-</div>
-
-    <% end %>
-    <hr />
-  <% end %>
+<%= render directions %>
 <% end %>
 
 </div>
