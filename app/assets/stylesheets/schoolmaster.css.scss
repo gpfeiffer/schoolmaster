@@ -96,10 +96,21 @@
   color: lightgray;
 }
 
+.mark-prelim {
+  display: inline;
+  color: darkgray;
+  background: #ccffff;
+  font-weight: bold;
+  border: 2px solid #b36666;
+  padding: 2px;
+  border-radius: 6px;
+}
+
 .mark {
   display: inline;
   color: darkblue;
   background: lightblue;
+  font-weight: bold;
   border: 2px solid maroon;
   padding: 2px;
   border-radius: 6px;

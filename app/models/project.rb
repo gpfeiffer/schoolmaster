@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :author_id, :title
+  attr_accessible :author_id, :title, :penalty
 
   belongs_to :author
   has_one :direction, :dependent => :destroy
@@ -8,11 +8,6 @@ class Project < ActiveRecord::Base
   has_many :examiners, :through => :examinations, :source => :academic
 
   has_many :bookings
-
-  # placeholder
-  def penalties
-    nil
-  end
 
   def supervisor_id
     supervisor.id if supervisor
@@ -60,11 +55,14 @@ class Project < ActiveRecord::Base
   
   def total_mark
     if midterm_mark and presentation_mark and report_mark
-      (0.1 * midterm_mark + 0.1 * presentation_mark + 0.8 * report_mark).round 
+      (0.1 * midterm_mark + 0.1 * presentation_mark + 0.8 * report_mark).round - penalty
     else
       "%"
     end
   end
 
+  def marked?
+    direction.closed? and examinations.first.closed?
+  end
 
 end

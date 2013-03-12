@@ -13,4 +13,8 @@ class Direction < ActiveRecord::Base
   def open?
     open
   end
+
+  def closed?
+    not open
+  end
 end

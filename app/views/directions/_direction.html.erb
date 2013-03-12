@@ -1,7 +1,19 @@
 <% project = direction.project %>
-<div class="mark"><b> <%= project.total_mark %></b><%= "(Penalties applied: ...)" if project.penalties %></div>
-&nbsp;
-  <div style="display:inline"<%= raw ' class="alert"' if project.critical? %>> <%= project.author.registration %>: <%= project.author %>.</div> 
+<%= content_tag :div, :class => project.marked? ? "mark" : "mark-prelim" do %>
+  <%= project.total_mark -%>
+<% end %>
+  &nbsp;
+  <%= content_tag :div, :style => "display:inline", :class => project.critical? ? "alert" : "" do %> 
+    <%= project.author.registration %>: <%= project.author %>.
+    <% if project.critical? %>
+     (<%= "#{direction.report_mark} - #{project.examinations.first.report_mark}" %>)
+    <% end %> 
+  <% end %> 
+<% if project.penalty > 0 %>
+  <table class="dates">
+<tr class="alert"><td>Penalty</td><td><%= project.penalty %></td></tr>
+    </table>
+<% end %>
 
 <h3><%= link_to_unless_current project.title, project %></h3>
 
