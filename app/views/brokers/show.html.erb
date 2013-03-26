@@ -1,5 +1,7 @@
 <h2><%= @broker.name %></h2>
 
+<%= @broker.records.count %> records.
+
 <p>
   <b>Template:</b>
   <%= @broker.template %>
@@ -8,8 +10,8 @@
 <table>
 <% @broker.records.sort_by { |x| x.authorid.to_i }.each do |record| %>
 <tr>
-<td align="right"><%= record.authorid %></td>
-<td><%= record.academic %></td>
+<td align="right"><%= link_to record.authorid, record.broker.template % record.authorid, :target => "_blank" %></td>
+<td><%= link_to record.academic, record.academic %></td>
 </tr>
 <% end %>
 </table>
