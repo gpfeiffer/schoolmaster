@@ -5,4 +5,7 @@ class Record < ActiveRecord::Base
   belongs_to :broker
 
   validates :academic_id, :broker_id, :authorid, :presence => true
+
+  default_scope :order => :authorid
+
 end
