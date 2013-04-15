@@ -1,12 +1,15 @@
+<h3><%= link_to @committee.student, @committee.student %></h3>
+<h1>GRC member</h1>
 <p>
-  <b>Academic:</b>
-  <%= @committee.academic_id %>
+  <b>Name:</b>
+  <%= link_to @committee.academic, @committee.academic %>
 </p>
 
 <p>
-  <b>Student:</b>
-  <%= @committee.student_id %>
+  <b>Chair:</b>
+  <%= @committee.chair %>
 </p>
+
 
 
 <%= link_to 'Edit', edit_committee_path(@committee) %> |

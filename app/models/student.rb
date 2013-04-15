@@ -4,6 +4,7 @@ class Student < ActiveRecord::Base
   has_many :supervisions, :dependent => :destroy
   has_many :academics, :through => :supervisions
   has_many :committees, :dependent => :destroy
+  has_many :members, :through => :committees, :source => :academic
 
   belongs_to :room
 
@@ -56,4 +57,10 @@ class Student < ActiveRecord::Base
   def mailto
     "mailto:#{email}"
   end
+
+  def committee_chair
+    committee = committees.detect(&:chair?)
+    committee and committee.academic
+  end
+
 end

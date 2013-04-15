@@ -5,6 +5,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.role? :admin
       can :manage, :all
+
     elsif user.role? :supervisor
       can :read, [Academic, Student, Room]
 
@@ -17,9 +18,9 @@ class Ability
       end
 
       # FIXME: can only create committee members for own students.
-      can :create, Committee 
+      can :create, Committee
 
-      can :destroy, Committee do |committee|
+      can [:update, :destroy], Committee do |committee|
         committee.student.academics.include? user.academic
       end
  

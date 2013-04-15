@@ -13,11 +13,22 @@
 
   <%= f.hidden_field :student_id %>
 
+<table>
   <div class="field">
-    <%= f.label :academic_id, "Name" %><br />
-    <%= f.select :academic_id, options_from_collection_for_select(Academic.all, 'id', 'name'), :include_blank => true %>
+    <tr>
+      <td align="right"><%= f.label :academic_id, "Name" %></td>
+      <td>
+        <%= f.select :academic_id, Academic.all.map { |x| [x, x.id] }, :include_blank => true %>
+      </td>
+    </tr>
+  </div>
+  <div class="field">
+    <tr>
+      <td align="right"><%= f.label :chair, "Chair?" %></td>
+      <td><%= f.check_box :chair %></td>
   </div>
   <div class="actions">
-    <%= f.submit "Add member" %>
+    <tr><td><%= f.submit "Submit" %></td></tr>
   </div>
+</table>
 <% end %>

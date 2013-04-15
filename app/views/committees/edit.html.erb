@@ -1,6 +1,9 @@
-<h1>Editing committee</h1>
+<h3><%= link_to @committee.student, @committee.student %></h3>
+
+<h1>Editing GRC member</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @committee %> |
+<hr />
+<%= link_to 'Delete', @committee, :confirm => 'Are you sure?', :method => :delete %> |
 <%= link_to 'Back', @committee.student %>

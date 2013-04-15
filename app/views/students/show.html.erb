@@ -69,7 +69,7 @@
 </h3>
 <% if can? :update, @student %>
   <div class="edit">
-    <%= link_to '[+]', new_supervision_path(:student_id => @student) %>
+    <%= link_to add_symbol, new_supervision_path(:student_id => @student) %>
   </div>
 <% end %>
 
@@ -80,7 +80,8 @@
       (<%= supervision.status %>)
       <% if can? :update, @student %>
         <div class="edit">
-          <%= link_to '[-]', supervision, :confirm => 'Are you sure?', :method => :delete %>
+          <%= link_to delete_symbol, supervision, :confirm => 'Are you sure?', :method => :delete %>
+    <%= link_to edit_symbol, edit_supervision_path(supervision) %>
         </div>
       <% end %>
     </li>
@@ -90,16 +91,19 @@
 <h3 class="edit-head">GRC</h3>
 <% if can? :update, @student %>
   <div class="edit">
-    <%= link_to '[+]', new_committee_path(:student_id => @student) %>
+    <%= link_to add_symbol, new_committee_path(:student_id => @student) %>
   </div>
 <% end %>
 <ul>
   <% @student.committees.each do |committee| %>
     <li>
       <%= link_to committee.academic, committee.academic %>
-      <% if can? :update, @student %>
+      <% if committee.chair? %>
+        (Chair)
+      <% end %>
+      <% if can? :update, committee %>
         <div class="edit">
-          <%= link_to '[-]', committee, :confirm => 'Are you sure?', :method => :delete %>
+          <%= link_to edit_symbol, edit_committee_path(committee) %>
         </div>
       <% end %>
     </li>
