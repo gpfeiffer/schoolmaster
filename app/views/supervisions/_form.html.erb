@@ -13,17 +13,29 @@
 
   <%= f.hidden_field :student_id %>
 
-  <div class="field">
-    <%= f.label :academic_id, "Name" %><br />
-    <%= f.select :academic_id, options_from_collection_for_select(Academic.all, 'id', 'name'), :include_blank => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.select :status, Supervision::STATUSES, :include_blank => true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Add supervisor" %>
-  </div>
+  <table>
+    <div class="field">
+      <tr>
+	<td align="right"><%= f.label :academic_id, "Name" %></td>
+	<td>
+	  <%= f.select :academic_id, Academic.all.map { |x| [x, x.id] }, :include_blank => true %>
+	</td>
+      </tr>
+    </div>
+    
+    <div class="field">
+      <tr>
+	<td align="right"><%= f.label :main %></td>
+	<td><%= f.check_box :main %></td>
+      </tr>
+    </div>
+    
+    <tr>
+      <td>
+	<div class="actions">
+	  <%= f.submit "Submit" %>
+	</div>
+      </td>
+    </tr>
+  <table>
 <% end %>

@@ -1,6 +1,8 @@
-<h1>Editing supervision</h1>
+<h3><%= link_to @supervision.student, @supervision.student %></h3>
+<h1>Editing supervisor</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @supervision %> |
+<hr />
+<%= link_to 'Delete', @supervision, :confirm => 'Are you sure?', :method => :delete %> |
 <%= link_to 'Back', @supervision.student %>

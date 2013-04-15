@@ -40,7 +40,6 @@
         <% else %>
           <%= link_to_if can?(:show, direction), author, direction %> (<%= author.programme %>)
         <% end %>
-	[<%= direction.project.bookings.first %>]
       </li>
     <% end %>
   </ul>
@@ -70,7 +69,7 @@
   <ul>
     <% @active_supervisions.each do |s| %>
       <li>
-        <%= link_to s.student, s.student %> (<%= s.status %>, <%= s.student.programme %>, <%= s.student.status_or_blank %>)
+        <%= link_to s.student, s.student %> (<%= s.main ? 'Main ' : 'Co-' %>Supervisor, <%= s.student.programme %>, <%= s.student.status_or_blank %>)
       </li>
     <% end %>
   </ul>

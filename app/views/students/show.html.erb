@@ -77,11 +77,10 @@
   <% @student.supervisions.each do |supervision| %>
     <li>
       <%= link_to supervision.academic, supervision.academic %> 
-      (<%= supervision.status %>)
+      (<%= supervision.main ? 'Main ' : 'Co-' %>Supervisor)
       <% if can? :update, @student %>
         <div class="edit">
-          <%= link_to delete_symbol, supervision, :confirm => 'Are you sure?', :method => :delete %>
-    <%= link_to edit_symbol, edit_supervision_path(supervision) %>
+          <%= link_to edit_symbol, edit_supervision_path(supervision) %>
         </div>
       <% end %>
     </li>
