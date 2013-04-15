@@ -27,12 +27,26 @@ table {
   break-after: always;
 }
 
+table.dates {
+  border: 0px solid black;
+}
+
+table.dates th, table.dates td {
+  border: thin solid black;
+}
+
 .page-break { 
   display: block;
   page-break-before: always; 
 }
 
+body, td, th {
+    font-family: "Times New Roman", Times, serif;
+    font-size: x-small;
+    line-height: 120%;
+}
+
 @page {
-  size: landscape;
-  margin: 2cm;
+  size: portrait;
+  margin: 0.5cm;
 }
