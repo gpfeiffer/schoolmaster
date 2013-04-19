@@ -52,9 +52,10 @@
   <% end %>
 </ul>
 
-<h3>Assessment</h3>
-
-<%= render @project.direction %>
+<% if can? :update, @project %>
+  <h3>Assessment</h3>
+  <%= render @project.direction %>
+<% end %>
 
 <hr />
 
