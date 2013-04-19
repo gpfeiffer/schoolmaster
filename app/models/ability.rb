@@ -25,7 +25,7 @@ class Ability
       end
  
       # FIXME: can only create supervision members for own students.
-      can :create, Supervision 
+      can :create, Supervision
 
       can :destroy, Supervision do |supervision|
         supervision.student.academics.include? user.academic
@@ -53,6 +53,9 @@ class Ability
       can :update, Examination do |examination|
         examination.open? and examination.academic == user.academic
       end
+    end
+    if user.role? :support
+      can :read, [Academic, Student, Author, Room]
     end
   end
 end
