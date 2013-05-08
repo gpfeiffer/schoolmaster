@@ -1,6 +1,18 @@
 <h1>Project reports and marks.</h1>
 
 <% if @programme %>
+<% content_for :side do %>
+  <h3>Programmes</h3>
+
+<ul>
+<li><%= link_to '[all]', directions_path %></li>
+<% @directions_by_programme.each do |programme, directions| %>
+  <li><%= link_to_unless_current programme, directions_path(:programme => programme) %></li>
+  <% end %>
+</ul>
+<% end %>
+
+
   <% directions = @directions_by_programme[@programme] %>
   <h2><%= @programme %></h2>
   <%= render directions %>
