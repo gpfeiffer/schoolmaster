@@ -1,6 +1,13 @@
 <h1>Project reports and marks.</h1>
 
-<% @directions_by_programme.each do |programme, directions| %>
-  <h2><%= programme %></h2>
+<% if @programme %>
+  <% directions = @directions_by_programme[@programme] %>
+  <h2><%= @programme %></h2>
   <%= render directions %>
+<% else %>
+
+<% @directions_by_programme.each do |programme, directions| %>
+  <h2><%= link_to programme, directions_path(:programme => programme) %></h2>
+  <%= render directions %>
+<% end %>
 <% end %>
