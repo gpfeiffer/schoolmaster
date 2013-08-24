@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  attr_accessible :code, :content, :credits, :description, :examined, :lab_hours, :lecture_hours, :placement_hours, :self_study_hours, :taught, :title, :tutorial_hours
+  attr_accessible :code, :content, :credits, :description, :examined, :lab_hours, :lecture_hours, :outcomes, :placement_hours, :resources, :self_study_hours, :taught, :title, :tutorial_hours
 
   WORKS = %w(lecture tutorial lab self_study placement).map do |x| 
     (x + "_hours").to_sym 

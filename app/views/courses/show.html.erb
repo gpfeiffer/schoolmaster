@@ -29,8 +29,22 @@
 <hr />
 
 <p>
+  <b>Learning Outcomes</b>
+  <%= raw BlueCloth.new(@course.outcomes).to_html %>
+</p>
+
+<hr />
+
+<p>
   <b>Content</b>
   <%= raw BlueCloth.new(@course.content).to_html %>
+</p>
+
+<hr />
+
+<p>
+  <b>Resources</b>
+  <%= raw BlueCloth.new(@course.resources).to_html %>
 </p>
 
 <hr />
