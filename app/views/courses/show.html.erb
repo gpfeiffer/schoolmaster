@@ -1,0 +1,33 @@
+<h2>
+  <%= @course.code %>:  
+  <%= @course.title %>
+  (<%= @course.credits %> ECTS)
+</h2>
+
+<p>
+  <%= @course.description %>
+</p>
+
+<p>
+  <b>Taught</b> in Semester(s)
+  <%= @course.taught %>.
+  <b>Examined</b> in Semester(s)
+  <%= @course.examined %>.
+</p>
+
+<p>
+  <b>Workload:</b>
+  <%= @course.workload %> hours
+  (<%= @course.workload_text %>).
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @course.content %>
+</p>
+
+<hr />
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', courses_path %>

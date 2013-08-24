@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  code: MyString
+  credits: 1
+  taught: MyString
+  examined: MyString
+  lecture_hours: 1
+  tutorial_hours: 1
+  lab_hours: 1
+  self_study_hours: 1
+  placement_hours: 1
+  content: MyText
+
+two:
+  title: MyString
+  description: MyText
+  code: MyString
+  credits: 1
+  taught: MyString
+  examined: MyString
+  lecture_hours: 1
+  tutorial_hours: 1
+  lab_hours: 1
+  self_study_hours: 1
+  placement_hours: 1
+  content: MyText
