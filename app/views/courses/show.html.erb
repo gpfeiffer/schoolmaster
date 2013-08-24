@@ -1,58 +1,24 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
+<h2>
+  <%= @course.code %>:  
   <%= @course.title %>
-</p>
+  (<%= @course.credits %> ECTS)
+</h2>
 
 <p>
-  <b>Description:</b>
   <%= @course.description %>
 </p>
 
 <p>
-  <b>Code:</b>
-  <%= @course.code %>
+  <b>Taught</b> in Semester(s)
+  <%= @course.taught %>.
+  <b>Examined</b> in Semester(s)
+  <%= @course.examined %>.
 </p>
 
 <p>
-  <b>Credits:</b>
-  <%= @course.credits %>
-</p>
-
-<p>
-  <b>Taught:</b>
-  <%= @course.taught %>
-</p>
-
-<p>
-  <b>Examined:</b>
-  <%= @course.examined %>
-</p>
-
-<p>
-  <b>Lecture hours:</b>
-  <%= @course.lecture_hours %>
-</p>
-
-<p>
-  <b>Tutorial hours:</b>
-  <%= @course.tutorial_hours %>
-</p>
-
-<p>
-  <b>Lab hours:</b>
-  <%= @course.lab_hours %>
-</p>
-
-<p>
-  <b>Self study hours:</b>
-  <%= @course.self_study_hours %>
-</p>
-
-<p>
-  <b>Placement hours:</b>
-  <%= @course.placement_hours %>
+  <b>Workload:</b>
+  <%= @course.workload %> hours
+  (<%= @course.workload_text %>).
 </p>
 
 <p>
@@ -60,6 +26,8 @@
   <%= @course.content %>
 </p>
 
+<hr />
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', courses_path %>

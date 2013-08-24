@@ -11,54 +11,74 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
-    <%= f.label :credits %><br />
-    <%= f.number_field :credits %>
-  </div>
-  <div class="field">
-    <%= f.label :taught %><br />
-    <%= f.text_field :taught %>
-  </div>
-  <div class="field">
-    <%= f.label :examined %><br />
-    <%= f.text_field :examined %>
-  </div>
-  <div class="field">
-    <%= f.label :lecture_hours %><br />
-    <%= f.number_field :lecture_hours %>
-  </div>
-  <div class="field">
-    <%= f.label :tutorial_hours %><br />
-    <%= f.number_field :tutorial_hours %>
-  </div>
-  <div class="field">
-    <%= f.label :lab_hours %><br />
-    <%= f.number_field :lab_hours %>
-  </div>
-  <div class="field">
-    <%= f.label :self_study_hours %><br />
-    <%= f.number_field :self_study_hours %>
-  </div>
-  <div class="field">
-    <%= f.label :placement_hours %><br />
-    <%= f.number_field :placement_hours %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
+<fieldset>
+<table width="100%">
+<tr>
+<td>
+    <%= f.label :code %>
+</td>
+<td>
+    <%= f.text_field :code, :size => 6 %>
+</td>
+<td>
+    <%= f.label :title %>
+</td>
+<td>
+    <%= f.text_field :title, :size => 60 %>
+</td>
+<td>
+    <%= f.label :credits %>
+    <%= f.number_field :credits, :in => 0..60, :step => 5 %>
+</td>
+<tr>
+</table>
+</fieldset>
+<fieldset>
+  <legend><%= f.label :description %></legend>
+    <%= f.text_area :description, :size => "80x20" %>
+</fieldset>
+<fieldset>
+  <legend>Time Tabling</legend>
+  <table width="100%">
+    <tr>
+      <td>
+	<%= f.label :taught, "Taught in Semester(s)" %>
+      </td>
+      <td>
+	<%= f.text_field :taught %>
+      </td>
+      <td>
+	<%= f.label :examined, "Examined in Semester(s)" %>
+      </td>
+      <td>
+	<%= f.text_field :examined %>
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Workload</legend>
+  <table width="100%">
+    <tr>
+      <td><%= f.label :lecture_hours %></td>
+      <td><%= f.label :tutorial_hours %></td>
+      <td><%= f.label :lab_hours %></td>
+      <td><%= f.label :self_study_hours %></td>
+      <td><%= f.label :placement_hours %></td>
+    </tr>
+    <tr>
+      <td><%= f.number_field :lecture_hours, :min => 0 %></td>
+      <td><%= f.number_field :tutorial_hours, :min => 0 %></td>
+      <td><%= f.number_field :lab_hours, :min => 0 %></td>
+      <td><%= f.number_field :self_study_hours, :min => 0 %></td>
+      <td><%= f.number_field :placement_hours, :min => 0 %></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend><%= f.label :content %></legend>
+    <%= f.text_area :content, :size => "80x20" %>
+</fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,44 +1,8 @@
-<h1>Listing courses</h1>
+<h1>Modules</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Code</th>
-    <th>Credits</th>
-    <th>Taught</th>
-    <th>Examined</th>
-    <th>Lecture hours</th>
-    <th>Tutorial hours</th>
-    <th>Lab hours</th>
-    <th>Self study hours</th>
-    <th>Placement hours</th>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @courses.each do |course| %>
-  <tr>
-    <td><%= course.title %></td>
-    <td><%= course.description %></td>
-    <td><%= course.code %></td>
-    <td><%= course.credits %></td>
-    <td><%= course.taught %></td>
-    <td><%= course.examined %></td>
-    <td><%= course.lecture_hours %></td>
-    <td><%= course.tutorial_hours %></td>
-    <td><%= course.lab_hours %></td>
-    <td><%= course.self_study_hours %></td>
-    <td><%= course.placement_hours %></td>
-    <td><%= course.content %></td>
-    <td><%= link_to 'Show', course %></td>
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<ul>
+<%= render @courses %>
+</ul>
 
 <br />
 
