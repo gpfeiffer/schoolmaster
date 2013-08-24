@@ -18,24 +18,24 @@
     <%= f.label :code %>
 </td>
 <td>
-    <%= f.text_field :code, :size => 6 %>
+    <%= f.text_field :code, :size => 4 %>
 </td>
 <td>
     <%= f.label :title %>
 </td>
 <td>
-    <%= f.text_field :title, :size => 60 %>
+    <%= f.text_field :title, :size => 32 %>
 </td>
 <td>
     <%= f.label :credits %>
-    <%= f.number_field :credits, :in => 0..60, :step => 5 %>
+    <%= f.number_field :credits, :in => 0..60, :step => 5, :size => 4 %>
 </td>
 <tr>
 </table>
 </fieldset>
 <fieldset>
   <legend><%= f.label :description %></legend>
-    <%= f.text_area :description, :size => "80x20" %>
+    <%= f.text_area :description, :size => "80x5" %>
 </fieldset>
 <fieldset>
   <legend>Time Tabling</legend>
@@ -45,13 +45,13 @@
 	<%= f.label :taught, "Taught in Semester(s)" %>
       </td>
       <td>
-	<%= f.text_field :taught %>
+	<%= f.text_field :taught, :size => 4 %>
       </td>
       <td>
 	<%= f.label :examined, "Examined in Semester(s)" %>
       </td>
       <td>
-	<%= f.text_field :examined %>
+	<%= f.text_field :examined, :size => 4 %>
       </td>
     </tr>
   </table>
@@ -60,18 +60,14 @@
   <legend>Workload</legend>
   <table width="100%">
     <tr>
-      <td><%= f.label :lecture_hours %></td>
-      <td><%= f.label :tutorial_hours %></td>
-      <td><%= f.label :lab_hours %></td>
-      <td><%= f.label :self_study_hours %></td>
-      <td><%= f.label :placement_hours %></td>
+      <% Course::WORKS.each do |work| %>
+        <td><%= f.label work %></td>
+      <% end %>
     </tr>
     <tr>
-      <td><%= f.number_field :lecture_hours, :min => 0 %></td>
-      <td><%= f.number_field :tutorial_hours, :min => 0 %></td>
-      <td><%= f.number_field :lab_hours, :min => 0 %></td>
-      <td><%= f.number_field :self_study_hours, :min => 0 %></td>
-      <td><%= f.number_field :placement_hours, :min => 0 %></td>
+      <% Course::WORKS.each do |work| %>
+        <td><%= f.number_field work, :min => 0, :size => 6 %></td>
+      <% end %>
     </tr>
   </table>
 </fieldset>
