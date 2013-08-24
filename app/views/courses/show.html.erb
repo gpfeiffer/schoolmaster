@@ -26,9 +26,11 @@
   (<%= @course.workload_text %>).
 </p>
 
+<hr />
+
 <p>
-  <b>Content:</b>
-  <%= @course.content %>
+  <b>Content</b>
+  <%= raw BlueCloth.new(@course.content).to_html %>
 </p>
 
 <hr />
