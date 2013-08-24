@@ -1,0 +1,65 @@
+<%= form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :credits %><br />
+    <%= f.number_field :credits %>
+  </div>
+  <div class="field">
+    <%= f.label :taught %><br />
+    <%= f.text_field :taught %>
+  </div>
+  <div class="field">
+    <%= f.label :examined %><br />
+    <%= f.text_field :examined %>
+  </div>
+  <div class="field">
+    <%= f.label :lecture_hours %><br />
+    <%= f.number_field :lecture_hours %>
+  </div>
+  <div class="field">
+    <%= f.label :tutorial_hours %><br />
+    <%= f.number_field :tutorial_hours %>
+  </div>
+  <div class="field">
+    <%= f.label :lab_hours %><br />
+    <%= f.number_field :lab_hours %>
+  </div>
+  <div class="field">
+    <%= f.label :self_study_hours %><br />
+    <%= f.number_field :self_study_hours %>
+  </div>
+  <div class="field">
+    <%= f.label :placement_hours %><br />
+    <%= f.number_field :placement_hours %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
