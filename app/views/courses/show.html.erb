@@ -1,3 +1,8 @@
+<% content_for :side do %>
+  <h3>Modules</h3>
+    <ul><%= render Course.all %></ul>
+<% end %>
+
 <h2>
   <%= @course.code %>:  
   <%= @course.title %>
