@@ -72,15 +72,16 @@
   </table>
 </fieldset>
 <fieldset>
-  <legend><%= f.label :outcomes, "Learning Outcomes" %></legend>
+  <legend><%= f.label :outcomes, "Module Learning Outcomes" %></legend>
+    On successful completion of this module the learner should be able to:<br />
     <%= f.text_area :outcomes, :size => "80x10" %>
 </fieldset>
 <fieldset>
-  <legend><%= f.label :content %></legend>
+  <legend><%= f.label :content, "Indicative Content" %></legend>
     <%= f.text_area :content, :size => "80x10" %>
 </fieldset>
 <fieldset>
-  <legend><%= f.label :resources %></legend>
+  <legend><%= f.label :resources, "Module Resources" %></legend>
     <%= f.text_area :resources, :size => "80x10" %>
 </fieldset>
   <div class="actions">
