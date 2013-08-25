@@ -10,7 +10,7 @@
 </h2>
 
 <p>
-  <%= @course.description %>
+  <%= raw BlueCloth.new(@course.description).to_html %>
 </p>
 
 <p>
@@ -29,7 +29,8 @@
 <hr />
 
 <p>
-  <b>Learning Outcomes</b>
+  <b>Learning Outcomes.</b>
+  On successful completion of this module the learner should be able to:<br />
   <%= raw BlueCloth.new(@course.outcomes).to_html %>
 </p>
 
