@@ -52,7 +52,7 @@
   <% end %>
 </ul>
 
-<% if can? :update, @project %>
+<% if can? :show, @project.direction %>
   <h3>Assessment</h3>
   <%= render @project.direction %>
 <% end %>

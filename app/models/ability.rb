@@ -33,6 +33,8 @@ class Ability
     else
       can :read, [Academic, Student, Author]
     end
+
+    # manage projects
     if user.role? "Project Manager"
       can [:manage, :index], [Author, Project, Direction, Examination, Venue, Slot, Booking]
     elsif user.role? :supervisor
@@ -53,7 +55,17 @@ class Ability
       can :update, Examination do |examination|
         examination.open? and examination.academic == user.academic
       end
+
+#      can :read, Direction
+#      can :show, Examination
     end
+
+    # manage courses
+    if user.role? :supervisor
+      can [:read, :edit, :create], Course
+    end    
+
+    # support staff can read 
     if user.role? :support
       can :read, [Academic, Student, Author, Room]
     end
