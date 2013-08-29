@@ -18,6 +18,7 @@ PROGRAMMES = [
 STATUSES = [
   "Full time", 
   "Part time", 
+  "Visiting",
   "Incomplete", 
   "Completed", 
   "On leave",
