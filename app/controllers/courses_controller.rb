@@ -15,6 +15,7 @@ class CoursesController < ApplicationController
   def show
     respond_to do |format|
       format.html # show.html.erb
+      format.htm { render :html => @course, :formats => :html, :layout => false }
       format.json { render json: @course }
     end
   end
