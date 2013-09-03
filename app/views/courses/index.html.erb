@@ -1,10 +1,22 @@
 <h1>Modules</h1>
 
+
+<% @courses.group_by(&:discipline).each do |discipline, courses| %>
+<h2><%= discipline %></h2>
 <ul>
-<%= render @courses %>
+<% courses.each do |course| %>
+  <li>
+    <strong><%= link_to course.code, course %>: <%= course.title %></strong>
+    <%= course.description %>
+    <% if can? :destroy, course %>
+      [modified: <%= course.updated_at.to_s %>]
+    <% end %>
+  </li>
+<% end %>
 </ul>
 
 <br />
+<% end %>
 
 <% if can? :create, Course %>
 <%= link_to 'New Course', new_course_path %>

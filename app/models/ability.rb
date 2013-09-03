@@ -62,7 +62,9 @@ class Ability
 
     # manage courses
     if user.role? :supervisor
-      can [:read, :edit, :create], Course
+      can [:read, :edit, :update, :create], Course
+    else
+      can :read, Course
     end    
 
     # support staff can read 

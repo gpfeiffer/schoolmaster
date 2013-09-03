@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  attr_accessible :code, :content, :credits, :description, :examined, :lab_hours, :lecture_hours, :outcomes, :placement_hours, :resources, :self_study_hours, :taught, :title, :tutorial_hours
+  attr_accessible :code, :content, :credits, :description, :discipline, :examined, :lab_hours, :lecture_hours, :outcomes, :placement_hours, :resources, :self_study_hours, :taught, :title, :tutorial_hours
 
   default_scope :order => :code
 

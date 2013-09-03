@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  skip_before_filter :authenticate_user!, :only => [:index, :show]
   load_and_authorize_resource
 
   # GET /courses
