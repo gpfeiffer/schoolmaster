@@ -8,7 +8,7 @@
 <%= image_tag @student.photo_url, :align => :right, :size => "96x96", :alt => "[image]" %>
 
 <p>
-  <%= @student.programme %>
+  <%= @student.code %> - <%= @student.programme %>
   (<%= @student.status_or_blank %>)
 </p>
 

@@ -12,6 +12,8 @@ TITLES = [
 PROGRAMMES = [
   "MSc",
   "PhD", 
+  "PS1 Ph.D. (Science)",
+  "SPS1 Structured Ph.D. (Science)",
 ]
 
 # student status
