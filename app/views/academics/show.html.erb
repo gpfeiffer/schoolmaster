@@ -27,7 +27,8 @@
   <%= link_to nil, @academic.home_url %>
 </p>
 
-<% if @academic.directions.any? %>
+<%# temporarily disable project listings %>
+<% if false && @academic.directions.any? %>
   <h3>Project Supervision</h3>
   <ul>
     <% @academic.directions.each do |direction| %>
@@ -45,7 +46,8 @@
   </ul>
 <% end %>
 
-<% if @academic.examinations.any? %>
+<%# temporarily disable project listings %>
+<% if false && @academic.examinations.any? %>
   <h3>Project Examination</h3>
   <ul>
     <% @academic.examinations.each do |examination| %>
