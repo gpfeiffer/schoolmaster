@@ -3,6 +3,7 @@
     <ul><%= render Course.all %></ul>
 <% end %>
 
+<h3><%= @course.discipline %></h3>
 <h2>
   <%= @course.code %>:  
   <%= @course.title %>
@@ -25,6 +26,23 @@
   <%= @course.workload %> hours
   (<%= @course.workload_text %>).
 </p>
+
+<% if can? :destroy, @course %>
+<h3 class="edit-head">Lecturers</h3>
+<% if can? :update, @course %>
+  <div class="edit">
+    <%= link_to add_symbol, new_teaching_path(:course_id => @course) %>
+  </div>
+<% end %>
+<ul>
+<% @course.teachings.each do |teaching| %>
+<li>
+<%= link_to teaching.academic, teaching.academic %>: 
+<%= teaching.load %>.
+</li>
+<% end %>
+</ul>
+<% end %>
 
 <hr />
 

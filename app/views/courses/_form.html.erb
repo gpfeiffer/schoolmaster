@@ -34,6 +34,10 @@
 </table>
 </fieldset>
 <fieldset>
+  <legend><%= f.label :discipline %></legend>
+    <%= f.select :discipline, Course::DISCIPLINES, :include_blank => true %>
+</fieldset>
+<fieldset>
   <legend><%= f.label :description %></legend>
     <%= f.text_area :description, :size => "80x5" %>
 </fieldset>
