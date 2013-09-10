@@ -1,6 +1,7 @@
-<h1>Update Lecturer</h1>
+<h3>Update Lecturer</h3>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @teaching %> |
-<%= link_to 'Back', teachings_path %>
+<hr />
+<%= link_to 'Delete', @teaching, :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to 'Back', @teaching.course %>

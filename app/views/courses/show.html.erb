@@ -39,6 +39,11 @@
 <li>
 <%= link_to teaching.academic, teaching.academic %>: 
 <%= teaching.load %>.
+<% if can? :update, @course %>
+  <div class="edit">
+    <%= link_to edit_symbol, edit_teaching_path(teaching) %>
+  </div>
+<% end %>
 </li>
 <% end %>
 </ul>
