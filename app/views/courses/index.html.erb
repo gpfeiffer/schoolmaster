@@ -1,8 +1,11 @@
 <h1>Modules</h1>
 
+<% Course::DISCIPLINES.each do |x| %>
+  | <%= link_to x, :anchor => x %>
+<% end %> |
 
 <% @courses.group_by(&:discipline).each do |discipline, courses| %>
-<h2><%= discipline %></h2>
+<h2><%= content_tag(:a, discipline, :name => discipline) %></h2>
 <ul>
 <% courses.each do |course| %>
   <li>
