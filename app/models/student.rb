@@ -1,5 +1,5 @@
 class Student < ActiveRecord::Base
-  attr_accessible :completed_on, :email, :expected_on, :first, :funder, :home_url, :interests, :last, :photo_url, :programme, :registration, :room_id, :started_on, :status, :title, :viva_date, :work_phone
+  attr_accessible :code, :completed_on, :email, :expected_on, :first, :funder, :home_url, :interests, :last, :photo_url, :programme, :registration, :room_id, :started_on, :status, :title, :viva_date, :work_phone
 
   has_many :supervisions, :dependent => :destroy
   has_many :academics, :through => :supervisions
