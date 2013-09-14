@@ -13,6 +13,10 @@ class Student < ActiveRecord::Base
 
   default_scope :order => [:last, :first]
 
+  def supervisors  # main supervisor is first in list.
+    supervisions.sort_by { |x| { true => 0, false => 1 }[x.main] }.map(&:academic)
+  end
+
   def registration_or_blank
     if registration.blank?
       "... ID ..."
