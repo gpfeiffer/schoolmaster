@@ -2,7 +2,7 @@
 
 <h2 class="edit-head"><%= @students.count %> Current Students</h2>
 [<%= mail_to @students.map(&:email).join(','), "Mail all", :cc => "goetz.pfeiffer@nuigalway.ie" %>]
-[<%= mail_to @students.map(&:academics).inject(&:|).select { |x| ["Mathematics", "CRF"].include? x.school.name }.map(&:email).join(','), "Mail to all supervisors", :cc => "goetz.pfeiffer@nuigalway.ie" %>]
+[<%= mail_to @students.map(&:academics).inject(&:|).select { |x| ["Mathematics", "HRB Clinical Research Facility"].include? x.school.name }.map(&:email).join(','), "Mail to all supervisors", :cc => "goetz.pfeiffer@nuigalway.ie" %>]
 
 
 <% @students.group_by(&:programme).each do |programme, students| %>
