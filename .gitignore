@@ -17,7 +17,4 @@
 /tmp
 
 # ignore compiled assets
-/public/assets/application*.css
-/public/assets/application*.css.gz
-/public/assets/application*.js
-/public/assets/application*.js.gz
+/public/assets
