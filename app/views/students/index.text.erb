@@ -5,7 +5,7 @@
 
 <% @students.each do |student| %>
   <tr>
-    <td><%= link_to_unless student.home_url.blank? student, student.home_url %></td>
+    <td><%= link_to_unless student.home_url.blank?, student, student.home_url %></td>
     <td><%= mail_to student.email %></td>
     <td><%= student.room %></td>
     <td><%= student.work_phone %></td>
