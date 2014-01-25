@@ -55,6 +55,14 @@
       </tr>
       <tr>
 	<td>
+	  <%= f.label :area %>
+	</td>
+	<td>
+	  <%= f.select :area, AREAS, :include_blank => true %>
+	</td>
+      </tr>
+      <tr>
+	<td>
 	  <%= f.label :title, "Dissertation Title" %>
 	</td>
 	<td>

@@ -32,3 +32,11 @@ LOCATIONS = [
   "Riverside Terrapin",
 ]
 
+# research areas
+AREAS = [
+  "Mathematics",
+  "Applied Mathematics",
+  "Mathematics Education",
+  "Statistics",
+  "Bioinformatics",
+]

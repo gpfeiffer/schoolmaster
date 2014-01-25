@@ -1,5 +1,5 @@
 class Student < ActiveRecord::Base
-  attr_accessible :code, :completed_on, :email, :expected_on, :first, :funder, :home_url, :interests, :last, :photo_url, :programme, :registration, :room_id, :started_on, :status, :title, :viva_date, :work_phone
+  attr_accessible :area, :code, :completed_on, :email, :expected_on, :first, :funder, :home_url, :interests, :last, :photo_url, :programme, :registration, :room_id, :started_on, :status, :title, :viva_date, :work_phone
 
   has_many :supervisions, :dependent => :destroy
   has_many :academics, :through => :supervisions
@@ -10,6 +10,7 @@ class Student < ActiveRecord::Base
 
   validates :first, :last, :programme, :status, :presence=> true
   validates :status, :inclusion => STATUSES
+  validates :area, :inclusion => AREAS
 
   default_scope :order => [:last, :first]
 

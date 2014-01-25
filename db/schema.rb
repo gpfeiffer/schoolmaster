@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910173950) do
+ActiveRecord::Schema.define(:version => 20140125110943) do
 
   create_table "academics", :force => true do |t|
     t.string   "title"
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(:version => 20130910173950) do
     t.integer  "room_id"
     t.date     "viva_date"
     t.string   "code"
+    t.string   "area"
   end
 
   create_table "supervisions", :force => true do |t|
