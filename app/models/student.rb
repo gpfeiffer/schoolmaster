@@ -68,4 +68,29 @@ class Student < ActiveRecord::Base
     committee and committee.academic
   end
 
+  COLUMNS = %w{ Name Institute Degree Start Funding Area Interests }
+
+  def to_a
+      row = [ name, "NUIG", programme, started_on, funder, area, interests ]
+  end
+
+  def self.to_xls
+    date = Date.new(2009)
+    book = Spreadsheet::Workbook.new
+    sheet = book.create_worksheet :name => 'student_funds'
+    
+    sheet.row(0).concat COLUMNS
+    
+    format = Spreadsheet::Format.new :color => :blue, :weight => :bold
+    sheet.row(0).default_format = format
+    
+    Student.select { |s| s.started_on and s.started_on >= date }.each_with_index do |student, i|
+      sheet.row(i+1).concat student.to_a
+    end
+    
+    sio = StringIO.new
+    book.write(sio)
+    return sio.string
+  end
+
 end

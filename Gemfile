@@ -41,3 +41,6 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'cancan'
 gem 'bluecloth'
+
+gem 'spreadsheet'
+
