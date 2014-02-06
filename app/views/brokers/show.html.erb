@@ -18,4 +18,5 @@
 
 
 <%= link_to 'Edit', edit_broker_path(@broker) %> |
+<%= link_to 'Destroy', @broker, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', brokers_path %>

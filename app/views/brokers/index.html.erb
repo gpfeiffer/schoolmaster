@@ -4,18 +4,12 @@
   <tr>
     <th>Name</th>
     <th>Template</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @brokers.each do |broker| %>
   <tr>
-    <td><%= broker.name %></td>
+    <td><%= link_to broker.name, broker %></td>
     <td><%= broker.template %></td>
-    <td><%= link_to 'Show', broker %></td>
-    <td><%= link_to 'Edit', edit_broker_path(broker) %></td>
-    <td><%= link_to 'Destroy', broker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

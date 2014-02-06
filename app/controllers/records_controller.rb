@@ -68,7 +68,7 @@ class RecordsController < ApplicationController
     @record.destroy
 
     respond_to do |format|
-      format.html { redirect_to records_url }
+      format.html { redirect_to @record.academic, :notice =>  'Record was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

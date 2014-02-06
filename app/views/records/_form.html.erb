@@ -16,8 +16,12 @@
   <%= f.hidden_field :academic_id %>
 
   <div class="field">
-    <%= f.label :broker_id %><br />
-    <%= f.select :broker_id, Broker.all.map { |x| [x.name, x.id] }, :include_blank => true %>
+    <table>
+    <% Broker.all.each do |broker| %>
+      <tr><td align="right"><%= f.label :broker_id, broker.name %></td>
+      <td><%= f.radio_button :broker_id, broker.id %></td></tr>
+    <% end %>
+    </table>
   </div>
   <div class="field">
     <%= f.label :authorid %><br />
