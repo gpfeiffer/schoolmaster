@@ -32,4 +32,8 @@ class Author < ActiveRecord::Base
   def mailto
     "mailto:#{email}"
   end
+
+  def self.current
+    Project.current.map(&:author).uniq
+  end
 end

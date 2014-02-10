@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :author_id, :title, :penalty
+  attr_accessible :author_id, :penalty, :title, :year
 
   belongs_to :author
   has_one :direction, :dependent => :destroy
@@ -8,6 +8,8 @@ class Project < ActiveRecord::Base
   has_many :examiners, :through => :examinations, :source => :academic
 
   has_many :bookings
+
+  validate :year, :presence => true
 
   def supervisor_id
     supervisor.id if supervisor
@@ -22,7 +24,7 @@ class Project < ActiveRecord::Base
   end
 
   def short
-    "#{author.a_last}: #{supervisor.short}; #{examiners.map { |x| x.short }.to_sentence}"
+    "#{author.a_last}: #{supervisor.short}; #{examiners.map(&:short).to_sentence}"
   end
 
   # list all academics involved in assessing this project
@@ -65,4 +67,16 @@ class Project < ActiveRecord::Base
     direction.closed? and examinations.first.closed?
   end
 
+  def self.academic_year(date = Date.today)
+    date.year + (date.month > 8 ? 1 : 0)
+  end
+
+  def current?
+    year == academic_year
+  end
+
+  def self.current
+    year = academic_year
+    Project.where(:year => year)
+  end
 end

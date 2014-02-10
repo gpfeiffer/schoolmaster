@@ -19,6 +19,8 @@ class AcademicsController < ApplicationController
     @active_supervisions = @academic.active_supervisions
     @complete_supervisions = @academic.complete_supervisions
     @active_committees = @academic.active_committees 
+    @active_directions = @academic.active_directions
+    @active_examinations = @academic.active_examinations
 
     respond_to do |format|
       format.html # show.html.erb

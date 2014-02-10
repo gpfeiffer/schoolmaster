@@ -17,4 +17,9 @@ class Direction < ActiveRecord::Base
   def closed?
     not open
   end
+
+  def self.current
+    Project.current.map(&:direction).uniq
+  end
+
 end

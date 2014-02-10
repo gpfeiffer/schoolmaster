@@ -23,6 +23,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project.author = Author.find(params[:author_id])
+    @project.year = Project.academic_year
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }

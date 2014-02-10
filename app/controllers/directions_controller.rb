@@ -4,6 +4,7 @@ class DirectionsController < ApplicationController
   # GET /directions
   # GET /directions.json
   def index
+    @directions = Direction.current
     @programme = params[:programme]
     @directions_by_programme = @directions.group_by { |x| x.project.author.programme }
 

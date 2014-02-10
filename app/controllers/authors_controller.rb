@@ -4,6 +4,7 @@ class AuthorsController < ApplicationController
   # GET /authors
   # GET /authors.json
   def index
+    @authors = Author.current
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @authors }
@@ -13,7 +14,7 @@ class AuthorsController < ApplicationController
   # GET /authors/1
   # GET /authors/1.json
   def show
-    @authors = Author.all
+    @authors = Author.current
 
     respond_to do |format|
       format.html # show.html.erb
