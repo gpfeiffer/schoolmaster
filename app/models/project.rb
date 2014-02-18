@@ -6,9 +6,7 @@ class Project < ActiveRecord::Base
   has_one :supervisor, :through => :direction, :source => :academic
   has_many :examinations, :dependent => :destroy
   has_many :examiners, :through => :examinations, :source => :academic
-  has_one :booking, :dependent => :destroy
-
-  has_many :bookings
+  has_many :bookings, :dependent => :destroy
 
   validate :year, :presence => true
 
