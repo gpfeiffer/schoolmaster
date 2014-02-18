@@ -11,15 +11,6 @@
     </div>
   <% end %>
 
-<% content_for :side do %>
-<ul>
-<% Project.all.select { |x| x.bookings.count < 1 }.sort_by { |x| x.author.last_first }.each do |project| %>
-<li>
-<%= f.radio_button(:project_id, project.id) %><%= link_to project.short, project, title: project.title %>
-</li>
-<% end %>
-</ul>
-<% end %>
 
 <h1>New booking</h1>
 
@@ -46,6 +37,14 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<%= link_to 'Back', @booking.project %>
+
+<ul>
+<% Project.current.select { |x| x.bookings.count < 1 }.sort_by { |x| x.author.last_first }.each do |project| %>
+<li>
+<%= f.radio_button(:project_id, project.id) %><%= link_to project.short, project, title: project.title %>
+</li>
+<% end %>
+</ul>
 
 <% end %>
+<%= link_to 'Back', @booking.project %>
