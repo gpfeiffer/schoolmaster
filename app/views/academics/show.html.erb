@@ -27,11 +27,10 @@
   <%= link_to nil, @academic.home_url %>
 </p>
 
-<%# temporarily disable project listings %>
-<% if false && @academic.directions.any? %>
+<% if @active_directions.any? %>
   <h3>Project Supervision</h3>
   <ul>
-    <% @academic.directions.each do |direction| %>
+    <% @active_directions.each do |direction| %>
       <% author = direction.project.author %>
       <li>
 	<% if current_user == @academic.user and direction.open? %>
@@ -41,16 +40,16 @@
         <% else %>
           <%= link_to_if can?(:show, direction), author, direction %> (<%= author.programme %>)
         <% end %>
+	[<%= direction.project.bookings.first %>]
       </li>
     <% end %>
   </ul>
 <% end %>
 
-<%# temporarily disable project listings %>
-<% if false && @academic.examinations.any? %>
+<% if  @active_examinations.any? %>
   <h3>Project Examination</h3>
   <ul>
-    <% @academic.examinations.each do |examination| %>
+    <% @active_examinations.each do |examination| %>
       <% author = examination.project.author %>
       <li>
 	<% if current_user == @academic.user and examination.open? %>
