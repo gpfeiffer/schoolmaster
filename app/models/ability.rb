@@ -31,7 +31,7 @@ class Ability
         supervision.student.academics.include? user.academic
       end
     else
-      can :read, [Academic, Student, Author]
+      can :read, [Academic, Student, Author, Venue]
     end
 
     # manage projects
