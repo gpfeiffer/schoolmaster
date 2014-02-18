@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     supervisor = Academic.find(params[:supervisor_id])
-    @project.direction = Direction.new(:project_id => @project.id, :academic_id => supervisor.id)
+    @project.direction = Direction.new(:project_id => @project.id, :academic_id => supervisor.id, :open => true)
 
     respond_to do |format|
       if @project.save
