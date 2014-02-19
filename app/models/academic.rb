@@ -44,7 +44,7 @@ class Academic < ActiveRecord::Base
   end
 
   def email
-    "#{work_mail}@nuigalway.ie"
+    work_mail =~ /@/ ? work_mail : "#{work_mail}@nuigalway.ie"
   end
 
   def mailto
