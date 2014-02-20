@@ -109,6 +109,11 @@
 
 <% if @academic.records.any? %>
 <h3 class="edit-head">Records</h3>
+<% if can? :destroy, @academic %>
+  <div class="edit">
+    <%= link_to '[+]', new_record_path(:academic_id => @academic) %>
+  </div>
+<% end %>
 <ul>
 <% @academic.records.each do |record| %>
 <li><%= link_to record.broker.name, record.broker.template % record.authorid, :target => "_blank" %></li>
@@ -121,9 +126,6 @@
 
 <% if can? :update, @academic %>
   <%= link_to 'Edit', edit_academic_path(@academic) %> |
-<% end %>
-<% if can? :destroy, @academic %>
-  <%= link_to 'Add Record', new_record_path(:academic_id => @academic) %> |
 <% end %>
 <% if can? :destroy, @academic %>
   <%= link_to 'Delete', @academic, :confirm => 'Are you sure?', :method => :delete %> |
