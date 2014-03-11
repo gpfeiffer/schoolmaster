@@ -1,4 +1,7 @@
 Schoolmaster::Application.routes.draw do
+  resources :enrolments
+
+
   resources :teachings
   resources :courses
   resources :bookings

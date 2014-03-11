@@ -1,0 +1,29 @@
+<h1>Listing enrolments</h1>
+
+<table>
+  <tr>
+    <th>First</th>
+    <th>Last</th>
+    <th>Number</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @enrolments.each do |enrolment| %>
+  <tr>
+    <td><%= enrolment.first %></td>
+    <td><%= enrolment.last %></td>
+    <td><%= enrolment.number %></td>
+    <td><%= enrolment.user_id %></td>
+    <td><%= link_to 'Show', enrolment %></td>
+    <td><%= link_to 'Edit', edit_enrolment_path(enrolment) %></td>
+    <td><%= link_to 'Destroy', enrolment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Enrolment', new_enrolment_path %>
