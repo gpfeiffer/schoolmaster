@@ -3,7 +3,9 @@ class Enrolment < ActiveRecord::Base
 
   belongs_to :user
 
-  validate :first, :last, :number, :presence => true
+  has_many :proposals
+
+  validates :first, :last, :number, :presence => true
 
   def name_number
     "#{first} #{last} (#{number})"

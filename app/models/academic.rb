@@ -13,6 +13,7 @@ class Academic < ActiveRecord::Base
 
   has_many :directions
   has_many :examinations
+  has_many :proposals
 
   has_many :teachings, :dependent => :destroy
   has_many :courses, :through => :teachings

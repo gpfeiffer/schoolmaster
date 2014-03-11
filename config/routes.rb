@@ -1,4 +1,7 @@
 Schoolmaster::Application.routes.draw do
+  resources :proposals
+
+
   resources :enrolments
 
 

@@ -2,7 +2,17 @@
 
 <h2><%= @enrolment.name_number %></h2>
 
+<ul>
+<% @enrolment.proposals.each do |proposal| %>
+<li>
+<%= proposal.title_and_supervisor %>
+</li>
+<% end %>
+</ul>
 
+<p>
+<%= link_to 'New Proposal', new_proposal_path(:enrolment_id => @enrolment) %>
+</p>
 
 <%= link_to 'Edit', edit_enrolment_path(@enrolment) %> |
 <%= link_to 'Back', enrolments_path %>
