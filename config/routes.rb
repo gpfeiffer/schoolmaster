@@ -1,37 +1,18 @@
 Schoolmaster::Application.routes.draw do
   resources :teachings
-
-
   resources :courses
-
-
   resources :bookings
-
-
   resources :slots
-
-
   resources :venues
-
-
   resources :examinations
-
-
   resources :directions
-
-
   resources :projects
-
-
   resources :authors
-
   resources :schools
-
   resources :assignments
-
   resources :roles
 
-  devise_for :users, :skip => [:registrations]
+  devise_for :users
   as :user do
     get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
     put 'users' => 'devise/registrations#update', :as => 'user_registration'
