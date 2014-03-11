@@ -18,3 +18,5 @@
 
 # ignore compiled assets
 /public/assets
+
+*~
