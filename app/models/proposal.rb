@@ -9,4 +9,8 @@ class Proposal < ActiveRecord::Base
   def title_and_supervisor
     "#{title}: #{academic}"
   end
+
+  def student_and_title
+    "#{enrolment.name_number}: #{title}"
+  end
 end

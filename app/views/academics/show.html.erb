@@ -27,6 +27,17 @@
   <%= link_to nil, @academic.home_url %>
 </p>
 
+<h3>Project Proposals</h3>
+<ul>
+   <% @academic.proposals.each do |proposal| %>
+    <li>
+      <%= proposal.student_and_title %>
+      []
+      [<%= link_to 'Ignore', proposal, method: :delete, data: { confirm: 'Are you sure?' } %>]
+    </li>
+    <% end %>
+</ul>
+
 <% if @active_directions.any? %>
   <h3>Project Supervision</h3>
   <ul>
