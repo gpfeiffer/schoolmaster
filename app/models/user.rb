@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 
   has_one :enrolment
 
+  def enroled?
+    enrolment.present?
+  end
+
   def role? symbol
     roles.map(&:name).include? symbol.to_s.camelcase
   end

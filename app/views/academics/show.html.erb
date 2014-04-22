@@ -32,8 +32,10 @@
    <% @academic.proposals.each do |proposal| %>
     <li>
       <%= proposal.student_and_title %>
-      []
+      <% if not proposal.accepted %>
+      [<%= link_to 'Accept', accept_proposal_path(proposal), method: :put, data: { confirm: 'Are you sure?' }  %>]
       [<%= link_to 'Ignore', proposal, method: :delete, data: { confirm: 'Are you sure?' } %>]
+      <% end %>
     </li>
     <% end %>
 </ul>

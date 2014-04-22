@@ -3,7 +3,7 @@ class Enrolment < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :proposals
+  has_many :proposals, :dependent => :destroy
 
   validates :first, :last, :number, :presence => true
 

@@ -30,13 +30,17 @@ class Ability
       can :destroy, Supervision do |supervision|
         supervision.student.academics.include? user.academic
       end
+
+      can [:destroy, :accept], Proposal do |proposal| 
+        proposal.academic == user.academic
+      end
     else
       can :read, [Academic, Student, Author, Venue]
     end
 
     # manage projects
     if user.role? "Project Manager"
-      can [:manage, :index], [Author, Project, Direction, Examination, Venue, Slot, Booking]
+      can [:manage, :index], [Author, Project, Direction, Examination, Venue, Slot, Booking, Enrolment, Proposal]
     elsif user.role? :supervisor
       can :read, [Author, Project, Venue]
 

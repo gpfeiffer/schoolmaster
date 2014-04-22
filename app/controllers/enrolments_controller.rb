@@ -1,4 +1,7 @@
 class EnrolmentsController < ApplicationController
+  load_and_authorize_resource
+  skip_authorize_resource :only => [:new, :create, :show]
+
   # GET /enrolments
   # GET /enrolments.json
   def index

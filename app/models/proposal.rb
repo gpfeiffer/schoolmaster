@@ -1,5 +1,5 @@
 class Proposal < ActiveRecord::Base
-  attr_accessible :academic_id, :enrolment_id, :title
+  attr_accessible :academic_id, :accepted, :enrolment_id, :title
 
   belongs_to :enrolment
   belongs_to :academic
@@ -12,5 +12,9 @@ class Proposal < ActiveRecord::Base
 
   def student_and_title
     "#{enrolment.name_number}: #{title}"
+  end
+
+  def status
+    accepted ? "accepted" : "pending"
   end
 end
