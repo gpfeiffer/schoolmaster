@@ -14,7 +14,9 @@
 
 <h1>New booking</h1>
 
+<% if @booking.project %>
 <h3><%= @booking.project.short %></h3>
+<% end %>
 
 <table class="bookings">
 <tr class="booking">
@@ -47,4 +49,7 @@
 </ul>
 
 <% end %>
+
+<% if @booking.project %>
 <%= link_to 'Back', @booking.project %>
+<% end %>
