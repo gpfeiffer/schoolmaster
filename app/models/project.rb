@@ -47,11 +47,11 @@ class Project < ActiveRecord::Base
   end
 
   def presentation_mark
-    WEIGHTS[0] * direction.presentation_mark + WEIGHTS[1] * examinations.first.presentation_mark if direction.presentation_mark and examinations.first.presentation_mark
+    WEIGHTS[0] * direction.presentation_mark + WEIGHTS[1] * examinations.first.presentation_mark if direction.presentation_mark and examinations.first and examinations.first.presentation_mark
   end
 
   def report_mark
-    WEIGHTS[0] * direction.report_mark + WEIGHTS[1] * examinations.first.report_mark if direction.report_mark and examinations.first.report_mark
+    WEIGHTS[0] * direction.report_mark + WEIGHTS[1] * examinations.first.report_mark if direction.report_mark and examinations.first and examinations.first.report_mark
   end
   
   def total_mark
@@ -63,7 +63,7 @@ class Project < ActiveRecord::Base
   end
 
   def marked?
-    direction.closed? and examinations.first.closed?
+    direction.closed? and examinations.first and examinations.first.closed?
   end
 
   def self.academic_year(date = Date.today)
