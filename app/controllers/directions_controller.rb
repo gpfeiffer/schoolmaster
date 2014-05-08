@@ -11,6 +11,7 @@ class DirectionsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @directions }
+      format.xls { send_data Direction.to_xls, content_type: 'application/vnd.ms-excel' }
     end
   end
 
