@@ -1,14 +1,11 @@
-<h1>Listing atoms</h1>
+<h1>Atoms</h1>
 
 <table>
   <tr>
     <th>Code</th>
     <th>Title</th>
-    <th>Description</th>
     <th>Hours</th>
-    <th>Weeks</th>
     <th>Semester</th>
-    <th>Times</th>
     <th>Discipline</th>
     <th></th>
     <th></th>
@@ -17,16 +14,11 @@
 
 <% @atoms.each do |atom| %>
   <tr>
-    <td><%= atom.code %></td>
+    <td><%= link_to atom.code, atom %></td>
     <td><%= atom.title %></td>
-    <td><%= atom.description %></td>
     <td><%= atom.hours %></td>
-    <td><%= atom.weeks %></td>
     <td><%= atom.semester %></td>
-    <td><%= atom.times %></td>
     <td><%= atom.discipline %></td>
-    <td><%= link_to 'Show', atom %></td>
-    <td><%= link_to 'Edit', edit_atom_path(atom) %></td>
     <td><%= link_to 'Destroy', atom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

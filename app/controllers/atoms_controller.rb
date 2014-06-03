@@ -25,6 +25,8 @@ class AtomsController < ApplicationController
   # GET /atoms/new.json
   def new
     @atom = Atom.new
+    @atom.hours = 24
+    @atom.weeks = '1-12'
 
     respond_to do |format|
       format.html # new.html.erb

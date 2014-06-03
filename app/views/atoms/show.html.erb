@@ -1,33 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Code:</b>
-  <%= @atom.code %>
-</p>
-
-<p>
-  <b>Title:</b>
+<h3><%= @atom.discipline %></h3>
+<h2>
+  <%= @atom.code %>:
   <%= @atom.title %>
+</h2>
+
+<p>
+  <%= raw BlueCloth.new(@atom.description).to_html %>
 </p>
 
 <p>
-  <b>Description:</b>
-  <%= @atom.description %>
-</p>
-
-<p>
-  <b>Hours:</b>
-  <%= @atom.hours %>
-</p>
-
-<p>
-  <b>Weeks:</b>
-  <%= @atom.weeks %>
-</p>
-
-<p>
-  <b>Semester:</b>
-  <%= @atom.semester %>
+  <b>Load:</b>
+  <%= @atom.hours %> hours in weeks <%= @atom.weeks %> of semester
+<%= @atom.semester %>.
 </p>
 
 <p>
@@ -35,11 +19,6 @@
   <%= @atom.times %>
 </p>
 
-<p>
-  <b>Discipline:</b>
-  <%= @atom.discipline %>
-</p>
-
-
 <%= link_to 'Edit', edit_atom_path(@atom) %> |
+<%= link_to 'Destroy', @atom, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', atoms_path %>

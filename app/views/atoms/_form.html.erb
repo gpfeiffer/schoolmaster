@@ -41,7 +41,7 @@
   </div>
   <div class="field">
     <%= f.label :discipline %><br />
-    <%= f.text_field :discipline %>
+    <%= f.select :discipline, Atom::DISCIPLINES, :include_blank => true %>
   </div>
   <div class="actions">
     <%= f.submit %>
