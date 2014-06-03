@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140320143000) do
+ActiveRecord::Schema.define(:version => 20140603144533) do
 
   create_table "academics", :force => true do |t|
     t.string   "title"
@@ -33,6 +33,19 @@ ActiveRecord::Schema.define(:version => 20140320143000) do
     t.integer  "role_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "atoms", :force => true do |t|
+    t.string   "code"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "hours"
+    t.string   "weeks"
+    t.integer  "semester"
+    t.string   "times"
+    t.string   "discipline"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "authors", :force => true do |t|

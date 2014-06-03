@@ -1,0 +1,49 @@
+<%= form_for(@atom) do |f| %>
+  <% if @atom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@atom.errors.count, "error") %> prohibited this atom from being saved:</h2>
+
+      <ul>
+      <% @atom.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :hours %><br />
+    <%= f.number_field :hours %>
+  </div>
+  <div class="field">
+    <%= f.label :weeks %><br />
+    <%= f.text_field :weeks %>
+  </div>
+  <div class="field">
+    <%= f.label :semester %><br />
+    <%= f.number_field :semester %>
+  </div>
+  <div class="field">
+    <%= f.label :times %><br />
+    <%= f.text_field :times %>
+  </div>
+  <div class="field">
+    <%= f.label :discipline %><br />
+    <%= f.text_field :discipline %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

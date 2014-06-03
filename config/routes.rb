@@ -1,4 +1,7 @@
 Schoolmaster::Application.routes.draw do
+  resources :atoms
+
+
   resources :proposals
   put 'proposals/:id/accept' => 'proposals#accept', :as => :accept_proposal
 

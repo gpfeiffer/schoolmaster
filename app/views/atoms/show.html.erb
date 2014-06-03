@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Code:</b>
+  <%= @atom.code %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @atom.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @atom.description %>
+</p>
+
+<p>
+  <b>Hours:</b>
+  <%= @atom.hours %>
+</p>
+
+<p>
+  <b>Weeks:</b>
+  <%= @atom.weeks %>
+</p>
+
+<p>
+  <b>Semester:</b>
+  <%= @atom.semester %>
+</p>
+
+<p>
+  <b>Times:</b>
+  <%= @atom.times %>
+</p>
+
+<p>
+  <b>Discipline:</b>
+  <%= @atom.discipline %>
+</p>
+
+
+<%= link_to 'Edit', edit_atom_path(@atom) %> |
+<%= link_to 'Back', atoms_path %>
