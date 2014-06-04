@@ -19,6 +19,30 @@
   <%= @atom.times %>
 </p>
 
+
+<table class="times">
+  <% table = @atom.times_to_table %>
+<tr>
+  <th></th>
+  <% table[:cols].each do |col| %>
+  <th class="times"> <%= col %> </th>
+  <% end %>
+</tr>
+<% table[:rows].each do |row| %>
+<tr>
+  <th class="times"><%= row %>:00</th>
+  <% table[:cols].each do |col| %>
+  <% venue = table[:table][row][col] %>
+<% if venue != '' %>
+  <td class="times" bgcolor="lightgreen"><%= table[:table][row][col] %></td>
+<% else %>
+  <td class="times"></td>
+<% end %>
+  <% end %>
+</tr>
+<% end %>
+</table>
+
 <%= link_to 'Edit', edit_atom_path(@atom) %> |
 <%= link_to 'Destroy', @atom, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', atoms_path %>

@@ -11,38 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :hours %><br />
-    <%= f.number_field :hours %>
-  </div>
-  <div class="field">
-    <%= f.label :weeks %><br />
-    <%= f.text_field :weeks %>
-  </div>
-  <div class="field">
-    <%= f.label :semester %><br />
-    <%= f.number_field :semester %>
-  </div>
-  <div class="field">
-    <%= f.label :times %><br />
-    <%= f.text_field :times %>
-  </div>
-  <div class="field">
-    <%= f.label :discipline %><br />
+<fieldset>
+<table width="100%">
+<tr>
+<td><%= f.label :code %></td>
+<td><%= f.text_field :code, :size => 6 %></td>
+<td><%= f.label :title %></td>
+<td><%= f.text_field :title, :size => 32 %></td>
+<td><%= f.label :hours %></td>
+<td><%= f.number_field :hours, :size => 4 %></td>
+</tr>
+</table>
+</fieldset>
+<fieldset>
+  <legend><%= f.label :discipline %></legend>
     <%= f.select :discipline, Atom::DISCIPLINES, :include_blank => true %>
-  </div>
+</fieldset>
+<fieldset>
+  <legend><%= f.label :description %></legend>
+    <%= f.text_area :description, :size => "80x5" %>
+</fieldset>
+<fieldset>
+  <legend>Time Tabling</legend>
+  <table width="100%">
+    <tr>
+      <td><%= f.label :weeks %></td>
+      <td><%= f.text_field :weeks, :size => 10 %></td>
+      <td><%= f.label :semester %></td>
+      <td><%= f.number_field :semester, :size => 2 %></td>
+      <td><%= f.label :times %></td>
+      <td><%= f.text_field :times, :size => 40 %></td>
+    </tr>
+  </table>
+</fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>

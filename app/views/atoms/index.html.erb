@@ -1,29 +1,34 @@
-<h1>Atoms</h1>
+<h3>Atoms</h3>
+
+<% @atoms.group_by(&:discipline).each do |discipline, atoms| %>
+
+<h1><%= discipline.titleize %></h1>
+
+<table class="year">
+<% atoms.group_by(&:year).sort.each do |year, atoms_by_year| %>
+
+<tr>
+<% atoms_by_year.group_by(&:semester).sort.each do |semester, atoms_by_semester| %>
+
+<td class="year">
+   <h4>Year <%= year %>, Semester <%= semester %></h4>
 
 <table>
-  <tr>
-    <th>Code</th>
-    <th>Title</th>
-    <th>Hours</th>
-    <th>Semester</th>
-    <th>Discipline</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @atoms.each do |atom| %>
+<% atoms_by_semester.each do |atom| %>
   <tr>
     <td><%= link_to atom.code, atom %></td>
+    <td>(<%= atom.hours %> hrs)</td>
     <td><%= atom.title %></td>
-    <td><%= atom.hours %></td>
-    <td><%= atom.semester %></td>
-    <td><%= atom.discipline %></td>
-    <td><%= link_to 'Destroy', atom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
+</td>
 
+<% end %>
+</tr>
+<% end %>
+</table>
 <br />
+<% end %>
 
 <%= link_to 'New Atom', new_atom_path %>

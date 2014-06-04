@@ -1,10 +1,35 @@
 class Atom < ActiveRecord::Base
   attr_accessible :code, :description, :discipline, :hours, :semester, :times, :title, :weeks
 
+  default_scope :order => :code
+
   DISCIPLINES = %w{ Mathematics Applied_Mathematics Statistics Bioinformatics }
 
   validates :code, :title, :semester, :hours, :presence => true
   validates :discipline, :inclusion => DISCIPLINES
+
+  def year
+    code[2].to_i
+  end
+
+  def times_to_table
+    rows = %w{ 09 10 11 12 13 14 15 16 17 }
+    cols = %w{ Mon Tue Wed Thu Fri }
+    table = {}
+    rows.each do |row|
+      table[row] = {}
+      cols.each do |col|
+        table[row][col] = ''
+      end
+    end
+
+    times.split(';').each do |time|
+      day, hr = time[0,3], time[3,2]
+      table[hr][day] = '...'
+    end
+
+    return { :rows => rows, :cols => cols, :table => table }
+  end
 
 end
 

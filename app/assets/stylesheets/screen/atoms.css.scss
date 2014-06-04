@@ -1,0 +1,39 @@
+// Place all the styles related to the atoms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+table.year {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid grey;
+}
+
+td.year {
+    width: 50%;
+    vertical-align: top;
+    border: 2px solid grey;
+    background-color: #f5f5ff;
+}
+
+table.times {
+    border-collapse: collapse;
+    border-bottom: 2px solid grey;
+    border-right: 2px solid grey;
+}
+
+td.times {
+    width: 60px;
+    height: 20px;
+    border-left: 2px solid grey;
+    border-top: 2px solid grey;
+}
+
+th.times {
+    background-color: yellow;
+    width: 60px;
+    height: 20px;
+    border-left: 2px solid grey;
+    border-top: 2px solid grey;
+}
+
