@@ -2,7 +2,7 @@
 
 <% @atoms.group_by(&:discipline).each do |discipline, atoms| %>
 
-<h1><%= discipline.titleize %></h1>
+<h1><%= discipline.titleize %> (<%= atoms.map(&:hours).sum %> hrs)</h1>
 
 <table class="year">
 <% atoms.group_by(&:year).sort.each do |year, atoms_by_year| %>
@@ -11,7 +11,7 @@
 <% atoms_by_year.group_by(&:semester).sort.each do |semester, atoms_by_semester| %>
 
 <td class="year">
-   <h4>Year <%= year %>, Semester <%= semester %></h4>
+   <h4>Year <%= year %>, Semester <%= semester %> (<%= atoms_by_semester.map(&:hours).sum %> hrs)</h4>
 
 <table>
 <% atoms_by_semester.each do |atom| %>
