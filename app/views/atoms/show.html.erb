@@ -43,6 +43,29 @@
 <% end %>
 </table>
 
+<% if can? :destroy, @atom %>
+<h3 class="edit-head">Lecturers</h3>
+<% if can? :update, @atom %>
+  <div class="edit">
+    <%= link_to add_symbol, new_load_path(:atom_id => @atom) %>
+  </div>
+<% end %>
+<ul>
+<% @atom.loads.each do |load| %>
+<li>
+<%= load.year %>:
+<%= link_to load.academic, load.academic %>.
+<% if can? :update, @atom %>
+  <div class="edit">
+    <%= link_to edit_symbol, edit_load_path(load) %>
+  </div>
+<% end %>
+</li>
+<% end %>
+</ul>
+<% end %>
+
+<hr />
 <%= link_to 'Edit', edit_atom_path(@atom) %> |
 <%= link_to 'Destroy', @atom, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', atoms_path %>

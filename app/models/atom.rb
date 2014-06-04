@@ -8,6 +8,13 @@ class Atom < ActiveRecord::Base
   validates :code, :title, :semester, :hours, :presence => true
   validates :discipline, :inclusion => DISCIPLINES
 
+  has_many :loads, :dependent => :destroy
+  has_many :academics, :through => :loads
+
+  def to_s
+    "#{code} (#{title})"
+  end
+
   def year
     code[2].to_i
   end

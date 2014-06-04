@@ -1,0 +1,27 @@
+<h1>Listing loads</h1>
+
+<table>
+  <tr>
+    <th>Academic</th>
+    <th>Atom</th>
+    <th>Year</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @loads.each do |load| %>
+  <tr>
+    <td><%= load.academic_id %></td>
+    <td><%= load.atom_id %></td>
+    <td><%= load.year %></td>
+    <td><%= link_to 'Show', load %></td>
+    <td><%= link_to 'Edit', edit_load_path(load) %></td>
+    <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Load', new_load_path %>

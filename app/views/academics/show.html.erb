@@ -119,6 +119,15 @@
 </li>
 <% end %>
 </ul>
+<h3 class="edit-head">Lecture Load</h3>
+<ul>
+<% @academic.loads.each do |load| %>
+<li>
+<%= link_to load.atom, load.atom %>:
+<%= load.year %>.
+</li>
+<% end %>
+</ul>
 
 <% if @academic.records.any? %>
 <h3 class="edit-head">Records</h3>
