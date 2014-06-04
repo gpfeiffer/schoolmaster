@@ -5,7 +5,8 @@ class Atom < ActiveRecord::Base
 
   DISCIPLINES = %w{ Mathematics Applied_Mathematics Statistics Bioinformatics }
 
-  validates :code, :title, :semester, :hours, :presence => true
+  validates :code, :title, :semester, :hours, :discipline, :presence => true
+  validates :code, :uniqueness => true
   validates :discipline, :inclusion => DISCIPLINES
 
   has_many :loads, :dependent => :destroy
@@ -19,6 +20,7 @@ class Atom < ActiveRecord::Base
     code[2].to_i
   end
 
+  # FIXME: is this really a helper method?
   def times_to_table
     rows = %w{ 09 10 11 12 13 14 15 16 17 }
     cols = %w{ Mon Tue Wed Thu Fri }
