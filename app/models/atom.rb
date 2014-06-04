@@ -31,8 +31,9 @@ class Atom < ActiveRecord::Base
     end
 
     times.split(';').each do |time|
-      day, hr = time[0,3], time[3,2]
-      table[hr][day] = '...'
+      slot, loc = time.split(":")
+      day, hr = slot[0,3], slot[3,2]
+      table[hr][day] = loc || '...'
     end
 
     return { :rows => rows, :cols => cols, :table => table }
