@@ -20,26 +20,5 @@ class Atom < ActiveRecord::Base
     code[2].to_i
   end
 
-  # FIXME: is this really a helper method?
-  def times_to_table
-    rows = %w{ 09 10 11 12 13 14 15 16 17 }
-    cols = %w{ Mon Tue Wed Thu Fri }
-    table = {}
-    rows.each do |row|
-      table[row] = {}
-      cols.each do |col|
-        table[row][col] = ''
-      end
-    end
-
-    times.split(';').each do |time|
-      slot, loc = time.split(":")
-      day, hr = slot[0,3], slot[3,2]
-      table[hr][day] = loc || '...'
-    end
-
-    return { :rows => rows, :cols => cols, :table => table }
-  end
-
 end
 

@@ -1,3 +1,9 @@
+<% content_for :side do %>
+  <h3>Atoms</h3>
+    <ul><%= render Atom.all %></ul>
+<% end %>
+
+
 <h3><%= @atom.discipline.titleize %></h3>
 <h2>
   <%= @atom.code %>:
@@ -19,29 +25,7 @@
   <%= @atom.times %>
 </p>
 
-
-<table class="times">
-  <% table = @atom.times_to_table %>
-<tr>
-  <th></th>
-  <% table[:cols].each do |col| %>
-  <th class="times"> <%= col %> </th>
-  <% end %>
-</tr>
-<% table[:rows].each do |row| %>
-<tr>
-  <th class="times"><%= row %>:00</th>
-  <% table[:cols].each do |col| %>
-  <% venue = table[:table][row][col] %>
-<% if venue != '' %>
-  <td class="times" bgcolor="lightgreen"><%= table[:table][row][col] %></td>
-<% else %>
-  <td class="times"></td>
-<% end %>
-  <% end %>
-</tr>
-<% end %>
-</table>
+<%= times_table_for(@atom.times) %>
 
 <% if can? :destroy, @atom %>
 <h3 class="edit-head">Lecturers</h3>
