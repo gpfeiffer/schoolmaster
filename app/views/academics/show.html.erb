@@ -27,6 +27,13 @@
   <%= link_to nil, @academic.home_url %>
 </p>
 
+<% if can? :destroy, @academic %>
+<% @academic.loads.group_by(&:semester).sort.each do |semester, loads| %>
+<b>Semester <%= semester %></b>
+<%= times_table_for(loads.map(&:times_module).join(";")) %>
+<% end %>
+<% end %>
+
 <h3>Project Proposals</h3>
 <ul>
    <% @academic.proposals.each do |proposal| %>

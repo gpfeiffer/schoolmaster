@@ -3,4 +3,10 @@ class Load < ActiveRecord::Base
 
   belongs_to :academic
   belongs_to :atom
+
+  delegate :semester, :to => :atom
+
+  def times_module
+    times.gsub(/(?<=:)[^;]*/, atom.code)
+  end
 end

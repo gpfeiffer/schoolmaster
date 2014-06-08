@@ -7,12 +7,15 @@ module LoadsHelper
     table = {}
     rows .each do |row|
       table[row] = {}
+      cols.each do |col|
+        table[row][col] = ""
+      end
     end
 
     times.split(';').each do |time|
       slot, loc = time.split(":")
       day, hr = slot[0,3], slot[3,2]
-      table[hr][day] = loc || '...'
+      table[hr][day] += loc || '...'
     end
 
     content_tag(:table, :class => "times") do
@@ -26,7 +29,7 @@ module LoadsHelper
         content_tag(:tr) do
           content_tag(:th, row + ":00", :class => "times") +
           cols.map do |col|
-            if table[row][col]
+            if table[row][col] != ""
               content_tag(:td, table[row][col], :class => "times", :bgcolor => "lightgreen")
             else
               content_tag(:td, '', :class => "times")
