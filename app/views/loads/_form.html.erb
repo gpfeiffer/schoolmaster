@@ -15,14 +15,25 @@
 
   <%= f.hidden_field :atom_id %>
 
-  <div class="field">
-    <%= f.label :academic_id %><br />
-    <%= f.select :academic_id, Academic.all.map { |x| [x, x.id] }, :include_blank => true %>
-  </div>
-  <div class="field">
-    <%= f.label :year %><br />
-    <%= f.number_field :year %>
-  </div>
+<fieldset>
+  <legend>Lecturer</legend>
+  <table width="100%">
+    <tr>
+      <td><%= f.select :academic_id, Academic.all.map { |x| [x, x.id] }, :include_blank => true %></td>
+</tr>
+</table>
+</fieldset>
+<fieldset>
+  <legend>Time Tabling</legend>
+  <table width="100%">
+    <tr>
+      <td><%= f.label :year %></td>
+      <td><%= f.number_field :year %></td>
+      <td><%= f.label :times %></td>
+      <td><%= f.text_field :times, :size => 40 %></td>
+    </tr>
+  </table>
+</fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>
