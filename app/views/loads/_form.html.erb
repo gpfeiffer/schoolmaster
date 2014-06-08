@@ -16,10 +16,13 @@
   <%= f.hidden_field :atom_id %>
 
 <fieldset>
-  <legend>Lecturer</legend>
+  <legend>Teaching Load</legend>
   <table width="100%">
     <tr>
+      <td><%= f.label :academic_id, 'Lecturer' %></td>
       <td><%= f.select :academic_id, Academic.all.map { |x| [x, x.id] }, :include_blank => true %></td>
+      <td><%= f.label :hours %></td>
+      <td><%= f.number_field :hours %></td>
 </tr>
 </table>
 </fieldset>
@@ -28,13 +31,21 @@
   <table width="100%">
     <tr>
       <td><%= f.label :year %></td>
-      <td><%= f.number_field :year %></td>
+      <td><%= f.number_field :year, :size => 4 %></td>
       <td><%= f.label :weeks %></td>
       <td><%= f.text_field :weeks, :size => 10 %></td>
       <td><%= f.label :times %></td>
       <td><%= f.text_field :times, :size => 40 %></td>
     </tr>
   </table>
+</fieldset>
+<fieldset>
+  <legend>Comment</legend>
+  <table width="100%">
+    <tr>
+      <td><%= f.text_area :comment, :rows => 12, :cols => 80 %></td>
+</tr>
+</table>
 </fieldset>
   <div class="actions">
     <%= f.submit %>

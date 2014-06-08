@@ -7,11 +7,12 @@
 </p>
 
 <p>
-  <b>Weeks:</b>
-  <%= @load.weeks %>
+  <b>Load:</b> <%= @load.hours %> hours in weeks <%= @load.weeks %> of
+semester <%= @load.semester %>.
 </p>
 
 <%= times_table_for(@load.times) %>
 
 <%= link_to 'Edit', edit_load_path(@load) %> |
+<%= link_to 'Delete', @load, :confirm => 'Are you sure?', :method => :delete %> |
 <%= link_to 'Back', loads_path %>
