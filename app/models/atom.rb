@@ -1,5 +1,5 @@
 class Atom < ActiveRecord::Base
-  attr_accessible :code, :description, :discipline, :hours, :semester, :times, :title, :weeks
+  attr_accessible :code, :description, :discipline, :hours, :semester, :title
 
   default_scope :order => :code
 
@@ -13,7 +13,7 @@ class Atom < ActiveRecord::Base
   has_many :academics, :through => :loads
 
   def to_s
-    "#{code} (#{title})"
+    "#{code}: #{title}"
   end
 
   def year

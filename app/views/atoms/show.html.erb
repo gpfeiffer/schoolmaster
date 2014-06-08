@@ -5,10 +5,7 @@
 
 
 <h3><%= @atom.discipline.titleize %></h3>
-<h2>
-  <%= @atom.code %>:
-  <%= @atom.title %>
-</h2>
+<h1><%= @atom %></h1>
 
 <p>
   <%= raw BlueCloth.new(@atom.description).to_html %>
@@ -16,16 +13,9 @@
 
 <p>
   <b>Load:</b>
-  <%= @atom.hours %> hours in weeks <%= @atom.weeks %> of semester
+  <%= @atom.hours %> hours in semester
 <%= @atom.semester %>.
 </p>
-
-<p>
-  <b>Times:</b>
-  <%= @atom.times %>
-</p>
-
-<%= times_table_for(@atom.times) %>
 
 <% if can? :destroy, @atom %>
 <h3 class="edit-head">Lecturers</h3>
@@ -38,7 +28,7 @@
 <% @atom.loads.each do |load| %>
 <li>
 <%= load.year %>:
-<%= link_to load.academic, load.academic %>.
+<%= link_to load.academic, load %>.
 <% if can? :update, @atom %>
   <div class="edit">
     <%= link_to edit_symbol, edit_load_path(load) %>

@@ -1,20 +1,17 @@
-<p id="notice"><%= notice %></p>
+<h3>Teaching Load <%= @load.year %></h3>
+<h1><%= link_to @load.atom, @load.atom %></h1>
 
 <p>
-  <b>Academic:</b>
-  <%= @load.academic_id %>
+  <b>Lecturer:</b>
+  <%= @load.academic %>
 </p>
 
 <p>
-  <b>Atom:</b>
-  <%= @load.atom_id %>
+  <b>Weeks:</b>
+  <%= @load.weeks %>
 </p>
 
-<p>
-  <b>Year:</b>
-  <%= @load.year %>
-</p>
-
+<%= times_table_for(@load.times) %>
 
 <%= link_to 'Edit', edit_load_path(@load) %> |
 <%= link_to 'Back', loads_path %>
