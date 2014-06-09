@@ -46,7 +46,7 @@ class LoadsController < ApplicationController
 
     respond_to do |format|
       if @load.save
-        format.html { redirect_to @load.atom, notice: 'Load was successfully created.' }
+        format.html { redirect_to @load, notice: 'Load was successfully created.' }
         format.json { render json: @load, status: :created, location: @load }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class LoadsController < ApplicationController
 
     respond_to do |format|
       if @load.update_attributes(params[:load])
-        format.html { redirect_to @load.atom, notice: 'Load was successfully updated.' }
+        format.html { redirect_to @load, notice: 'Load was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
