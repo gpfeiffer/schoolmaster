@@ -11,6 +11,8 @@
 semester <%= @load.semester %>.
 </p>
 
+<p><%= @load.comment %></p>
+
 <%= times_table_for(@load.times) %>
 
 <%= link_to 'Edit', edit_load_path(@load) %> |
