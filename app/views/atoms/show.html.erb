@@ -30,6 +30,7 @@
 <%= load.year %>:
 <%= load.hours %> hrs,
 <%= link_to load.academic, load %>.
+<%= load.comment %>
 <% if can? :update, @atom %>
   <div class="edit">
     <%= link_to edit_symbol, edit_load_path(load) %>
