@@ -28,6 +28,7 @@
 <% @atom.loads.each do |load| %>
 <li>
 <%= load.year %>:
+<%= load.hours %> hrs,
 <%= link_to load.academic, load %>.
 <% if can? :update, @atom %>
   <div class="edit">
