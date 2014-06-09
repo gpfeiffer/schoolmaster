@@ -3,11 +3,11 @@
 
 <p>
   <b>Lecturer:</b>
-  <%= @load.academic %>
+  <%= link_to @load.academic, @load.academic %>
 </p>
 
 <p>
-  <b>Load:</b> <%= @load.hours %> hours in weeks <%= @load.weeks %> of
+  <b>Work Load:</b> <%= @load.hours %> hours in weeks <%= @load.weeks %> of
 semester <%= @load.semester %>.
 </p>
 

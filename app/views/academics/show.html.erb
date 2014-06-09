@@ -29,7 +29,7 @@
 
 <% if can? :destroy, @academic %>
 <% @academic.loads.group_by(&:semester).sort.each do |semester, loads| %>
-<b>Semester <%= semester %></b>
+<b>Semester <%= semester %> (<%= loads.map(&:hours).sum %> hrs)</b>
 <%= times_table_for(loads.map(&:times_module).join(";")) %>
 <% end %>
 <% end %>
