@@ -126,10 +126,11 @@
 </li>
 <% end %>
 </ul>
-<h3 class="edit-head">Lecture Load</h3>
+<h3 class="edit-head">Teaching Load (<%= @academic.loads.map(&:hours).sum %> hrs)</h3>
 <ul>
 <% @academic.loads.each do |load| %>
 <li>
+<%= load.hours %> hrs,
 <%= link_to load.atom, load.atom %>:
 <%= load.year %>.
 </li>
