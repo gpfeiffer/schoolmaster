@@ -4,7 +4,7 @@ class Load < ActiveRecord::Base
   belongs_to :academic
   belongs_to :atom
 
-  delegate :discipline, :semester, :title, :to => :atom
+  delegate :code, :discipline, :semester, :title, :to => :atom
 
   def times_module
     times.gsub(/(?<=:)[^;]*/, atom.code)

@@ -1,27 +1,25 @@
-<h1>Listing loads</h1>
+<h3>Loads</h3>
+
+<% @loads.group_by(&:year).each do |year, loads_by_year| %>
+
+
+<h1>Teaching Load <%= year %>. (<%= loads_by_year.map(&:hours).sum %> hrs)</h1>
+
 
 <table>
-  <tr>
-    <th>Academic</th>
-    <th>Atom</th>
-    <th>Year</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @loads.each do |load| %>
-  <tr>
-    <td><%= load.academic_id %></td>
-    <td><%= load.atom_id %></td>
-    <td><%= load.year %></td>
-    <td><%= link_to 'Show', load %></td>
-    <td><%= link_to 'Edit', edit_load_path(load) %></td>
-    <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% loads_by_year.group_by(&:academic).sort.each do |academic, loads| %>
+<tr>
+  <td></td>
+  <td><b><%= academic %></b></td>
+  <td><%= loads.map(&:hours).sum %></td>
+</tr>
+<% loads.each do |load| %>
+<tr>
+  <td><%= link_to load.code, load %></td>
+  <td><%= load.title %></td>
+  <td><%= load.hours %></td>
+</tr>
+<% end %>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Load', new_load_path %>
+<% end %>
