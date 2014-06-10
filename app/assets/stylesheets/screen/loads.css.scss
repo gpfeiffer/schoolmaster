@@ -1,3 +1,15 @@
 // Place all the styles related to the loads controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.volatile:hover tr.volatile {
+    display: table-row;
+}
+
+tr.volatile {
+    display: none;
+    td {
+	font-size: 80%;
+	line-height: 80%;
+    }
+}
