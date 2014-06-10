@@ -26,7 +26,7 @@ class LoadsController < ApplicationController
   def new
     @load = Load.new
     @load.atom_id = params[:atom_id]
-    @load.year = 2014
+    @load.date = 2014
 
     respond_to do |format|
       format.html # new.html.erb

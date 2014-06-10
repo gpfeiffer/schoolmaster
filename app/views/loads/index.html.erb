@@ -1,15 +1,15 @@
 <h3>Loads</h3>
 
-<% @loads.group_by(&:year).sort.reverse.each do |year, loads_by_year| %>
+<% @loads.group_by(&:date).sort.reverse.each do |date, loads_by_date| %>
 
 <div class="volatile">
-<h1>Teaching Load <%= year %>. (<%= loads_by_year.map(&:hours).sum %> hrs)</h1>
+<h1>Teaching Load <%= date %>. (<%= loads_by_date.map(&:hours).sum %> hrs)</h1>
 
 <table>
-<% loads_by_year.group_by(&:academic).sort_by { |academic, loads| academic.last }.each do |academic, loads| %>
+<% loads_by_date.group_by(&:academic).sort_by { |academic, loads| academic.last }.each do |academic, loads| %>
   <% total = loads.map(&:hours).sum %>
 <tr>
-  <td></td>
+  <td width="50"></td>
   <td><b><%= link_to academic, academic %></b></td>
   <td align="right"><%= total %></td>
   <td width="300">  

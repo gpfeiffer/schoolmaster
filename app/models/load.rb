@@ -1,5 +1,5 @@
 class Load < ActiveRecord::Base
-  attr_accessible :academic_id, :atom_id, :comment, :hours, :times, :weeks, :year
+  attr_accessible :academic_id, :atom_id, :comment, :date, :hours, :times, :weeks
 
   belongs_to :academic
   belongs_to :atom
