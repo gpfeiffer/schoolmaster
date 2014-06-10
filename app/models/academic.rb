@@ -27,6 +27,10 @@ class Academic < ActiveRecord::Base
     "#{first} #{last}"
   end
 
+  def last_first
+    "#{last}, #{first}"
+  end
+
   def name
     "#{title} #{first_last}"
   end
