@@ -1,5 +1,42 @@
 <h3>Loads</h3>
 
+<% @loads.group_by(&:date).each do |date, loads_by_date| %>
+
+<h2><%= date %> (<%= loads_by_date.map(&:hours).sum %> hrs)</h2>
+
+<% loads_by_date.group_by(&:discipline).each do |discipline, loads| %>
+
+<h1><%= discipline.titleize %> (<%= loads.map(&:hours).sum %> hrs)</h1>
+
+<table class="year">
+<% loads.group_by(&:year).sort.each do |year, loads_by_year| %>
+
+<tr>
+<% loads_by_year.group_by(&:semester).sort.each do |semester, loads_by_semester| %>
+
+<td class="year">
+   <h4>Year <%= year %>, Semester <%= semester %> (<%= loads_by_semester.map(&:hours).sum %> hrs)</h4>
+
+<table>
+<% loads_by_semester.sort_by(&:code).each do |load| %>
+  <tr>
+    <td><%= link_to load.code, load %></td>
+    <td>(<%= load.hours %> hrs : <%= load.academic.short %>)</td>
+    <td><%= load.title %></td>
+  </tr>
+<% end %>
+</table>
+</td>
+
+<% end %>
+</tr>
+<% end %>
+</table>
+<br />
+<% end %>
+<% end %>
+
+
 <% @loads.group_by(&:date).sort.reverse.each do |date, loads_by_date| %>
 
 <div class="volatile">
