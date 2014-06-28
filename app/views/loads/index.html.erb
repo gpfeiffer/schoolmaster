@@ -1,10 +1,18 @@
-<h3>Loads</h3>
+<% content_for :side do %>
+<h3>Lecture Loads</h3>
+<ul>
+<% @loads_by_date.keys.sort.reverse.each do |key| %>
+<li>
+<%= link_to_unless_current key, loads_path(:date => key) %>
+</li>
+<% end %>
+</ul>
+<% end %>
 
-<% @loads.group_by(&:date).each do |date, loads_by_date| %>
 
-<h2><%= date %> (<%= loads_by_date.map(&:hours).sum %> hrs)</h2>
+<h2><%= @date %> (<%= @loads.map(&:hours).sum %> hrs)</h2>
 
-<% loads_by_date.group_by(&:discipline).each do |discipline, loads| %>
+<% @loads.group_by(&:discipline).each do |discipline, loads| %>
 
 <h1><%= discipline.titleize %> (<%= loads.map(&:hours).sum %> hrs)</h1>
 
@@ -17,17 +25,17 @@
 <td class="year">
    <h4>Year <%= year %>, Semester <%= semester %> (<%= loads_by_semester.map(&:hours).sum %> hrs)</h4>
 
-<table>
+<table style="border-collapse: collapse; width: 100%">
 <% loads_by_semester.sort_by(&:code).each do |load| %>
-  <tr>
+  <tr class="load-top">
     <td><%= link_to load.code, load %></td>
-    <td>(<%= load.hours %> hrs : <%= load.academic.short %>)</td>
-    <td><%= load.title %></td>
+    <td>(<%= load.hours %> hrs)</td>
+    <td width="70%"><%= load.title %></td>
   </tr>
-<tr>
-  <td></td>
-  <td style="font-size: smaller;">weeks <%= load.weeks %></td>
-  <td style="font-size: smaller;"><%= load.times %></td>
+<tr class="load-bot">
+  <td><%= link_to load.academic.short, load.academic %></td>
+  <td>weeks <%= load.weeks %></td>
+  <td><%= load.times %></td>
 </tr>
 <% end %>
 </table>
@@ -39,19 +47,16 @@
 </table>
 <br />
 <% end %>
-<% end %>
 
-
-<% @loads.group_by(&:date).sort.reverse.each do |date, loads_by_date| %>
 
 <div class="volatile">
-<h1>Teaching Load <%= date %>. (<%= loads_by_date.map(&:hours).sum %> hrs)</h1>
+<h1>Teaching Load <%= @date %>. (<%= @loads.map(&:hours).sum %> hrs)</h1>
 
 <table>
-<% loads_by_date.group_by(&:academic).sort_by { |academic, loads| academic.last }.each do |academic, loads| %>
+<% @loads.group_by(&:academic).sort_by { |academic, loads| academic.last }.each do |academic, loads| %>
   <% total = loads.map(&:hours).sum %>
 <tr>
-  <td width="50"></td>
+  <td width="55"></td>
   <td><b><%= link_to academic, academic %></b></td>
   <td align="right"><%= total %></td>
   <td width="300">  
@@ -60,12 +65,11 @@
 </tr>
 <% loads.each do |load| %>
 <tr class="volatile">
-  <td><%= link_to load.code, load %></td>
+  <td align="right"><%= link_to load.code, load %></td>
   <td><%= load.title %></td>
   <td align="right"><%= load.hours %></td>
 </tr>
 <% end %>
 <% end %>
 </table>
-<% end %>
 </div>

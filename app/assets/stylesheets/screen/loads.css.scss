@@ -13,3 +13,20 @@ tr.volatile {
 	line-height: 80%;
     }
 }
+
+tr.load-top {
+    background-color: rgb(205,245,255);
+    td {
+	padding: 0px;
+	padding-top: 2px;
+    }
+}
+
+tr.load-bot {
+    background: rgb(225,245,255);
+    color: rgb(5,5,5);
+    td {
+	font-size: x-small;
+	padding-top: 0px;
+    }
+}

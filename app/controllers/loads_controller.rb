@@ -3,6 +3,9 @@ class LoadsController < ApplicationController
   # GET /loads.json
   def index
     @loads = Load.all
+    @loads_by_date = @loads.group_by(&:date)
+    @date = params[:date] || @loads_by_date.keys.sort.last
+    @loads = @loads_by_date[@date.to_i]
 
     respond_to do |format|
       format.html # index.html.erb
