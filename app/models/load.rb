@@ -9,4 +9,9 @@ class Load < ActiveRecord::Base
   def times_module
     times.gsub(/(?<=:)[^;]*/, atom.code)
   end
+
+  # module-lecturer-venue
+  def times_mlv
+    times.gsub(/:/, ":#{atom.code} #{academic.short} ")
+  end
 end

@@ -30,3 +30,53 @@ tr.load-bot {
 	padding-top: 0px;
     }
 }
+
+
+table.times-long {
+    border-collapse: collapse;
+    border-bottom: 2px solid grey;
+    border-right: 2px solid grey;
+}
+
+td.times-long {
+    width: 200px;
+    border-left: 2px solid grey;
+    border-top: 2px solid grey;
+    background: rgb(210,248,164);
+    vertical-align: top;
+}
+
+th.times-long {
+    background-color: yellow;
+//    width: 60px;
+    height: 20px;
+    border-left: 2px solid grey;
+    border-top: 2px solid grey;
+}
+
+
+td.times-m {
+    width: 40%;
+    text-align: left;
+    background: rgb(157,248,157);
+    font-size: small;
+}
+
+td.times-l {
+    width: 20%;
+    text-align:center;
+    background: rgb(116,248,116);
+    font-size: small;
+}
+
+td.times-v {
+    width: 40%;
+    text-align: right;
+    background: rgb(157,248,157);
+    font-size: small;
+}
+
+table.times-inner {
+    width: 100%;
+    border-collapse: collapse;
+}

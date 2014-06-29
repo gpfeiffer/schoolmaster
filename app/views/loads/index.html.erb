@@ -73,3 +73,10 @@
 <% end %>
 </table>
 </div>
+
+<% @loads.group_by(&:semester).each do |semester, loads| %>
+<h2>Semester <%= semester %>.</h2>
+  <% times = loads.map(&:times_mlv) %>
+  <% times.delete("") %>
+  <%= long_times_table_for(times.join(";")) %>
+<% end %>
