@@ -6,6 +6,18 @@ class Load < ActiveRecord::Base
 
   delegate :code, :discipline, :semester, :title, :year, :to => :atom
 
+  def slots
+    times.split(";").map do |time|
+      slot, loc = time.split(":")
+      {
+        :load => self,
+        :day => slot[0,3],
+        :hr => slot[3,2],
+        :loc => loc || '...'
+      }
+    end
+  end
+
   def times_module
     times.gsub(/(?<=:)[^;]*/, atom.code)
   end

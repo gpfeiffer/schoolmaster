@@ -1,0 +1,44 @@
+<% rows = %w{ 09 10 11 12 13 14 15 16 17 } %>
+<% cols = %w{ Mon Tue Wed Thu Fri } %>
+
+<% slots_by_hr = slots.group_by { |x| x[:hr] } %>
+
+<table class="times-long">
+  <tr>  
+    <th class="times"></th>
+    <% cols.map do |col| %>
+      <th class="times-long"><%= col %></th>
+    <% end %>
+  </tr>
+  <% rows.each do |row| %>
+    <% slots_by_day = slots_by_hr[row].group_by { |x| x[:day] } %>
+    <tr>
+      <th class="times"><%= row %>:00</th>
+      <% cols.each do |col| %>
+        <% slots_here = slots_by_day[col] %>
+        <% if slots_here.present? %>
+          <td class="times-long">
+	    <table class="times-inner">
+              <% slots_here.sort_by { |x| x[:load].code }.each do |slot| %>
+	        <% load = slot[:load] %>
+	        <tr>
+		  <td class="times-m">
+                    <%= link_to load.code, load, :title => load.title %>
+		  </td>
+		  <td class="times-l">
+		    <%= link_to load.academic.short, load.academic, :title => load.academic.name %>
+		  </td>
+		  <td class="times-v">
+		    <%= content_tag(:span, slot[:loc], :title => "weeks #{load.weeks}")%>
+		  </td>
+		</tr>
+              <% end %>
+	    </table>
+	  </td>
+        <% else %>
+          <td class="times"></td>
+        <% end %>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

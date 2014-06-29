@@ -65,18 +65,22 @@ td.times-m {
 td.times-l {
     width: 20%;
     text-align:center;
-    background: rgb(116,248,116);
+    background: rgb(177,248,177);
     font-size: small;
 }
 
 td.times-v {
     width: 40%;
     text-align: right;
-    background: rgb(157,248,157);
+    background: rgb(137,248,137);
     font-size: small;
 }
 
 table.times-inner {
     width: 100%;
     border-collapse: collapse;
+}
+
+.times-inner a {
+    text-decoration: none;
 }
