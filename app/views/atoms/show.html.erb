@@ -17,7 +17,6 @@
 <%= @atom.semester %>.
 </p>
 
-<% if can? :destroy, @atom %>
 <h3 class="edit-head">Lecturers</h3>
 <% if can? :update, @atom %>
   <div class="edit">
@@ -31,7 +30,7 @@
 <%= load.hours %> hrs,
 <%= link_to load.academic, load %>.
 <%= load.comment %>
-<% if can? :update, @atom %>
+<% if can? :update, load %>
   <div class="edit">
     <%= link_to edit_symbol, edit_load_path(load) %>
   </div>
@@ -39,9 +38,12 @@
 </li>
 <% end %>
 </ul>
-<% end %>
 
 <hr />
+<% if can? :update, @atom %>
 <%= link_to 'Edit', edit_atom_path(@atom) %> |
+<% end %>
+<% if can? :destroy, @atom %>
 <%= link_to 'Destroy', @atom, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back', atoms_path %>

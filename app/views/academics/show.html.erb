@@ -27,27 +27,23 @@
   <%= link_to nil, @academic.home_url %>
 </p>
 
-<% if can? :destroy, @academic %>
-<% @academic.loads.group_by(&:date).each do |date, loads_by_date| %>
-<% loads_by_date.group_by(&:semester).sort.each do |semester, loads| %>
-<b><%= date%>: Semester <%= semester %> (<%= loads.map(&:hours).sum %> hrs)</b>
-<%= times_table_for(loads.map(&:times_module).join(";")) %>
-<% end %>
-<% end %>
+  <% @academic.loads.group_by(&:date).sort.reverse.each do |date, loads_by_date| %>
+    <h3 class="edit-head">Teaching Load <%= date %> (<%= loads_by_date.map(&:hours).sum %> hrs)</h3>
+    <ul>
+      <% loads_by_date.each do |load| %>
+        <li>
+          <%= load.hours %> hrs,
+          <%= link_to load.atom, load.atom %>:
+          <%= load.date %>.
+        </li>
+      <% end %>
+    </ul>
 
-<% @academic.loads.group_by(&:date).each do |date, loads| %>
-<h3 class="edit-head">Teaching Load <%= date %> (<%= loads.map(&:hours).sum %> hrs)</h3>
-<ul>
-<% loads.each do |load| %>
-<li>
-<%= load.hours %> hrs,
-<%= link_to load.atom, load.atom %>:
-<%= load.date %>.
-</li>
-<% end %>
-</ul>
-<% end %>
-<% end %>
+    <% loads_by_date.group_by(&:semester).sort.each do |semester, loads| %>
+      <b><%= date%>: Semester <%= semester %> (<%= loads.map(&:hours).sum %> hrs)</b>
+      <%= times_table_for(loads.map(&:times_module).join(";")) %>
+    <% end %>
+  <% end %>
 
 <h3>Project Proposals</h3>
 <ul>

@@ -1,9 +1,9 @@
 class AtomsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /atoms
   # GET /atoms.json
   def index
-    @atoms = Atom.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @atoms }
@@ -13,8 +13,6 @@ class AtomsController < ApplicationController
   # GET /atoms/1
   # GET /atoms/1.json
   def show
-    @atom = Atom.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @atom }
@@ -24,7 +22,6 @@ class AtomsController < ApplicationController
   # GET /atoms/new
   # GET /atoms/new.json
   def new
-    @atom = Atom.new
     @atom.hours = 24
     @atom.weeks = '1-12'
 
@@ -36,14 +33,11 @@ class AtomsController < ApplicationController
 
   # GET /atoms/1/edit
   def edit
-    @atom = Atom.find(params[:id])
   end
 
   # POST /atoms
   # POST /atoms.json
   def create
-    @atom = Atom.new(params[:atom])
-
     respond_to do |format|
       if @atom.save
         format.html { redirect_to @atom, notice: 'Atom was successfully created.' }
@@ -58,8 +52,6 @@ class AtomsController < ApplicationController
   # PUT /atoms/1
   # PUT /atoms/1.json
   def update
-    @atom = Atom.find(params[:id])
-
     respond_to do |format|
       if @atom.update_attributes(params[:atom])
         format.html { redirect_to @atom, notice: 'Atom was successfully updated.' }
@@ -74,7 +66,6 @@ class AtomsController < ApplicationController
   # DELETE /atoms/1
   # DELETE /atoms/1.json
   def destroy
-    @atom = Atom.find(params[:id])
     @atom.destroy
 
     respond_to do |format|

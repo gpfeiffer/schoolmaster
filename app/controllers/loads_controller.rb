@@ -1,8 +1,9 @@
 class LoadsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /loads
   # GET /loads.json
   def index
-    @loads = Load.all
     @loads_by_date = @loads.group_by(&:date)
     @date = params[:date] || @loads_by_date.keys.sort.last
     @loads = @loads_by_date[@date.to_i]
@@ -16,8 +17,6 @@ class LoadsController < ApplicationController
   # GET /loads/1
   # GET /loads/1.json
   def show
-    @load = Load.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @load }
@@ -27,9 +26,8 @@ class LoadsController < ApplicationController
   # GET /loads/new
   # GET /loads/new.json
   def new
-    @load = Load.new
     @load.atom_id = params[:atom_id]
-    @load.date = 2014
+    @load.date = 2015
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,14 +37,11 @@ class LoadsController < ApplicationController
 
   # GET /loads/1/edit
   def edit
-    @load = Load.find(params[:id])
   end
 
   # POST /loads
   # POST /loads.json
   def create
-    @load = Load.new(params[:load])
-
     respond_to do |format|
       if @load.save
         format.html { redirect_to @load, notice: 'Load was successfully created.' }
@@ -61,8 +56,6 @@ class LoadsController < ApplicationController
   # PUT /loads/1
   # PUT /loads/1.json
   def update
-    @load = Load.find(params[:id])
-
     respond_to do |format|
       if @load.update_attributes(params[:load])
         format.html { redirect_to @load, notice: 'Load was successfully updated.' }
@@ -77,7 +70,6 @@ class LoadsController < ApplicationController
   # DELETE /loads/1
   # DELETE /loads/1.json
   def destroy
-    @load = Load.find(params[:id])
     @load.destroy
 
     respond_to do |format|

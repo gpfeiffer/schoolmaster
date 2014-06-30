@@ -60,8 +60,9 @@ class Ability
         examination.open? and examination.academic == user.academic
       end
 
-#      can :read, Direction
-#      can :show, Examination
+# comment out these 2 lines to hide project reports
+      can :read, Direction
+      can :show, Examination
     end
 
     # manage courses
@@ -71,9 +72,18 @@ class Ability
       can :read, Course
     end    
 
+    # manage lecture loads
+    if user.role? :supervisor
+      can :read, [Atom, Load]
+    else
+      can :read, Atom
+    end
+
     # support staff can read 
     if user.role? :support
       can :read, [Academic, Student, Author, Room]
+      can :read, [Atom, Load]
+      can :update, Load
     end
   end
 end
