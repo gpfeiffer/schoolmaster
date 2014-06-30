@@ -10,7 +10,7 @@
 <% end %>
 
 <% @loads.group_by(&:semester).each do |semester, loads| %>
-  <h2>Semester <%= semester %>.</h2>
+  <h2><%= @date %>, Semester <%= semester %>.</h2>
   <%= render :partial => 'slots', :object => loads.map(&:slots).sum %>
 <% end %>
 
