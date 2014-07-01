@@ -28,7 +28,7 @@
 <% loads_by_year.group_by(&:semester).sort.each do |semester, loads_by_semester| %>
 
 <td class="year">
-   <h4>Year <%= year %>, Semester <%= semester %> (<%= loads_by_semester.map(&:hours).sum %> hrs)</h4>
+   <b>Year <%= year %>, Semester <%= semester %> (<%= loads_by_semester.map(&:hours).sum %> hrs)</b>
 
 <table style="border-collapse: collapse; width: 100%">
 <% loads_by_semester.sort_by(&:code).each do |load| %>
