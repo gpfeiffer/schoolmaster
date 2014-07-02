@@ -6,43 +6,40 @@
   <% end %>
 <% end %>
 
-<h3><%= @academic.school %></h3>
+<h3 style="margin-bottom: 0px;"><%= @academic.school %></h3>
 
-<h2><%= @academic.name %><%= if can?(:destroy, @academic) and @academic.short then " (#{@academic.short})" end %></h2>
+<div class="email" style="border: 2px solid #333; padding-left: 12px;">
+<h1><%= link_to @academic.name, @academic.home_url %><%= if can?(:destroy, @academic) and @academic.short then " (#{@academic.short})" end %></h1>
 
 <%= image_tag @academic.image_url, :align => :right, :size => "96x96", :alt => "[image]" %>
 
-<p>
-  <b>Phone:</b>
+  &#9993;
+  <code>  <%= link_to @academic.email, @academic.mailto %></code>
+  &nbsp;
+  &#9742;
   <%= @academic.extension %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= link_to @academic.email, @academic.mailto %>
-</p>
-
-<p>
-  <b>Home Page:</b>
-  <%= link_to nil, @academic.home_url %>
-</p>
+</div>
 
   <% @academic.loads.group_by(&:date).sort.reverse.each do |date, loads_by_date| %>
+<br />
     <h3 class="edit-head">Teaching Load <%= date %> (<%= loads_by_date.map(&:hours).sum %> hrs)</h3>
     <ul>
       <% loads_by_date.each do |load| %>
         <li>
           <%= load.hours %> hrs,
-          <%= link_to load.atom, load.atom %>:
-          <%= load.date %>.
+          <%= link_to load.atom, load.atom %>.
         </li>
       <% end %>
     </ul>
 
+<div style="width: 100%;">
     <% loads_by_date.group_by(&:semester).sort.each do |semester, loads| %>
+<div style="display: inline-block;">
       <b><%= date%>: Semester <%= semester %> (<%= loads.map(&:hours).sum %> hrs)</b>
       <%= times_table_for(loads.map(&:times_module).join(";")) %>
+</div>
     <% end %>
+</div>
   <% end %>
 
 <h3>Project Proposals</h3>
@@ -128,16 +125,6 @@
 <% end %>
 
 <% if can? :destroy, @academic %>
-<h3 class="edit-head">Lectures</h3>
-<ul>
-<% @academic.teachings.each do |teaching| %>
-<li>
-<%= link_to teaching.course, teaching.course %>:
-<%= teaching.load %>.
-</li>
-<% end %>
-</ul>
-
 <% if @academic.records.any? %>
 <h3 class="edit-head">Records</h3>
 <% if can? :destroy, @academic %>
