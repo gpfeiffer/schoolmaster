@@ -1,0 +1,9 @@
+<h3>Editing instance</h3>
+
+<h1><%= @instance.atom %></h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @instance %> |
+<%= link_to 'Destroy', @instance, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', instances_path %>

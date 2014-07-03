@@ -1,0 +1,35 @@
+<%= form_for(@instance) do |f| %>
+  <% if @instance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@instance.errors.count, "error") %> prohibited this instance from being saved:</h2>
+
+      <ul>
+      <% @instance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :atom_id %>
+
+  <div class="field">
+    <%= f.label :cohort %><br />
+    <%= f.select :cohort, Instance::COHORTS, :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :course_id, 'Module' %><br />
+    <%= f.select :course_id, Course.all.map { |x| [x, x.id] }, :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.select :status, Instance::STATUSES, :include_blank => true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

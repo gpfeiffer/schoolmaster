@@ -4,6 +4,8 @@ class Course < ActiveRecord::Base
   has_many :teachings, :dependent => :destroy
   has_many :academics, :through => :teachings
 
+  has_many :instances, :dependent => :destroy
+
   default_scope :order => :code
 
   DISCIPLINES = [

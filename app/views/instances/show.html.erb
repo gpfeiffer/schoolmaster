@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Cohort:</b>
+  <%= @instance.cohort %>
+</p>
+
+<p>
+  <b>Atom:</b>
+  <%= @instance.atom_id %>
+</p>
+
+<p>
+  <b>Course:</b>
+  <%= @instance.course_id %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%= @instance.code %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @instance.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_instance_path(@instance) %> |
+<%= link_to 'Back', instances_path %>

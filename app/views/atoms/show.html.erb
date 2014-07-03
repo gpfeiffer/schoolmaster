@@ -17,6 +17,27 @@
 <%= @atom.semester %>.
 </p>
 
+<h3 class="edit-head">Instances</h3>
+<% if can? :update, @atom %>
+  <div class="edit">
+    <%= link_to add_symbol, new_instance_path(:atom_id => @atom) %>
+  </div>
+<% end %>
+<ul>
+<% @atom.instances.each do |instance| %>
+<li>
+<%= instance.cohort %>:
+<%= instance.code %>
+(<%= link_to instance.course, instance.course %>)
+<% if can? :update, instance %>
+  <div class="edit">
+    <%= link_to edit_symbol, edit_instance_path(instance) %>
+  </div>
+<% end %>
+</li>
+<% end %>
+</ul>
+
 <h3 class="edit-head">Lecturers</h3>
 <% if can? :update, @atom %>
   <div class="edit">

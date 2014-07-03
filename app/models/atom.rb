@@ -12,6 +12,8 @@ class Atom < ActiveRecord::Base
   has_many :loads, :dependent => :destroy
   has_many :academics, :through => :loads
 
+  has_many :instances, :dependent => :destroy
+
   def to_s
     "#{code}: #{title}"
   end

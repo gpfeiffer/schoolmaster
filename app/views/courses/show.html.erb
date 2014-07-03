@@ -28,6 +28,19 @@
 </p>
 
 <% if can? :destroy, @course %>
+<h3>Instances</h3>
+<ul>
+<% @course.instances.group_by(&:cohort).each do |cohort, instances| %>
+<li>
+<%= cohort %>:
+<% instances.group_by(&:code).each do |code, instances_by_code| %>
+<%= code %>
+(<%= raw instances_by_code.map { |instance| "#{link_to instance.atom.code, instance.atom}" }.join(", ") %>);
+<% end %>
+</li>
+<% end %>
+</ul>
+
 <h3 class="edit-head">Lecturers</h3>
 <% if can? :update, @course %>
   <div class="edit">

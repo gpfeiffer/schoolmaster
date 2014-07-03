@@ -1,0 +1,15 @@
+<% if @academic.records.any? %>
+<h3 class="edit-head">Records</h3>
+<% if can? :destroy, @academic %>
+  <div class="edit">
+    <%= link_to '[+]', new_record_path(:academic_id => @academic) %>
+  </div>
+<% end %>
+<ul>
+  <% @academic.records.each do |record| %>
+    <li>
+      <%= link_to record.broker.name, record.broker.template % record.authorid, :target => "_blank" %>
+    </li>
+  <% end %>
+</ul>
+<% end %>

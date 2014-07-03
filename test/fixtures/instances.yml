@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cohort: MyString
+  credits: 1
+  atom_id: 1
+  code: MyString
+  status: MyString
+
+two:
+  cohort: MyString
+  credits: 1
+  atom_id: 1
+  code: MyString
+  status: MyString
