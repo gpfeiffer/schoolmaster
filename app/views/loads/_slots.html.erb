@@ -11,7 +11,7 @@
     <% end %>
   </tr>
   <% rows.each do |row| %>
-    <% slots_by_day = slots_by_hr[row].group_by { |x| x[:day] } %>
+    <% slots_by_day = (slots_by_hr[row] || []).group_by { |x| x[:day] } %>
     <tr>
       <th class="times"><%= row %>:00</th>
       <% cols.each do |col| %>

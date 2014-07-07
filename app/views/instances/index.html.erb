@@ -1,31 +1,24 @@
-<h1>Listing instances</h1>
-
-<table>
-  <tr>
-    <th>Cohort</th>
-    <th>Atom</th>
-    <th>Course</th>
-    <th>Code</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @instances.each do |instance| %>
-  <tr>
-    <td><%= instance.cohort %></td>
-    <td><%= instance.atom_id %></td>
-    <td><%= instance.course_id %></td>
-    <td><%= instance.code %></td>
-    <td><%= instance.status %></td>
-    <td><%= link_to 'Show', instance %></td>
-    <td><%= link_to 'Edit', edit_instance_path(instance) %></td>
-    <td><%= link_to 'Destroy', instance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% @instances.group_by(&:cohort).each do |cohort, instances_by_cohort| %>
+<h1><%= cohort %></h1>
+<ul>
+<% instances_by_cohort.group_by(&:code).each do |code, instances| %>
+<li>
+<%= code %>:
+<% instances.each do |instance| %>
+    <%= link_to instance.atom.code, instance %>
 <% end %>
-</table>
+</li>
+<% end %>
+</ul>
 
-<br />
+<% if @date %>
+<% loads_by_date = instances_by_cohort.map(&:atom).map(&:loads).sum.group_by(&:date)[@date] %>
+<% loads_by_date.group_by(&:semester).each do |semester, loads| %>
+  <h2>Timetable <%= @date %>, Semester <%= semester %>.</h2>
+  <%= render :partial => 'loads/slots', :object => loads.map(&:slots).sum %>
+<% end %>
+<% end %>
 
-<%= link_to 'New Instance', new_instance_path %>
+
+<% end %>
+

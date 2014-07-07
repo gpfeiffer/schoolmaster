@@ -3,6 +3,7 @@ class InstancesController < ApplicationController
   # GET /instances.json
   def index
     @instances = Instance.all
+    @date = params[:date] || 2015
 
     respond_to do |format|
       format.html # index.html.erb
