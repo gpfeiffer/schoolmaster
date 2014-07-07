@@ -74,7 +74,7 @@ class Ability
 
     # manage lecture loads
     if user.role? :supervisor
-      can :read, [Atom, Load]
+      can :read, [Atom, Load, Instance]
     else
       can :read, Atom
     end
@@ -82,8 +82,8 @@ class Ability
     # support staff can read 
     if user.role? :support
       can :read, [Academic, Student, Author, Room]
-      can :read, [Atom, Load]
-      can :update, Load
+      can :read, [Atom, Load, Instance]
+      can :update, [Load, Instance]
     end
   end
 end
