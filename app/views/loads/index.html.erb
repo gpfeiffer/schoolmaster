@@ -3,19 +3,19 @@
 <ul>
 <% @loads_by_date.keys.sort.reverse.each do |key| %>
 <li>
-<%= link_to_unless_current key, loads_path(:date => key) %>
+<%= link_to_unless_current academic_year_code(key), loads_path(:date => key) %>
 </li>
 <% end %>
 </ul>
 <% end %>
 
 <% @loads.group_by(&:semester).each do |semester, loads| %>
-  <h2>Timetable <%= @date %>, Semester <%= semester %>.</h2>
+  <h2>Timetable <%= academic_year_code(@date) %>, Semester <%= semester %>.</h2>
   <%= render :partial => 'slots', :object => loads.map(&:slots).sum %>
 <% end %>
 
 
-<h2><%= @date %> (<%= @loads.map(&:hours).sum %> hrs)</h2>
+<h2><%= academic_year_code(@date) %> (<%= @loads.map(&:hours).sum %> hrs)</h2>
 
 <% @loads.group_by(&:discipline).each do |discipline, loads| %>
 
@@ -55,7 +55,7 @@
 
 
 <div class="volatile">
-<h1>Teaching Load <%= @date %>. (<%= @loads.map(&:hours).sum %> hrs)</h1>
+<h1>Teaching Load <%= academic_year_code(@date) %>. (<%= @loads.map(&:hours).sum %> hrs)</h1>
 
 <table>
 <% @loads.group_by(&:academic).sort_by { |academic, loads| academic.last }.each do |academic, loads| %>

@@ -22,7 +22,7 @@
 
   <% @academic.loads.group_by(&:date).sort.reverse.each do |date, loads_by_date| %>
 <br />
-    <h3 class="edit-head">Teaching Load <%= date %> (<%= loads_by_date.map(&:hours).sum %> hrs)</h3>
+    <h3 class="edit-head">Teaching Load <%= academic_year_code(date) %> (<%= loads_by_date.map(&:hours).sum %> hrs)</h3>
     <ul>
       <% loads_by_date.each do |load| %>
         <li>
@@ -35,7 +35,7 @@
 <div style="width: 100%;">
     <% loads_by_date.group_by(&:semester).sort.each do |semester, loads| %>
 <div style="display: inline-block;">
-      <b><%= date%>: Semester <%= semester %> (<%= loads.map(&:hours).sum %> hrs)</b>
+      <b><%= academic_year_code(date) %>: Semester <%= semester %> (<%= loads.map(&:hours).sum %> hrs)</b>
       <%= times_table_for(loads.map(&:times_module).join(";")) %>
 </div>
     <% end %>

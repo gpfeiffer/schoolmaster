@@ -13,9 +13,11 @@ module LoadsHelper
     end
 
     times.split(';').each do |time|
-      slot, loc = time.split(":")
-      day, hr = slot[0,3], slot[3,2]
-      table[hr][day] += loc || '...'
+      if time.present?
+        slot, loc = time.split(":")
+        day, hr = slot[0,3], slot[3,2]
+        table[hr][day] += loc || '...'
+      end
     end
 
     content_tag(:table, :class => "times") do
@@ -38,6 +40,12 @@ module LoadsHelper
         end
       end.sum
     end
+  end
+
+  # how to turn a year into an academic year
+  def academic_year_code(year)
+    year = year.to_i
+    "%d/%0#2d" %[year - 1, year % 100]
   end
 
 end
