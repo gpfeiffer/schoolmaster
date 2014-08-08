@@ -14,7 +14,7 @@
 <% if @date %>
 <% loads_by_date = instances_by_cohort.map(&:atom).map(&:loads).sum.group_by(&:date)[@date] %>
 <% loads_by_date.group_by(&:semester).each do |semester, loads| %>
-  <h2>Timetable <%= @date %>, Semester <%= semester %>.</h2>
+  <h2>Timetable <%= academic_year_code(@date) %>, Semester <%= semester %>.</h2>
   <%= render :partial => 'loads/slots', :object => loads.map(&:slots).sum %>
 <% end %>
 <% end %>
