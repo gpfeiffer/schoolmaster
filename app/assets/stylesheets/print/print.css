@@ -23,8 +23,12 @@ a:visited {
 
 table {
   display: block;
-  page-break-after: always;
+//  page-break-after: always;
   break-after: always;
+}
+
+table.times-long, table.year {
+  page-break-after: always;
 }
 
 table.dates {
@@ -40,13 +44,21 @@ table.dates th, table.dates td {
   page-break-before: always; 
 }
 
-body, td, th {
+body, td, th, td.times-l, td.times-v, td.times-m {
     font-family: "Times New Roman", Times, serif;
     font-size: x-small;
     line-height: 120%;
 }
 
+td.times-v {
+    width: 200px;
+}
+
+td.times-long {
+    width: 19%;
+}
+
 @page {
   size: portrait;
-  margin: 1.5cm;
+  margin: 1cm;
 }
