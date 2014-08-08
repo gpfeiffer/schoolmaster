@@ -3,7 +3,7 @@
 <ul>
 <% instances_by_cohort.group_by(&:code).each do |code, instances| %>
 <li>
-<%= code %>:
+<%= code %> (<%= instances.first.status %>):
 <% instances.each do |instance| %>
     <%= link_to instance.atom.code, instance %>
 <% end %>
