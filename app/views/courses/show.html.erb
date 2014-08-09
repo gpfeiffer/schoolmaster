@@ -32,7 +32,7 @@
 <ul>
 <% @course.instances.group_by(&:cohort).each do |cohort, instances| %>
 <li>
-<%= cohort %>:
+<%= link_to cohort, instances_path(:cohort => cohort) %>:
 <% instances.group_by(&:code).each do |code, instances_by_code| %>
 <%= code %>
 (<%= raw instances_by_code.map { |instance| "#{link_to instance.atom.code, instance.atom}" }.join(", ") %>);

@@ -1,0 +1,19 @@
+<h1><%= cohort %></h1>
+<ul>
+<% instances.group_by(&:code).each do |code, instances_by_code| %>
+<li>
+<%= link_to code, instances_by_code.first.course %> (<%= instances_by_code.first.status %>):
+<% instances_by_code.each do |instance| %>
+    <%= link_to instance.atom.code, instance.atom %>
+<% end %>
+</li>
+<% end %>
+</ul>
+
+<% if @date %>
+<% loads_by_date = instances.map(&:atom).map(&:loads).sum.group_by(&:date)[@date] %>
+<% loads_by_date.group_by(&:semester).each do |semester, loads| %>
+  <h2>Timetable <%= academic_year_code(@date) %>, Semester <%= semester %>.</h2>
+  <%= render :partial => 'slots', :object => loads.map(&:slots).sum %>
+<% end %>
+<% end %>

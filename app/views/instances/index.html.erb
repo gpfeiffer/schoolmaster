@@ -1,24 +1,23 @@
-<% @instances.group_by(&:cohort).each do |cohort, instances_by_cohort| %>
-<h1><%= cohort %></h1>
-<ul>
-<% instances_by_cohort.group_by(&:code).each do |code, instances| %>
-<li>
-<%= code %> (<%= instances.first.status %>):
-<% instances.each do |instance| %>
-    <%= link_to instance.atom.code, instance %>
-<% end %>
-</li>
-<% end %>
-</ul>
+<% content_for :side do %>
+  <h3>Programmes</h3>
 
-<% if @date %>
-<% loads_by_date = instances_by_cohort.map(&:atom).map(&:loads).sum.group_by(&:date)[@date] %>
-<% loads_by_date.group_by(&:semester).each do |semester, loads| %>
-  <h2>Timetable <%= academic_year_code(@date) %>, Semester <%= semester %>.</h2>
-  <%= render :partial => 'loads/slots', :object => loads.map(&:slots).sum %>
-<% end %>
+  <ul>
+    <% @instances_by_cohort.keys.each do |cohort| %>
+      <li>
+        <%= link_to_unless_current cohort, instances_path(:cohort => cohort) %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
 
+<% if @cohort %>
+<% cohort = @cohort %>
+<% instances = @instances_by_cohort[cohort] %>
+<%= render :partial => 'cohort', :locals => { :cohort => cohort, :instances => instances } %>
 
+<% else %>
+
+<% @instances_by_cohort.each do |cohort, instances| %>
+<%= render :partial => 'cohort', :locals => { :cohort => cohort, :instances => instances } %>
 <% end %>
-
+<% end %>

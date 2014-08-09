@@ -26,7 +26,7 @@
 <ul>
 <% @atom.instances.each do |instance| %>
 <li>
-<%= instance.cohort %>:
+<%= link_to instance.cohort, instances_path(:cohort => instance.cohort) %>:
 <%= instance.code %>
 (<%= link_to instance.course, instance.course %>)
 <% if can? :update, instance %>

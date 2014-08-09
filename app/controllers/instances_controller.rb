@@ -4,7 +4,9 @@ class InstancesController < ApplicationController
   # GET /instances
   # GET /instances.json
   def index
+    @instances_by_cohort = @instances.group_by(&:cohort)
     @date = params[:date] || 2015
+    @cohort = params[:cohort]
 
     respond_to do |format|
       format.html # index.html.erb
