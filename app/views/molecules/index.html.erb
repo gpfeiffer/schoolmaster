@@ -1,0 +1,29 @@
+<h1>Listing molecules</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Course</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @molecules.each do |molecule| %>
+  <tr>
+    <td><%= molecule.code %></td>
+    <td><%= molecule.title %></td>
+    <td><%= molecule.description %></td>
+    <td><%= molecule.course_id %></td>
+    <td><%= link_to 'Show', molecule %></td>
+    <td><%= link_to 'Edit', edit_molecule_path(molecule) %></td>
+    <td><%= link_to 'Destroy', molecule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Molecule', new_molecule_path %>

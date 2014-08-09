@@ -14,6 +14,9 @@ class Atom < ActiveRecord::Base
 
   has_many :instances, :dependent => :destroy
 
+  has_many :bonds, :dependent => :destroy
+  has_many :molecules, :through => :bonds
+
   def to_s
     "#{code}: #{title}"
   end

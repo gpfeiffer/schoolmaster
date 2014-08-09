@@ -1,0 +1,25 @@
+<%= form_for(@bond) do |f| %>
+  <% if @bond.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bond.errors.count, "error") %> prohibited this bond from being saved:</h2>
+
+      <ul>
+      <% @bond.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :atom_id %><br />
+    <%= f.number_field :atom_id %>
+  </div>
+  <div class="field">
+    <%= f.label :molecule_id %><br />
+    <%= f.number_field :molecule_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

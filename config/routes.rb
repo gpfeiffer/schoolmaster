@@ -1,4 +1,10 @@
 Schoolmaster::Application.routes.draw do
+  resources :bonds
+
+
+  resources :molecules
+
+
   resources :instances
 
 

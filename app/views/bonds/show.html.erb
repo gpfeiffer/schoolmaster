@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Atom:</b>
+  <%= @bond.atom_id %>
+</p>
+
+<p>
+  <b>Molecule:</b>
+  <%= @bond.molecule_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_bond_path(@bond) %> |
+<%= link_to 'Back', bonds_path %>

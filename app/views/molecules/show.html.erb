@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Code:</b>
+  <%= @molecule.code %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @molecule.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @molecule.description %>
+</p>
+
+<p>
+  <b>Course:</b>
+  <%= @molecule.course_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_molecule_path(@molecule) %> |
+<%= link_to 'Back', molecules_path %>

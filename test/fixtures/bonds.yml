@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  atom_id: 1
+  molecule_id: 1
+
+two:
+  atom_id: 1
+  molecule_id: 1
