@@ -1,13 +1,29 @@
-<p id="notice"><%= notice %></p>
+<% content_for :side do %>
+  <h3>Molecules</h3>
+    <ul><%= render Molecule.all %></ul>
+<% end %>
+
+<h3>Molecule</h3>
+
+<h1>
+  <%= @molecule.code %>:
+  <%= @molecule.title %>
+</h1>
 
 <p>
-  <b>Code:</b>
-  <%= @molecule.code %>
+  <b>Module:</b>
+  <%= link_to @molecule.course, @molecule.course %>
 </p>
 
 <p>
-  <b>Title:</b>
-  <%= @molecule.title %>
+  <b>Atoms:</b>
+  <ul>
+    <% @molecule.atoms.each do |atom| %>
+    <li>
+      <%= link_to atom, atom %>
+    </li>
+    <% end %>
+  </ul>
 </p>
 
 <p>
@@ -15,11 +31,11 @@
   <%= @molecule.description %>
 </p>
 
-<p>
-  <b>Course:</b>
-  <%= @molecule.course_id %>
-</p>
 
-
+<% if can? :edit, @molecule %>
 <%= link_to 'Edit', edit_molecule_path(@molecule) %> |
+<% end %>
+<% if can? :destroy, @molecule %>
+  <%= link_to 'Destroy', @molecule, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back', molecules_path %>

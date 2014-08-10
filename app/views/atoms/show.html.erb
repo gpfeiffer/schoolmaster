@@ -17,6 +17,15 @@
 <%= @atom.semester %>.
 </p>
 
+<h3>Molecules</h3>
+<ul>
+<% @atom.molecules.each do |molecule| %>
+<li>
+<%= link_to molecule, molecule %>
+</li>
+<% end %>
+</ul>
+
 <h3 class="edit-head">Instances</h3>
 <% if can? :update, @atom %>
   <div class="edit">

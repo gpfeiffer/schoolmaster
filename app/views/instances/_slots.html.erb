@@ -23,7 +23,7 @@
 	        <% load = slot[:load] %>
 	        <tr>
 		  <td class="times-m">
-                    <%= link_to load.atom.instances.first.code, load, :title => load.title %>:
+                    <b><%= link_to load.atom.instances.first.code, load, :title => load.title %></b>
                     <%= link_to load.title, load, :title => load.title %>
 		  </td>
 		</tr>
