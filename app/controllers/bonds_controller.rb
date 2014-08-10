@@ -25,6 +25,7 @@ class BondsController < ApplicationController
   # GET /bonds/new.json
   def new
     @bond = Bond.new
+    @bond.molecule = Molecule.find(params[:molecule_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +45,7 @@ class BondsController < ApplicationController
 
     respond_to do |format|
       if @bond.save
-        format.html { redirect_to @bond, notice: 'Bond was successfully created.' }
+        format.html { redirect_to @bond.molecule, notice: 'Bond was successfully created.' }
         format.json { render json: @bond, status: :created, location: @bond }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class BondsController < ApplicationController
 
     respond_to do |format|
       if @bond.update_attributes(params[:bond])
-        format.html { redirect_to @bond, notice: 'Bond was successfully updated.' }
+        format.html { redirect_to @bond.molecule, notice: 'Bond was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

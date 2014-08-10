@@ -15,8 +15,13 @@
   <%= link_to @molecule.course, @molecule.course %>
 </p>
 
+<h3 class="edit-head">Atoms</h3>
+<% if can? :update, @molecule %>
+  <div class="edit">
+    <%= link_to add_symbol, new_bond_path(:molecule_id => @molecule) %>
+  </div>
+<% end %>
 <p>
-  <b>Atoms:</b>
   <ul>
     <% @molecule.atoms.each do |atom| %>
     <li>
