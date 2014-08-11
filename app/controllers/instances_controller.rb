@@ -26,7 +26,7 @@ class InstancesController < ApplicationController
   # GET /instances/new
   # GET /instances/new.json
   def new
-    @instance.atom = Atom.find(params[:atom_id])
+    @instance.molecule = Molecule.find(params[:molecule_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,7 +43,7 @@ class InstancesController < ApplicationController
   def create
     respond_to do |format|
       if @instance.save
-        format.html { redirect_to @instance.atom, notice: 'Instance was successfully created.' }
+        format.html { redirect_to @instance.molecule, notice: 'Instance was successfully created.' }
         format.json { render json: @instance, status: :created, location: @instance }
       else
         format.html { render action: "new" }
@@ -57,7 +57,7 @@ class InstancesController < ApplicationController
   def update
     respond_to do |format|
       if @instance.update_attributes(params[:instance])
-        format.html { redirect_to @instance.atom, notice: 'Instance was successfully updated.' }
+        format.html { redirect_to @instance.molecule, notice: 'Instance was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,7 +72,7 @@ class InstancesController < ApplicationController
     @instance.destroy
 
     respond_to do |format|
-      format.html { redirect_to @instance.atom }
+      format.html { redirect_to @instance.molecule }
       format.json { head :no_content }
     end
   end
