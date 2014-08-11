@@ -1,3 +1,4 @@
+<% if instances %> 
 <h1><%= cohort %></h1>
 <ul>
 <% instances.sort_by(&:code).each do |instance| %>
@@ -12,5 +13,6 @@
 <% slots_by_date.group_by { |x| x[:load].semester }.each do |semester, slots| %>
   <h2>Timetable <%= academic_year_code(@date) %>, Semester <%= semester %>.</h2>
   <%= render :partial => 'slots', :object => slots %>
+<% end %>
 <% end %>
 <% end %>
