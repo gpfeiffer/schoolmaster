@@ -19,6 +19,7 @@ class Molecule < ActiveRecord::Base
   end
 
   def slots(date)
+    return [] if atoms.blank?
     atoms.map { |x| x.slots(date) }.sum.each do |slot|
       slot[:code] = code
     end
