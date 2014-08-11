@@ -6,7 +6,7 @@ class Instance < ActiveRecord::Base
   COHORTS = %w{ 1BMS1 2BMS1 3BMS2 4BMS2 1BS1 1FM1 2FM1 3FM2 4FM2 }
   STATUSES = %w{ C O }
 
-  delegate :code, :to => :molecule
+  delegate :code, :course, :to => :molecule
 
   def loads
     molecule.loads.group_by(&:date)[date] || []
