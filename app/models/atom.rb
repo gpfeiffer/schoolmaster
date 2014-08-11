@@ -25,5 +25,9 @@ class Atom < ActiveRecord::Base
     code[2].to_i
   end
 
+  def slots(date)
+    loads.group_by(&:date)[date].map(&:slots).sum
+  end
+
 end
 

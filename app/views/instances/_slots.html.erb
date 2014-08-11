@@ -23,14 +23,14 @@
 	        <% load = slot[:load] %>
 	        <tr>
 		  <td class="times-m">
-                    <b><%= link_to load.atom.instances.first.code, load, :title => load.title %></b>
+                    <b><%= link_to slot[:code], load, :title => load.title %></b>
                     <%= link_to load.title, load, :title => load.title %>
+[<%= content_tag(:span, slot[:loc], :title => "weeks #{load.weeks}")%>]
 		  </td>
 		</tr>
 	        <tr>
-		  <td class="times-m">
+		  <td class="times-v" style="background: lightblue;">
 		    <%= link_to load.academic.name, load.academic, :title => load.academic.name %>
-		    [<%= content_tag(:span, slot[:loc], :title => "weeks #{load.weeks}")%>]
 		  </td>
 		</tr>
               <% end %>
