@@ -26,7 +26,8 @@ class Atom < ActiveRecord::Base
   end
 
   def slots(date)
-    loads.group_by(&:date)[date].map(&:slots).sum
+    loads_by_date = loads.group_by(&:date)[date]
+    loads_by_date ? loads_by_date.map(&:slots).sum : []
   end
 
 end
