@@ -2,7 +2,7 @@
   <h3>Programmes</h3>
 
   <ul>
-    <% @instances_by_cohort.keys.each do |cohort| %>
+    <% Instance::COHORTS.each do |cohort| %>
       <li>
         <%= link_to_unless_current cohort, instances_path(:cohort => cohort) %>
       </li>
