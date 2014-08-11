@@ -28,11 +28,21 @@ MathJax.Hub.Config({
           <%= link_to 'Home', root_path %> |
         <% end %>
       <% end %>
-      <%= link_to 'Academics', academics_path %> |
-      <%= link_to 'Postgrads', students_path %> |
-      <%= link_to 'Projects', authors_path %> |
-      <%= link_to 'Modules', courses_path %> |
-      <%= link_to 'Loads', loads_path %> |
+      <% if can? :read, Academic %>
+        <%= link_to 'Academics', academics_path %> |
+      <% end %>
+      <% if can? :read, Student %>
+        <%= link_to 'Postgrads', students_path %> |
+      <% end %>
+      <% if can? :read, Author %>
+        <%= link_to 'Projects', authors_path %> |
+      <% end %>
+      <% if can? :read, Course %>
+        <%= link_to 'Modules', courses_path %> |
+      <% end %>
+      <% if can? :read, Load %>
+        <%= link_to 'Loads', loads_path %> |
+      <% end %>
     </div>
     <div id="login"> |
       <% if user_signed_in? %>

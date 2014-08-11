@@ -8,25 +8,33 @@
 <p>
 From  here you can access:
 <ul>
+<% if can? :read, Academic %>
 <li>
 a list of <%= Academic.all.count %> <%= link_to 'academics', academics_path %>,
 </li>
+<% end %>
+<% if can? :read, Student %>
 <li>
 a list of <%= Student.all.count %> <%= link_to 'graduate students', students_path %>,
 </li>
+<% end %>
+<% if can? :read, Room %>
 <li>
 a list of <%= Room.all.count %> <%= link_to 'postgrad rooms', rooms_path %>,
 </li>
+<% end %>
+<% if can? :read, Author %>
 <li>
 a list of <%= Author.current.count %> <%= link_to 'project students', authors_path %>.
 </li>
+<% end %>
+<% if can? :read, Course %>
 <li>
 a list of <%= Course.all.count %> <%= link_to 'module descriptors', courses_path %>.
 </li>
+<% end %>
 </ul>
-</p>
-
-<p>
+And you can:
 <ul>
 <li>
 <%= link_to 'enrol', new_enrolment_path(:user_id => current_user) %> for final year projects.

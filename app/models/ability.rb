@@ -34,13 +34,11 @@ class Ability
       can [:destroy, :accept], Proposal do |proposal| 
         proposal.academic == user.academic
       end
-    else
-      can :read, [Academic, Student, Author, Venue]
     end
 
     # manage projects
     if user.role? "Project Manager"
-      can [:manage, :index], [Author, Project, Direction, Examination, Venue, Slot, Booking, Enrolment, Proposal]
+      can :manage, [Author, Project, Direction, Examination, Venue, Slot, Booking, Enrolment, Proposal]
     elsif user.role? :supervisor
       can :read, [Author, Project, Venue]
 
@@ -81,8 +79,8 @@ class Ability
 
     # support staff can read 
     if user.role? :support
-      can :read, [Academic, Student, Author, Room]
-      can :manage, [Atom, Load, Instance]
+      can :read, [Academic, Student, Author, Room, Venue]
+      can :manage, [Atom, Load, Instance, Molecule, Bond]
     end
   end
 end
