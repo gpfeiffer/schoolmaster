@@ -1,6 +1,6 @@
 <h1><%= cohort %></h1>
 <ul>
-<% instances.each do |instance| %>
+<% instances.sort_by(&:code).each do |instance| %>
 <li>
 <%= link_to instance.molecule, instance.molecule %> (<%= instance.status %>)
 </li>

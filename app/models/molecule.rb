@@ -8,6 +8,8 @@ class Molecule < ActiveRecord::Base
 
   has_many :instances, :dependent => :destroy
 
+  default_scope :order => :code
+
   def to_s
     "#{code}: #{title}"
   end
