@@ -6,6 +6,8 @@ class Molecule < ActiveRecord::Base
   has_many :bonds, :dependent => :destroy
   has_many :atoms, :through => :bonds
 
+  has_many :instances, :dependent => :destroy
+
   def to_s
     "#{code}: #{title}"
   end

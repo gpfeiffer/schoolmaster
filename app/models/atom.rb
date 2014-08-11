@@ -12,8 +12,6 @@ class Atom < ActiveRecord::Base
   has_many :loads, :dependent => :destroy
   has_many :academics, :through => :loads
 
-  has_many :instances, :dependent => :destroy
-
   has_many :bonds, :dependent => :destroy
   has_many :molecules, :through => :bonds
 

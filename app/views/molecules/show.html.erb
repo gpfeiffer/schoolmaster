@@ -31,6 +31,27 @@
   </ul>
 </p>
 
+<h3 class="edit-head">Instances</h3>
+<% if can? :update, @molecule %>
+  <div class="edit">
+    <%= link_to add_symbol, new_instance_path(:molecule_id => @molecule) %>
+  </div>
+<% end %>
+<ul>
+<% @molecule.instances.each do |instance| %>
+<li>
+<%= link_to instance.cohort, instances_path(:cohort => instance.cohort) %>:
+<%= instance.code %>
+(<%= link_to instance.course, instance.course %>)
+<% if can? :update, instance %>
+  <div class="edit">
+    <%= link_to edit_symbol, edit_instance_path(instance) %>
+  </div>
+<% end %>
+</li>
+<% end %>
+</ul>
+
 <p>
   <b>Description:</b>
   <%= @molecule.description %>
