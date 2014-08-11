@@ -18,14 +18,6 @@
     <%= f.select :cohort, Instance::COHORTS, :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :course_id, 'Module' %><br />
-    <%= f.select :course_id, Course.all.map { |x| [x, x.id] }, :include_blank => true %>
-  </div>
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
     <%= f.label :date %><br />
     <%= f.number_field :date %>
   </div>
