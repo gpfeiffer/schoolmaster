@@ -27,28 +27,6 @@
   (<%= @course.workload_text %>).
 </p>
 
-<% if can? :destroy, @course %>
-<h3 class="edit-head">Lecturers</h3>
-<% if can? :update, @course %>
-  <div class="edit">
-    <%= link_to add_symbol, new_teaching_path(:course_id => @course) %>
-  </div>
-<% end %>
-<ul>
-<% @course.teachings.each do |teaching| %>
-<li>
-<%= link_to teaching.academic, teaching.academic %>: 
-<%= teaching.load %>.
-<% if can? :update, @course %>
-  <div class="edit">
-    <%= link_to edit_symbol, edit_teaching_path(teaching) %>
-  </div>
-<% end %>
-</li>
-<% end %>
-</ul>
-<% end %>
-
 <hr />
 
 <p>

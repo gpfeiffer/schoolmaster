@@ -15,9 +15,6 @@ class Academic < ActiveRecord::Base
   has_many :examinations
   has_many :proposals
 
-  has_many :teachings, :dependent => :destroy
-  has_many :courses, :through => :teachings
-
   has_many :loads, :dependent => :destroy
   has_many :atoms, :through => :loads
 
