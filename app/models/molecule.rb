@@ -10,6 +10,10 @@ class Molecule < ActiveRecord::Base
     "#{code}: #{title}"
   end
 
+  def loads
+    atoms.map(&:loads).sum
+  end
+
   def slots(date)
     atoms.map { |x| x.slots(date) }.sum.each do |slot|
       slot[:code] = code

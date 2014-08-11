@@ -8,6 +8,10 @@ class Instance < ActiveRecord::Base
   COHORTS = %w{ 1BMS1 1BS1 1FM1 2BMS1 2FM1 3BMS2 3FM2 4BMS2 4FM2 }
   STATUSES = %w{ C O }
 
+  def loads
+    molecule.loads.group_by(&:date)[date] || []
+  end
+
   def slots
     molecule.slots(date)
   end
