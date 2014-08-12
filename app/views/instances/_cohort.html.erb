@@ -10,7 +10,7 @@
 
 <% if @date %>
 <% slots_by_date = instances.group_by(&:date)[@date].map(&:slots).sum %>
-<% slots_by_date.group_by { |x| x[:load].semester }.each do |semester, slots| %>
+<% slots_by_date.group_by { |x| x[:load].semester }.sort.each do |semester, slots| %>
   <h2>Timetable <%= academic_year_code(@date) %>, Semester <%= semester %>.</h2>
   <%= render :partial => 'slots', :object => slots %>
 <% end %>
