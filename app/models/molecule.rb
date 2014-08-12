@@ -15,6 +15,7 @@ class Molecule < ActiveRecord::Base
   end
 
   def loads
+    return [] if atoms.blank?
     atoms.map(&:loads).sum
   end
 
