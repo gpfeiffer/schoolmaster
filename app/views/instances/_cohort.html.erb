@@ -3,7 +3,8 @@
 <ul>
 <% instances.sort_by(&:code).each do |instance| %>
 <li>
-<%= link_to instance.molecule, instance.molecule %> (<%= instance.status %>)
+<%= link_to instance.molecule, instance.molecule %> (<%= instance.status %>):
+<%= instance.loads.map(&:hours).sum %> hours.
 </li>
 <% end %>
 </ul>
