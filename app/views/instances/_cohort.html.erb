@@ -1,13 +1,15 @@
 <% if instances %> 
 <h1><%= cohort %></h1>
-<ul>
+<table style="border: 1px solid grey;">
 <% instances.sort_by(&:code).each do |instance| %>
-<li>
-<%= link_to instance.molecule, instance.molecule %> (<%= instance.status %>):
-<%= instance.loads.map(&:hours).sum %> hours.
-</li>
+<tr>
+<td><%= link_to instance.molecule, instance.molecule %></td>
+<td><%= instance.credits %> ECTS</td>
+<td>(<%= instance.status %>)</td>
+<td><%= instance.loads.map(&:hours).sum %> hours.</td>
+</tr>
 <% end %>
-</ul>
+</table>
 
 <% if @date %>
 <% slots_by_date = instances.group_by(&:date)[@date].map(&:slots).sum %>

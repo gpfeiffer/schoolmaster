@@ -22,6 +22,10 @@
     <%= f.number_field :date %>
   </div>
   <div class="field">
+    <%= f.label :credits %><br />
+    <%= f.number_field :credits %>
+  </div>
+  <div class="field">
     <%= f.label :status %><br />
     <%= f.select :status, Instance::STATUSES, :include_blank => true %>
   </div>

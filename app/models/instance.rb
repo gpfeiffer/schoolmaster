@@ -1,5 +1,5 @@
 class Instance < ActiveRecord::Base
-  attr_accessible :cohort, :date, :molecule_id, :status
+  attr_accessible :cohort, :credits, :date, :molecule_id, :status
 
   belongs_to :molecule
 

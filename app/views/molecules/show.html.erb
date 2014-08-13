@@ -32,20 +32,25 @@
     <%= link_to add_symbol, new_instance_path(:molecule_id => @molecule) %>
   </div>
 <% end %>
-<ul>
+<table>
 <% @molecule.instances.each do |instance| %>
-<li>
-<%= link_to instance.cohort, instances_path(:cohort => instance.cohort) %>:
-<%= instance.date %>
-(<%= instance.status %>)
+<tr>
+  <td>
+    <%= link_to instance.cohort, instances_path(:cohort => instance.cohort) %>
+  </td>
+  <td><%= instance.date %></td>
+  <td>(<%= instance.status %>)</td>
+<td>
+<%= instance.credits %> ECTS
 <% if can? :update, instance %>
   <div class="edit">
     <%= link_to edit_symbol, edit_instance_path(instance) %>
   </div>
 <% end %>
-</li>
+</td>
+</tr>
 <% end %>
-</ul>
+</table>
 
 <p>
   <b>Description:</b>
