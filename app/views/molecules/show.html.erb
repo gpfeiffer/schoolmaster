@@ -1,19 +1,14 @@
 <% content_for :side do %>
-  <h3>Molecules</h3>
+  <h3>All Modules</h3>
     <ul><%= render Molecule.all %></ul>
 <% end %>
 
-<h3>Molecule</h3>
+<h3>Module</h3>
 
 <h1>
-  <%= @molecule.code %>:
+  <%= link_to @molecule.code, @molecule.course %>:
   <%= @molecule.title %>
 </h1>
-
-<p>
-  <b>Module:</b>
-  <%= link_to @molecule.course, @molecule.course %>
-</p>
 
 <h3 class="edit-head">Atoms</h3>
 <% if can? :update, @molecule %>
@@ -41,8 +36,8 @@
 <% @molecule.instances.each do |instance| %>
 <li>
 <%= link_to instance.cohort, instances_path(:cohort => instance.cohort) %>:
-<%= instance.code %>
-(<%= link_to instance.course, instance.course %>)
+<%= instance.date %>
+(<%= instance.status %>)
 <% if can? :update, instance %>
   <div class="edit">
     <%= link_to edit_symbol, edit_instance_path(instance) %>
