@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140811162808) do
+ActiveRecord::Schema.define(:version => 20140813144104) do
 
   create_table "academics", :force => true do |t|
     t.string   "title"
@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(:version => 20140811162808) do
     t.datetime "updated_at",  :null => false
     t.integer  "molecule_id"
     t.integer  "date"
+    t.integer  "credits"
   end
 
   create_table "loads", :force => true do |t|
