@@ -23,8 +23,14 @@
       <td><%= f.select :academic_id, Academic.all.map { |x| [x, x.id] }, :include_blank => true %></td>
       <td><%= f.label :hours %></td>
       <td><%= f.number_field :hours %></td>
-</tr>
-</table>
+      <td>Semester:
+      <% Load::SEMESTERS.each do |semester| %>
+        <%= f.label semester %>
+        <%= f.radio_button :semester, semester %>
+      <% end %>
+      </td>
+    </tr>
+  </table>
 </fieldset>
 <fieldset>
   <legend>Time Tabling</legend>

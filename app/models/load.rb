@@ -1,10 +1,14 @@
 class Load < ActiveRecord::Base
-  attr_accessible :academic_id, :atom_id, :comment, :date, :hours, :times, :weeks
+  attr_accessible :academic_id, :atom_id, :comment, :date, :hours, :semester, :times, :weeks
 
   belongs_to :academic
   belongs_to :atom
 
-  delegate :code, :discipline, :semester, :title, :year, :to => :atom
+  delegate :code, :discipline, :title, :year, :to => :atom
+
+  SEMESTERS = [1, 2]
+
+  validates :semester, :inclusion => SEMESTERS
 
   def slots
     times.split(";").map do |time|

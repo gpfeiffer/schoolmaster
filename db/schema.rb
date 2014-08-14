@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140813144104) do
+ActiveRecord::Schema.define(:version => 20140814165955) do
 
   create_table "academics", :force => true do |t|
     t.string   "title"
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20140813144104) do
     t.string   "weeks"
     t.integer  "hours"
     t.text     "comment"
+    t.integer  "semester"
   end
 
   create_table "molecules", :force => true do |t|
