@@ -37,6 +37,16 @@
 	  <%= f.text_field :last %>
 	</td>
       </tr>
+      <% if can? :destroy, @academic %>
+      <tr>
+	<td align="right">
+	  <%= f.label :short, "Short Name" %>
+	</td>
+	<td>
+	  <%= f.text_field :short %>
+	</td>
+      </tr>
+      <% end %>
       <tr>
 	<td align="right">
 	  <%= f.label :school_id %>
