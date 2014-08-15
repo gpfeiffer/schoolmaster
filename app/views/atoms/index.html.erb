@@ -1,5 +1,8 @@
 <h3>Atoms</h3>
 
+This is the complete list of teaching atoms provided by the school,
+sorted by Discipline, and (approximately) by Year and Semester.
+
 <% @atoms.group_by(&:discipline).each do |discipline, atoms| %>
 
 <h1><%= discipline.titleize %> (<%= atoms.map(&:hours).sum %> hrs)</h1>
