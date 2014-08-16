@@ -21,6 +21,7 @@
     <% @molecule.atoms.each do |atom| %>
     <li>
       <%= link_to atom, atom %>
+      (<%= atom.hours %> hrs)
     </li>
     <% end %>
   </ul>

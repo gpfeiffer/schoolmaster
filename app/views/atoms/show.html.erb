@@ -35,7 +35,7 @@
 <ul>
 <% @atom.loads.each do |load| %>
 <li>
-<%= academic_year_code(load.date) %>:
+<%= academic_year_code(load.date) %> Semester <%= load.semester %>:
 <%= load.hours %> hrs,
 <%= link_to load.academic, load %>.
 <%= load.comment %>
