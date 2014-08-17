@@ -1,9 +1,9 @@
 class Instance < ActiveRecord::Base
-  attr_accessible :cohort, :credits, :date, :molecule_id, :status
+  attr_accessible :stream, :credits, :date, :molecule_id, :status
 
   belongs_to :molecule
 
-  COHORTS = %w{ 
+  STREAMS = %w{ 
     1BMS1 2BMS1 3BMS2 4BMS2 
     1BS1 2BS1 3BS9 4BS3 
     1FM1 2FM1 3FM2 4FM2
@@ -20,7 +20,7 @@ class Instance < ActiveRecord::Base
 
   delegate :code, :course, :to => :molecule
 
-  validates :cohort, :inclusion => COHORTS
+  validates :stream, :inclusion => STREAMS
   validates :status, :inclusion => STATUSES
 
   def loads

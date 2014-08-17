@@ -4,9 +4,9 @@ class InstancesController < ApplicationController
   # GET /instances
   # GET /instances.json
   def index
-    @instances_by_cohort = @instances.group_by(&:cohort)
+    @instances_by_stream = @instances.group_by(&:stream)
     @date = params[:date] || 2015
-    @cohort = params[:cohort]
+    @stream = params[:stream]
 
     respond_to do |format|
       format.html # index.html.erb

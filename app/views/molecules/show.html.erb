@@ -37,7 +37,7 @@
 <% @molecule.instances.each do |instance| %>
 <tr>
   <td>
-    <%= link_to instance.cohort, instances_path(:cohort => instance.cohort) %>
+    <%= link_to instance.stream, instances_path(:stream => instance.stream) %>
   </td>
   <td><%= instance.date %></td>
   <td>(<%= instance.status %>)</td>

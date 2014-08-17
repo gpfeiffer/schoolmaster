@@ -2,22 +2,22 @@
   <h3>Programmes</h3>
 
   <ul>
-    <% Instance::COHORTS.each do |cohort| %>
+    <% Instance::STREAMS.each do |stream| %>
       <li>
-        <%= link_to_unless_current cohort, instances_path(:cohort => cohort) %>
+        <%= link_to_unless_current stream, instances_path(:stream => stream) %>
       </li>
     <% end %>
   </ul>
 <% end %>
 
-<% if @cohort %>
-<% cohort = @cohort %>
-<% instances = @instances_by_cohort[cohort] %>
-<%= render :partial => 'cohort', :locals => { :cohort => cohort, :instances => instances } %>
+<% if @stream %>
+<% stream = @stream %>
+<% instances = @instances_by_stream[stream] %>
+<%= render :partial => 'stream', :locals => { :stream => stream, :instances => instances } %>
 
 <% else %>
 
-<% @instances_by_cohort.each do |cohort, instances| %>
-<%= render :partial => 'cohort', :locals => { :cohort => cohort, :instances => instances } %>
+<% @instances_by_stream.each do |stream, instances| %>
+<%= render :partial => 'stream', :locals => { :stream => stream, :instances => instances } %>
 <% end %>
 <% end %>

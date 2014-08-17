@@ -18,7 +18,7 @@ class InstancesControllerTest < ActionController::TestCase
 
   test "should create instance" do
     assert_difference('Instance.count') do
-      post :create, instance: { atom_id: @instance.atom_id, code: @instance.code, cohort: @instance.cohort, credits: @instance.credits, status: @instance.status }
+      post :create, instance: { atom_id: @instance.atom_id, code: @instance.code, stream: @instance.stream, credits: @instance.credits, status: @instance.status }
     end
 
     assert_redirected_to instance_path(assigns(:instance))
@@ -35,7 +35,7 @@ class InstancesControllerTest < ActionController::TestCase
   end
 
   test "should update instance" do
-    put :update, id: @instance, instance: { atom_id: @instance.atom_id, code: @instance.code, cohort: @instance.cohort, credits: @instance.credits, status: @instance.status }
+    put :update, id: @instance, instance: { atom_id: @instance.atom_id, code: @instance.code, stream: @instance.stream, credits: @instance.credits, status: @instance.status }
     assert_redirected_to instance_path(assigns(:instance))
   end
 
