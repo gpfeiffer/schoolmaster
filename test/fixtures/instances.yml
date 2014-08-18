@@ -2,14 +2,14 @@
 
 one:
   stream: MyString
-  credits: 1
-  atom_id: 1
-  code: MyString
-  status: MyString
+  date: 2014
+  credits: 5
+  molecule: one
+  status: O
 
 two:
   stream: MyString
-  credits: 1
-  atom_id: 1
-  code: MyString
-  status: MyString
+  date: 2015
+  credits: 5
+  molecule: two
+  status: C

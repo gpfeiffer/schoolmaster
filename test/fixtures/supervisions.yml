@@ -3,9 +3,9 @@
 one:
   academic: one
   student: one
-  status: Main
+  main: true
 
 two:
   academic: two
   student: two
-  status: Co
+  main: false

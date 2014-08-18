@@ -1,11 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  academic_id: 1
-  atom_id: 1
-  year: 1
+  academic: one
+  atom: one
+  date: 2014
+  semester: 1
+  comment: MyString
+  weeks: 1-12
+  hours: 24
+  times: Mon10;Tue10
 
 two:
-  academic_id: 1
-  atom_id: 1
-  year: 1
+  academic: two
+  atom: two
+  date: 2015
+  semester: 2
+  comment: MyString
+  weeks: 1-12
+  hours: 24
+  times: Mon10;Tue10

@@ -4,18 +4,14 @@ one:
   code: MyString
   title: MyString
   description: MyText
-  hours: 1
-  weeks: MyString
+  hours: 24
   semester: 1
-  times: MyString
   discipline: MyString
 
 two:
   code: MyString
   title: MyString
   description: MyText
-  hours: 1
-  weeks: MyString
+  hours: 24
   semester: 1
-  times: MyString
   discipline: MyString
