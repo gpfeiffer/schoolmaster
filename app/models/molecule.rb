@@ -7,6 +7,7 @@ class Molecule < ActiveRecord::Base
   has_many :atoms, :through => :bonds
 
   has_many :instances, :dependent => :destroy
+  has_many :cohorts, :through => :instances
 
   default_scope :order => :code
 

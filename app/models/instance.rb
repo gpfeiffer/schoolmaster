@@ -1,7 +1,8 @@
 class Instance < ActiveRecord::Base
-  attr_accessible :stream, :credits, :date, :molecule_id, :status
+  attr_accessible :stream, :cohort_id, :credits, :date, :molecule_id, :status
 
   belongs_to :molecule
+  belongs_to :cohort
 
   STREAMS = %w{ 
     1BMS1 2BMS1 3BMS2 4BMS2 

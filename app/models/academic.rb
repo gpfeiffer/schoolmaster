@@ -18,6 +18,8 @@ class Academic < ActiveRecord::Base
   has_many :loads, :dependent => :destroy
   has_many :atoms, :through => :loads
 
+  has_many :cohorts
+
   default_scope :order => [:last, :first]
 
   def first_last
