@@ -1,14 +1,26 @@
-<p id="notice"><%= notice %></p>
+<% content_for :side do %>
+  <ul>
+    <% @instances_by_date.keys.each do |date| %>
+      <li><%= link_to academic_year_code(date), cohort_path(@cohort, :date => date) %></li>
+    <% end %>
+  </ul>
 
-<p>
-  <b>Code:</b>
-  <%= @cohort.code %>
-</p>
+  <h3>Programmes</h3>
 
-<p>
-  <b>Name:</b>
+  <ul>
+    <% Cohort.all.each do |cohort| %>
+      <li>
+        <%= link_to_unless_current cohort, cohort %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h3>Programmes <%= academic_year_code(@date) %></h3>
+<h1>
+  <%= @cohort.code %> -
   <%= @cohort.name %>
-</p>
+</h1>
 
 <p>
   <b>Description:</b>
@@ -16,10 +28,30 @@
 </p>
 
 <p>
-  <b>Academic:</b>
-  <%= @cohort.academic_id %>
+  <b>Coordinator:</b>
+  <%= link_to(@cohort.academic, @cohort.academic) if @cohort.academic %>
 </p>
 
+<table style="border: 1px solid grey;">
+<% @instances.sort_by(&:code).each do |instance| %>
+<tr>
+<td><%= link_to instance.molecule, instance.molecule %></td>
+<td><%= instance.credits %> ECTS</td>
+<td>(<%= instance.status %>)</td>
+<td><%= instance.loads.map(&:hours).sum %> hours.</td>
+</tr>
+<% end %>
+</table>
 
-<%= link_to 'Edit', edit_cohort_path(@cohort) %> |
+<% @instances.map(&:slots).sum.group_by { |x| x[:load].semester }.sort.each do |semester, slots| %>
+  <h2>Timetable <%= academic_year_code(@date) %>, Semester <%= semester %>.</h2>
+  <%= render :partial => 'slots', :object => slots %>
+<% end %>
+
+<% if can? :edit, @cohort %>
+  <%= link_to 'Edit', edit_cohort_path(@cohort) %> |
+<% end %>
+<% if can? :destroy, @cohort %>
+  <%= link_to 'Destroy', @cohort, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back', cohorts_path %>

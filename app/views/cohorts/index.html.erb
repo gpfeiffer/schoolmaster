@@ -1,28 +1,14 @@
-<h1>Listing cohorts</h1>
+<h1>Programmes</h1>
 
-<table>
-  <tr>
-    <th>Code</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Academic</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @cohorts.each do |cohort| %>
-  <tr>
-    <td><%= cohort.code %></td>
-    <td><%= cohort.name %></td>
-    <td><%= cohort.description %></td>
-    <td><%= cohort.academic_id %></td>
-    <td><%= link_to 'Show', cohort %></td>
-    <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
-    <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<p> 
+   <b><%= link_to cohort.code, cohort %></b>
+   <%= cohort.name %>
+   <% if cohort.academic %>
+   (<%= link_to cohort.academic, cohort.academic %>)
+</p>
 <% end %>
-</table>
 
 <br />
 

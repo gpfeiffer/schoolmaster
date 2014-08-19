@@ -4,4 +4,8 @@ class Cohort < ActiveRecord::Base
   belongs_to :academic
   has_many :instances, :dependent => :destroy
   has_many :molecules, :through => :instances
+
+  def to_s
+    code
+  end
 end
