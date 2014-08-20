@@ -11,7 +11,7 @@
   <li>
     <strong><%= link_to course.code, course %>: <%= course.title %></strong>
     <%= course.description %>
-    <% if can? :destroy, course %>
+    <% if can? :edit, course %>
       [modified: <%= course.updated_at.to_s %>]
     <% end %>
   </li>
