@@ -24,7 +24,7 @@
 	        <tr>
 		  <td class="times-m">
                     <b><%= link_to slot[:code], load, :title => load.title %></b>
-                    <%= link_to load.title, load, :title => load.title %>
+                    <%= link_to slot[:title], load, :title => load.title %>
 [<%= content_tag(:span, slot[:loc], :title => "weeks #{load.weeks}")%>]
 		  </td>
 		</tr>
