@@ -3,13 +3,16 @@
 
 <% @cohorts.each do |cohort| %>
 <p> 
-   <b><%= link_to cohort.code, cohort %></b>
-   <%= cohort.name %>
-   <% if cohort.academic %>
-   (<%= link_to cohort.academic, cohort.academic %>)
+  <b><%= link_to cohort.code, cohort %></b>
+  <%= cohort.name %>
+  <% if cohort.academic %>
+    (<%= link_to cohort.academic, cohort.academic %>)
+  <% end %>
 </p>
 <% end %>
 
 <br />
 
-<%= link_to 'New Cohort', new_cohort_path %>
+<% if can? :create, Cohort %>
+  <%= link_to 'New Cohort', new_cohort_path %>
+<% end %>

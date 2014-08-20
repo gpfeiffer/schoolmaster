@@ -14,8 +14,8 @@ class CohortsController < ApplicationController
   # GET /cohorts/1.json
   def show
     @instances_by_date = @cohort.instances.group_by(&:date)
-    @date = params[:date].to_i || @instances_by_date.keys.max
-    @instances = @instances_by_date[@date]
+    @date = params[:date] || @instances_by_date.keys.max
+    @instances = @instances_by_date[@date.to_i]
 
     respond_to do |format|
       format.html # show.html.erb
