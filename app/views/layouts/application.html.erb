@@ -43,6 +43,9 @@ MathJax.Hub.Config({
       <% if can? :read, Load %>
         <%= link_to 'Loads', loads_path %> |
       <% end %>
+      <% if can? :read, Cohort %>
+        <%= link_to 'Timetables', cohorts_path %> |
+      <% end %>
     </div>
     <div id="login"> |
       <% if user_signed_in? %>

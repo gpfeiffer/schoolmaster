@@ -72,7 +72,7 @@ class Ability
 
     # manage lecture loads
     if user.role? :supervisor
-      can :read, [Atom, Load, Instance]
+      can :read, [Atom, Load, Molecule, Bond, Cohort, Instance]
     else
       can :read, Atom
     end
