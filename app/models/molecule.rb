@@ -25,6 +25,7 @@ class Molecule < ActiveRecord::Base
     atoms.map { |x| x.slots(date) }.sum.each do |slot|
       slot[:code] = code
       slot[:title] = title
+      slot[:molecule] = self
     end
   end
 end
