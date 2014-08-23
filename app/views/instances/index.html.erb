@@ -1,23 +1,31 @@
-<% content_for :side do %>
-  <h3>Programmes</h3>
+<h1>Instances</h1>
 
-  <ul>
-    <% Instance::STREAMS.each do |stream| %>
-      <li>
-        <%= link_to_unless_current stream, instances_path(:stream => stream) %>
-      </li>
-    <% end %>
-  </ul>
+<table>
+  <tr>
+    <th>Cohort</th>
+    <th>Molecule</th>
+    <th>Status</th>
+    <th>Date</th>
+    <th>Credits</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @instances.each do |instance| %>
+  <tr>
+    <td><%= instance.cohort_id %></td>
+    <td><%= instance.molecule_id %></td>
+    <td><%= instance.status %></td>
+    <td><%= instance.date %></td>
+    <td><%= instance.credits %></td>
+    <td><%= link_to 'Show', instance %></td>
+    <td><%= link_to 'Edit', edit_instance_path(instance) %></td>
+    <td><%= link_to 'Destroy', instance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
 <% end %>
+</table>
 
-<% if @stream %>
-<% stream = @stream %>
-<% instances = @instances_by_stream[stream] %>
-<%= render :partial => 'stream', :locals => { :stream => stream, :instances => instances } %>
+<br />
 
-<% else %>
-
-<% @instances_by_stream.each do |stream, instances| %>
-<%= render :partial => 'stream', :locals => { :stream => stream, :instances => instances } %>
-<% end %>
-<% end %>
+<%= link_to 'New Instance', new_instance_path %>
