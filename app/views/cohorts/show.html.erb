@@ -23,10 +23,10 @@
 </h1>
 
 <p>
-  <b>Description:</b>
   <%= @cohort.description %>
 </p>
 
+<% if can? :read, Molecule %>
 <p>
   <b>Coordinator:</b>
   <%= link_to(@cohort.academic, @cohort.academic) if @cohort.academic %>
@@ -42,6 +42,7 @@
 </tr>
 <% end %>
 </table>
+<% end %>
 
 <% @instances.map(&:slots).sum.group_by { |x| x[:load].semester }.sort.each do |semester, slots| %>
   <h2>Timetable <%= academic_year_code(@date) %>, Semester <%= semester %>.</h2>
