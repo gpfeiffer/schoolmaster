@@ -74,7 +74,7 @@ class Ability
     if user.role? :supervisor
       can :read, [Atom, Load, Molecule, Bond, Cohort, Instance]
     else
-      can :read, Atom
+      can :read, Cohort
     end
 
     # support staff can read 

@@ -1,6 +1,6 @@
-<h1>SchoolMaster</h1>
+<h1>Welcome ...</h1>
 <p>
-  Welcome to the World of Student Supervision!
+  ... to the World of Student Supervision!
 </p>
 
 <p>It is now <%= Time.now.strftime('%H:%M:%S (%Z) on %A, %B %d, %Y') %>.</p>
@@ -31,6 +31,11 @@ a list of <%= Author.current.count %> <%= link_to 'project students', authors_pa
 <% if can? :read, Course %>
 <li>
 a list of <%= Course.all.count %> <%= link_to 'module descriptors', courses_path %>.
+</li>
+<% end %>
+<% if can? :read, Cohort %>
+<li>
+a list of <%= Cohort.all.count %> <%= link_to 'time tables', cohorts_path %>.
 </li>
 <% end %>
 </ul>
