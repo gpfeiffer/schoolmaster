@@ -10,7 +10,8 @@
   <ul>
     <% Cohort.all.each do |cohort| %>
       <li>
-        <%= link_to_unless_current cohort, cohort %>
+        <%= link_to_unless_current cohort.code, cohort %>
+	<%= truncate cohort.name, :length => 23 %>
       </li>
     <% end %>
   </ul>
@@ -18,8 +19,7 @@
 
 <h3>Programmes <%= academic_year_code(@date) %></h3>
 <h1>
-  <%= @cohort.code %> -
-  <%= @cohort.name %>
+  <%= @cohort %>
 </h1>
 
 <p>

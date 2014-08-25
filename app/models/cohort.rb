@@ -6,6 +6,6 @@ class Cohort < ActiveRecord::Base
   has_many :molecules, :through => :instances
 
   def to_s
-    code
+    "#{code} #{name}"
   end
 end
