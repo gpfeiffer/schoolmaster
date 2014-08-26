@@ -14,8 +14,8 @@
   <%= f.hidden_field :molecule_id %>
 
   <div class="field">
-    <%= f.label :stream %><br />
-    <%= f.select :stream, Instance::STREAMS, :include_blank => true %>
+    <%= f.label :cohort_id %><br />
+    <%= f.select :cohort_id, Cohort.all.map { |x| [x, x.id] }, :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :date %><br />
