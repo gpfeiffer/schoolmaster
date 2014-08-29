@@ -20,7 +20,7 @@
   <%= @academic.extension %>
 </div>
 
-  <% @academic.loads.group_by(&:date).sort.reverse.each do |date, loads_by_date| %>
+  <% @academic.loads.group_by(&:date).sort_by { |x| [x.semester, x.atom.code] }.reverse.each do |date, loads_by_date| %>
 <br />
     <h3 class="edit-head">Teaching Load <%= academic_year_code(date) %> (<%= loads_by_date.map(&:hours).sum %> hrs)</h3>
     <ul>
