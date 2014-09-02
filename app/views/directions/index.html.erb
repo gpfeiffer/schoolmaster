@@ -1,26 +1,31 @@
-<h3>Projects <%= Project.academic_year %></h3>
+<% content_for :side do %>
+  <ul>
+    <% @projects_by_year.keys.sort.reverse.each do |key| %>
+      <li>
+        <%= link_to_unless_current academic_year_code(key), directions_path(:year => key) %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h3>Programmes</h3>
+  <ul>
+    <li><%= link_to '[all]', directions_path %></li>
+    <% @directions_by_programme.each do |programme, directions| %>
+      <li><%= link_to_unless_current programme, directions_path(:year => @year, :programme => programme) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h3>Projects <%= academic_year_code @year %></h3>
 <h1>Reports and Marks.</h1>
 
 <% if @programme %>
-<% content_for :side do %>
-  <h3>Programmes</h3>
-
-<ul>
-<li><%= link_to '[all]', directions_path %></li>
-<% @directions_by_programme.each do |programme, directions| %>
-  <li><%= link_to_unless_current programme, directions_path(:programme => programme) %></li>
-  <% end %>
-</ul>
-<% end %>
-
-
   <% directions = @directions_by_programme[@programme] %>
   <h2><%= @programme %></h2>
   <%= render directions %>
 <% else %>
-
-<% @directions_by_programme.each do |programme, directions| %>
-  <h2><%= link_to programme, directions_path(:programme => programme) %></h2>
-  <%= render directions %>
-<% end %>
+  <% @directions_by_programme.each do |programme, directions| %>
+    <h2><%= link_to programme, directions_path(:programme => programme) %></h2>
+    <%= render directions %>
+  <% end %>
 <% end %>

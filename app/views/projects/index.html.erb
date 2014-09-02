@@ -1,4 +1,15 @@
-<h1>Listing projects</h1>
+<% content_for :side do %>
+  <h3>Projects</h3>
+  <ul>
+    <% @projects_by_year.keys.sort.reverse.each do |key| %>
+      <li>
+        <%= link_to_unless_current academic_year_code(key), projects_path(:year => key) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h1>Projects <%= academic_year_code @year %></h1>
 
 <table>
   <tr>
@@ -9,7 +20,7 @@
 
 <% @projects.sort_by { |project| project.author.last_first }.each do |project| %>
   <tr>
-      <td><%= project.author.last_first %></td>
+    <td><%= project.author.last_first %></td>
     <td><%= project.supervisor.a_last %></td>
     <td><%= project.examiners.map { |x| x.a_last }.to_sentence %></td>
   </tr>

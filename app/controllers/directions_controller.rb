@@ -4,7 +4,11 @@ class DirectionsController < ApplicationController
   # GET /directions
   # GET /directions.json
   def index
-    @directions = Direction.current
+    @projects = Project.all
+    @projects_by_year = @projects.group_by(&:year)
+    @year = params[:year] || @projects_by_year.keys.sort.last
+    @projects = @projects_by_year[@year.to_i]
+    @directions = @projects.map(&:direction)
     @programme = params[:programme]
     @directions_by_programme = @directions.group_by { |x| x.project.author.programme }
 

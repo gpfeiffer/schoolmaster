@@ -1,6 +1,17 @@
-<h1>Project Students</h1>
+<% content_for :side do %>
+  <h3>Project Students</h3>
+  <ul>
+    <% @projects_by_year.keys.sort.reverse.each do |key| %>
+      <li>
+        <%= link_to_unless_current academic_year_code(key), authors_path(:year => key) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
-<h2><%= @authors.count %> Current Students</h2>
+<h1>Project Students <%= academic_year_code @year %></h1>
+
+<h2><%= @authors.count %> Students</h2>
 
 <% @authors.group_by(&:programme).each do |programme, authors| %>
   <h3><%= programme %></h3>
@@ -18,7 +29,7 @@
 
 <br />
 
-<%= mail_to @authors.map(&:email).join(','), "Mail current", :cc => "goetz.pfeiffer@nuigalway.ie" %> 
+<%= mail_to @authors.map(&:email).join(','), "Mail Students", :cc => "goetz.pfeiffer@nuigalway.ie" %> 
 <% if can? :create, Author %>
   | <%= link_to 'New Student', new_author_path %>
 <% end %>
