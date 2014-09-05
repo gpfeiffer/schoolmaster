@@ -1,6 +1,9 @@
-<h1>Editing bond</h1>
+<h3>Editing bond</h3>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @bond %> |
+<% if can? :destroy, @bond %>
+  <%= link_to 'Destroy', @bond, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back', bonds_path %>

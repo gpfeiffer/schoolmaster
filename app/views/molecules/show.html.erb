@@ -18,10 +18,15 @@
 <% end %>
 <p>
   <ul>
-    <% @molecule.atoms.each do |atom| %>
+    <% @molecule.bonds.each do |bond| %>
     <li>
-      <%= link_to atom, atom %>
-      (<%= atom.hours %> hrs)
+      <%= link_to bond.atom, bond %>
+      (<%= bond.atom.hours %> hrs)
+<% if can? :update, bond %>
+  <div class="edit">
+    <%= link_to edit_symbol, edit_bond_path(bond) %>
+  </div>
+<% end %>
     </li>
     <% end %>
   </ul>
