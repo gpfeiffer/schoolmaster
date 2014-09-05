@@ -44,9 +44,11 @@
 </table>
 <% end %>
 
+<% if @instances.any? %>
 <% @instances.map(&:slots).sum.group_by { |x| x[:load].semester }.sort.each do |semester, slots| %>
   <h2>Timetable <%= academic_year_code(@date) %>, Semester <%= semester %>.</h2>
   <%= render :partial => 'slots', :object => slots %>
+<% end %>
 <% end %>
 
 <% if can? :edit, @cohort %>

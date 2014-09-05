@@ -80,7 +80,7 @@ class Ability
     # support staff can read 
     if user.role? :support
       can :read, [Academic, Atom, Molecule, Student, Author, Room, Venue]
-      can :manage, [Load, Instance, Bond, Cohort]
+      can :manage, [Load, Instance, Bond, Cohort, Molecule]
     end
   end
 end
