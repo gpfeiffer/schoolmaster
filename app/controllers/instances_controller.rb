@@ -23,6 +23,9 @@ class InstancesController < ApplicationController
   # GET /instances/new.json
   def new
     @instance.molecule = Molecule.find(params[:molecule_id])
+    @instance.date = 2015
+    @instance.credits = 5
+    @instance.status = 'O'
 
     respond_to do |format|
       format.html # new.html.erb
