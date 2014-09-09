@@ -20,7 +20,7 @@
   <ul>
     <% @molecule.bonds.each do |bond| %>
     <li>
-      <%= link_to bond.atom, bond %>
+      <%= link_to bond.atom, bond.atom %>
       (<%= bond.atom.hours %> hrs)
 <% if can? :update, bond %>
   <div class="edit">
