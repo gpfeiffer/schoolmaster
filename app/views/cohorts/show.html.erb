@@ -10,8 +10,7 @@
   <ul>
     <% Cohort.all.each do |cohort| %>
       <li>
-        <%= link_to_unless_current cohort.code, cohort %>
-	<%= truncate cohort.name, :length => 23 %>
+        <%= link_to_unless_current truncate(cohort.to_s, :length => 30), cohort, :title => cohort %>
       </li>
     <% end %>
   </ul>
