@@ -36,7 +36,7 @@
 <% @instances.sort_by(&:code).each do |instance| %>
 <tr>
 <td><%= link_to instance.molecule, instance.molecule %></td>
-<td><%= instance.credits %> ECTS</td>
+<td align="right"><%= instance.credits %> ECTS</td>
 <td>(<%= instance.status %>)</td>
 <td><%= instance.loads.map(&:hours).sum %> hours.</td>
 </tr>
