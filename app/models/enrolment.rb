@@ -10,4 +10,8 @@ class Enrolment < ActiveRecord::Base
   def name_number
     "#{first} #{last} (#{number})"
   end
+
+  def to_s
+    name_number
+  end
 end

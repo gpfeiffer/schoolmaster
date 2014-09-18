@@ -5,6 +5,7 @@
     <th>Title</th>
     <th>Enrolment</th>
     <th>Academic</th>
+    <th>Status</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +13,10 @@
 
 <% @proposals.each do |proposal| %>
   <tr>
-    <td><%= proposal.title %></td>
-    <td><%= proposal.enrolment_id %></td>
-    <td><%= proposal.academic_id %></td>
+    <td><%= truncate(proposal.title, :length => 80) %></td>
+    <td><%= proposal.enrolment %></td>
+    <td><%= proposal.academic %></td>
+    <td><%= proposal.status %></td>
     <td><%= link_to 'Show', proposal %></td>
     <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
     <td><%= link_to 'Destroy', proposal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
