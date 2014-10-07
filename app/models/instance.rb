@@ -4,7 +4,7 @@ class Instance < ActiveRecord::Base
   belongs_to :molecule
   belongs_to :cohort
 
-  STATUSES = %w{ C O }
+  STATUSES = %w{ C O R }
 
   delegate :code, :course, :to => :molecule
 
