@@ -1,5 +1,5 @@
 class Molecule < ActiveRecord::Base
-  attr_accessible :code, :course_id, :description, :title
+  attr_accessible :code, :corequisites, :course_id, :description, :exrequisites, :prerequisites, :title
   
   belongs_to :course
 

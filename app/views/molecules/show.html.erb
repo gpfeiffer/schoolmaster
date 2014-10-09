@@ -10,6 +10,20 @@
   <%= @molecule.title %>
 </h1>
 
+<div style="float: right;">
+<table style="border: 1px solid gray;">
+  <% %w{ pre co ex }.each do |pre| %>
+    <% symbol = (pre + "requisites").to_sym %>
+    <% if @molecule[symbol].present? %>
+      <tr>
+        <th><%= symbol.to_s.capitalize %>:</th>
+        <td><%= @molecule[symbol] %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+</div>
+
 <h3 class="edit-head">Atoms</h3>
 <% if can? :update, @molecule %>
   <div class="edit">
