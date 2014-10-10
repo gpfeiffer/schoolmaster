@@ -7,7 +7,7 @@
 </p>
 
 <% @pathway.cohorts.each do |cohort| %>
-  <h2>Year <%= cohort.year %></h2>
+  <h2>Year <%= link_to cohort.year, cohort %></h2>
   <% %w{ C R O }.each do |status| %>
     <% instances = cohort.instances.group_by(&:status)[status] %>
     <% if instances %>
