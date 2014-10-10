@@ -1,14 +1,25 @@
-<p id="notice"><%= notice %></p>
+
+<h3>Pathways</h3>
+<h1><%= @pathway.name %></h1>
 
 <p>
-  <b>Name:</b>
-  <%= @pathway.name %>
-</p>
-
-<p>
-  <b>Description:</b>
   <%= @pathway.description %>
 </p>
+
+<% @pathway.cohorts.each do |cohort| %>
+  <h2>Year <%= cohort.year %></h2>
+  <% %w{ C R O }.each do |status| %>
+    <% instances = cohort.instances.group_by(&:status)[status] %>
+    <% if instances %>
+      <h3><%= status_to_text(status) %></h3>
+      <ul>
+	<% instances.each do |instance| %>
+          <li><%= link_to instance.molecule, instance.molecule %></li>
+	<% end %>
+      </ul>
+    <% end %>
+  <% end %>
+<% end %>
 
 
 <%= link_to 'Edit', edit_pathway_path(@pathway) %> |

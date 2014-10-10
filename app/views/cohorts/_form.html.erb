@@ -24,6 +24,10 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :pathway_id %><br />
+    <%= f.select :pathway_id, Pathway.all.map { |x| [x, x.id] }, :include_blank => true %>
+  </div>
+  <div class="field">
     <%= f.label :academic_id %><br />
     <%= f.select :academic_id, Academic.all.map { |x| [x, x.id] }, :include_blank => true %>
   </div>
