@@ -4,9 +4,25 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+
+admin:
+  email: admin@example.com
+
+supervisor:
+  email: supervisor@example.com
+
+student:
+  email: student@example.com
+
+support:
+  email: support@example.com
+
+projects:
+  email: projects@example.com
+
 one:
-  email: me@me.com
+  email: one@one.com
 
 two:
-  email: you@you.ie
+  email: two@two.ie
 

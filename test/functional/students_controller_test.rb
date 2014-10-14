@@ -3,6 +3,7 @@ require 'test_helper'
 class StudentsControllerTest < ActionController::TestCase
   setup do
     @student = students(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -18,7 +19,7 @@ class StudentsControllerTest < ActionController::TestCase
 
   test "should create student" do
     assert_difference('Student.count') do
-      post :create, :student => { :completed_on => @student.completed_on, :email => @student.email, :expected_on => @student.expected_on, :first => @student.first, :funder => @student.funder, :home_url => @student.home_url, :interests => @student.interests, :last => @student.last, :photo_url => @student.photo_url, :programme => @student.programme, :registration => @student.registration, :started_on => @student.started_on, :status => @student.status, :title => @student.title, :work_phone => @student.work_phone }
+      post :create, :student => { :area => @student.area, :completed_on => @student.completed_on, :email => @student.email, :expected_on => @student.expected_on, :first => @student.first, :funder => @student.funder, :home_url => @student.home_url, :interests => @student.interests, :last => @student.last, :photo_url => @student.photo_url, :programme => @student.programme, :registration => @student.registration, :started_on => @student.started_on, :status => @student.status, :title => @student.title, :work_phone => @student.work_phone }
     end
 
     assert_redirected_to student_path(assigns(:student))
@@ -35,7 +36,7 @@ class StudentsControllerTest < ActionController::TestCase
   end
 
   test "should update student" do
-    put :update, :id => @student, :student => { :completed_on => @student.completed_on, :email => @student.email, :expected_on => @student.expected_on, :first => @student.first, :funder => @student.funder, :home_url => @student.home_url, :interests => @student.interests, :last => @student.last, :photo_url => @student.photo_url, :programme => @student.programme, :registration => @student.registration, :started_on => @student.started_on, :status => @student.status, :title => @student.title, :work_phone => @student.work_phone }
+    put :update, :id => @student, :student => { :area => @student.area, :completed_on => @student.completed_on, :email => @student.email, :expected_on => @student.expected_on, :first => @student.first, :funder => @student.funder, :home_url => @student.home_url, :interests => @student.interests, :last => @student.last, :photo_url => @student.photo_url, :programme => @student.programme, :registration => @student.registration, :started_on => @student.started_on, :status => @student.status, :title => @student.title, :work_phone => @student.work_phone }
     assert_redirected_to student_path(assigns(:student))
   end
 

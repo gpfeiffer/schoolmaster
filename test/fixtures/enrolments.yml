@@ -4,10 +4,10 @@ one:
   first: MyString
   last: MyString
   number: MyString
-  user_id: 1
+  user: one
 
 two:
   first: MyString
   last: MyString
   number: MyString
-  user_id: 1
+  user: two

@@ -2,7 +2,8 @@ require 'test_helper'
 
 class RolesControllerTest < ActionController::TestCase
   setup do
-    @role = roles(:one)
+    @role = roles(:student)
+    sign_in users(:admin)
   end
 
   test "should get index" do

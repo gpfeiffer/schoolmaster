@@ -1,9 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  user_id: 1
-  role_id: 1
+admin:
+  user: admin
+  role: admin
 
-two:
-  user_id: 1
-  role_id: 1
+supervisor:
+  user: supervisor
+  role: supervisor
+
+student:
+  user: student
+  role: student
+
+support:
+  user: support
+  role: support
+
+projects:
+  user: projects
+  role: projects
+
+one:
+  user: one
+  role: one

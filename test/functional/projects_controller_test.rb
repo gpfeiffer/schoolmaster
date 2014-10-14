@@ -3,6 +3,9 @@ require 'test_helper'
 class ProjectsControllerTest < ActionController::TestCase
   setup do
     @project = projects(:one)
+    @author = authors(:one)
+    @academic = academics(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -12,13 +15,13 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, author_id: @author
     assert_response :success
   end
 
   test "should create project" do
     assert_difference('Project.count') do
-      post :create, project: { author_id: @project.author_id, title: @project.title }
+      post :create, project: { author_id: @project.author_id, title: @project.title }, supervisor_id: @academic
     end
 
     assert_redirected_to project_path(assigns(:project))
@@ -44,6 +47,6 @@ class ProjectsControllerTest < ActionController::TestCase
       delete :destroy, id: @project
     end
 
-    assert_redirected_to projects_path
+    assert_redirected_to author_path(assigns(:project).author)
   end
 end

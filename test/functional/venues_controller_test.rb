@@ -3,6 +3,7 @@ require 'test_helper'
 class VenuesControllerTest < ActionController::TestCase
   setup do
     @venue = venues(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do

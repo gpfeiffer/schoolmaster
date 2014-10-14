@@ -2,7 +2,7 @@
 
 one:
   academic: one
-  student: one
+  student: two
   main: true
 
 two:

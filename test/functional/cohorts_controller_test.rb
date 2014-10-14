@@ -3,6 +3,7 @@ require 'test_helper'
 class CohortsControllerTest < ActionController::TestCase
   setup do
     @cohort = cohorts(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do

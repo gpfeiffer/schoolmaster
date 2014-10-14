@@ -3,6 +3,7 @@ require 'test_helper'
 class AcademicsControllerTest < ActionController::TestCase
   setup do
     @academic = academics(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -18,7 +19,7 @@ class AcademicsControllerTest < ActionController::TestCase
 
   test "should create academic" do
     assert_difference('Academic.count') do
-      post :create, :academic => { :first => @academic.first, :home_url => @academic.home_url, :image_url => @academic.image_url, :last => @academic.last, :title => @academic.title, :work_mail => @academic.work_mail, :work_phone => @academic.work_phone, :school => @academic.school }
+      post :create, :academic => { :first => @academic.first, :home_url => @academic.home_url, :image_url => @academic.image_url, :last => @academic.last, :title => @academic.title, :work_mail => @academic.work_mail, :work_phone => @academic.work_phone, :school_id => @academic.school_id }
     end
 
     assert_redirected_to academic_path(assigns(:academic))
@@ -35,7 +36,7 @@ class AcademicsControllerTest < ActionController::TestCase
   end
 
   test "should update academic" do
-    put :update, :id => @academic, :academic => { :first => @academic.first, :home_url => @academic.home_url, :image_url => @academic.image_url, :last => @academic.last, :title => @academic.title, :work_mail => @academic.work_mail, :work_phone => @academic.work_phone }
+    put :update, :id => @academic, :academic => { :first => @academic.first, :home_url => @academic.home_url, :image_url => @academic.image_url, :last => @academic.last, :title => @academic.title, :work_mail => @academic.work_mail, :work_phone => @academic.work_phone, :school_id => @academic.school_id }
     assert_redirected_to academic_path(assigns(:academic))
   end
 

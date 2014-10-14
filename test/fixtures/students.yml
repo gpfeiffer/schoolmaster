@@ -12,10 +12,11 @@ one:
   work_phone: MyString
   title: MyString
   funder: MyString
-  status: Completed
+  status: Full time
   started_on: 2012-10-11
   expected_on: 2012-10-11
   completed_on: 2012-10-11
+  area: Mathematics
 
 two:
   first: MyString
@@ -33,3 +34,4 @@ two:
   started_on: 2012-10-11
   expected_on: 2012-10-11
   completed_on: 2012-10-11
+  area: Statistics

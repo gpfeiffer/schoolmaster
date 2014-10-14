@@ -1,16 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  project_id: 1
-  academic_id: 1
+  project: one
+  academic: one
   comment: MyText
   midterm_mark: 1
   presentation_mark: 1
   report_mark: 1
 
 two:
-  project_id: 1
-  academic_id: 1
+  project: two
+  academic: two
   comment: MyText
   midterm_mark: 1
   presentation_mark: 1

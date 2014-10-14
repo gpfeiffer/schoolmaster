@@ -3,6 +3,7 @@ require 'test_helper'
 class AtomsControllerTest < ActionController::TestCase
   setup do
     @atom = atoms(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -18,7 +19,7 @@ class AtomsControllerTest < ActionController::TestCase
 
   test "should create atom" do
     assert_difference('Atom.count') do
-      post :create, atom: { code: @atom.code, description: @atom.description, discipline: @atom.discipline, hours: @atom.hours, semester: @atom.semester, times: @atom.times, title: @atom.title, weeks: @atom.weeks }
+      post :create, atom: { code: 'NEW', description: @atom.description, discipline: @atom.discipline, hours: @atom.hours, semester: @atom.semester, title: @atom.title }
     end
 
     assert_redirected_to atom_path(assigns(:atom))
@@ -35,7 +36,7 @@ class AtomsControllerTest < ActionController::TestCase
   end
 
   test "should update atom" do
-    put :update, id: @atom, atom: { code: @atom.code, description: @atom.description, discipline: @atom.discipline, hours: @atom.hours, semester: @atom.semester, times: @atom.times, title: @atom.title, weeks: @atom.weeks }
+    put :update, id: @atom, atom: { code: @atom.code, description: @atom.description, discipline: @atom.discipline, hours: @atom.hours, semester: @atom.semester, title: @atom.title }
     assert_redirected_to atom_path(assigns(:atom))
   end
 

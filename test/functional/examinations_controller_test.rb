@@ -3,6 +3,8 @@ require 'test_helper'
 class ExaminationsControllerTest < ActionController::TestCase
   setup do
     @examination = examinations(:one)
+    @project = projects(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -12,7 +14,7 @@ class ExaminationsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+   get :new, project_id: @project
     assert_response :success
   end
 
@@ -21,7 +23,7 @@ class ExaminationsControllerTest < ActionController::TestCase
       post :create, examination: { academic_id: @examination.academic_id, comment: @examination.comment, presentation_mark: @examination.presentation_mark, project_id: @examination.project_id, report_mark: @examination.report_mark }
     end
 
-    assert_redirected_to examination_path(assigns(:examination))
+    assert_redirected_to project_path(assigns(:examination).project)
   end
 
   test "should show examination" do
@@ -44,6 +46,6 @@ class ExaminationsControllerTest < ActionController::TestCase
       delete :destroy, id: @examination
     end
 
-    assert_redirected_to examinations_path
+    assert_redirected_to project_path(assigns(:examination).project)
   end
 end

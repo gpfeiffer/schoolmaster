@@ -4,10 +4,12 @@ one:
   code: MyString
   name: MyString
   description: MyText
-  academic_id: 1
+  academic: one
+  pathway: one
 
 two:
   code: MyString
   name: MyString
   description: MyText
-  academic_id: 1
+  academic: two
+  pathway: one

@@ -3,6 +3,7 @@ require 'test_helper'
 class DirectionsControllerTest < ActionController::TestCase
   setup do
     @direction = directions(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do

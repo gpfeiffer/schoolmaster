@@ -2,10 +2,10 @@
 
 one:
   title: MyString
-  enrolment_id: 1
-  academic_id: 1
+  enrolment: one
+  academic: one
 
 two:
   title: MyString
-  enrolment_id: 1
-  academic_id: 1
+  enrolment: two
+  academic: two

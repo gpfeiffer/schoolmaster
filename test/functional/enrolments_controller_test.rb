@@ -3,6 +3,8 @@ require 'test_helper'
 class EnrolmentsControllerTest < ActionController::TestCase
   setup do
     @enrolment = enrolments(:one)
+    @user = users(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -12,7 +14,7 @@ class EnrolmentsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, user_id: @user
     assert_response :success
   end
 

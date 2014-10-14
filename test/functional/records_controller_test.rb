@@ -4,6 +4,7 @@ class RecordsControllerTest < ActionController::TestCase
   setup do
     @record = records(:one)
     @academic = academics(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -45,6 +46,6 @@ class RecordsControllerTest < ActionController::TestCase
       delete :destroy, id: @record
     end
 
-    assert_redirected_to records_path
+    assert_redirected_to academic_path(assigns(:record).academic)
   end
 end

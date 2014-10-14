@@ -6,6 +6,7 @@ one:
   registration: MyString
   programme: MyString
   email: MyString
+  photo_url: MyString
 
 two:
   first: MyString
@@ -13,3 +14,4 @@ two:
   registration: MyString
   programme: MyString
   email: MyString
+  photo_url: MyString

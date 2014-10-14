@@ -3,6 +3,7 @@ require 'test_helper'
 class PathwaysControllerTest < ActionController::TestCase
   setup do
     @pathway = pathways(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do

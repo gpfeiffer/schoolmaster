@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  code: MyString
+  code: ONE
   title: MyString
   description: MyText
   hours: 24
   semester: 1
-  discipline: MyString
+  discipline: Mathematics
 
 two:
-  code: MyString
+  code: TWO
   title: MyString
   description: MyText
   hours: 24
   semester: 1
-  discipline: MyString
+  discipline: Mathematics

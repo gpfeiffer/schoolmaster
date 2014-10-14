@@ -3,6 +3,8 @@ require 'test_helper'
 class ProposalsControllerTest < ActionController::TestCase
   setup do
     @proposal = proposals(:one)
+    @enrolment = enrolments(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -12,7 +14,7 @@ class ProposalsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, :enrolment_id => @enrolment
     assert_response :success
   end
 
@@ -21,7 +23,7 @@ class ProposalsControllerTest < ActionController::TestCase
       post :create, proposal: { academic_id: @proposal.academic_id, enrolment_id: @proposal.enrolment_id, title: @proposal.title }
     end
 
-    assert_redirected_to proposal_path(assigns(:proposal))
+    assert_redirected_to enrolment_path(assigns(:proposal).enrolment)
   end
 
   test "should show proposal" do
@@ -40,10 +42,11 @@ class ProposalsControllerTest < ActionController::TestCase
   end
 
   test "should destroy proposal" do
+    @request.env['HTTP_REFERER'] = root_path
     assert_difference('Proposal.count', -1) do
       delete :destroy, id: @proposal
     end
 
-    assert_redirected_to proposals_path
+    assert_redirected_to root_path
   end
 end

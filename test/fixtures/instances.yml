@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  stream: MyString
+  cohort: one
   date: 2014
   credits: 5
   molecule: one
   status: O
 
 two:
-  stream: MyString
+  cohort: one
   date: 2015
   credits: 5
   molecule: two

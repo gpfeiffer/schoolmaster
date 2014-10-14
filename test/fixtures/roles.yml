@@ -1,7 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
+admin:
+  name: Admin
 
-two:
-  name: MyString
+supervisor:
+  name: Supervisor
+
+student:
+  name: Student
+
+support:
+  name: Support
+
+projects:
+  name: Project Manager
+
+one:
+  name: One

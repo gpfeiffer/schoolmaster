@@ -4,6 +4,7 @@ class SupervisionsControllerTest < ActionController::TestCase
   setup do
     @supervision = supervisions(:one)
     @student = students(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -19,10 +20,10 @@ class SupervisionsControllerTest < ActionController::TestCase
 
   test "should create supervision" do
     assert_difference('Supervision.count') do
-      post :create, :supervision => { :academic_id => @supervision.academic_id, :student_id => @supervision.student_id, :status => @supervision.status }
+      post :create, :supervision => { :academic_id => @supervision.academic_id, :student_id => @student.id, :main => @supervision.main }
     end
 
-    assert_redirected_to @supervision.student
+    assert_redirected_to assigns(:supervision).student
   end
 
   test "should show supervision" do
@@ -36,8 +37,8 @@ class SupervisionsControllerTest < ActionController::TestCase
   end
 
   test "should update supervision" do
-    put :update, :id => @supervision, :supervision => {  }
-    assert_redirected_to @supervision.student
+    put :update, :id => @supervision, :supervision => { :academic_id => @supervision.academic_id, :student_id => @student.id, :main => @supervision.main }
+    assert_redirected_to assigns(:supervision).student
   end
 
   test "should destroy supervision" do

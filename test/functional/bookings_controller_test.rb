@@ -3,6 +3,8 @@ require 'test_helper'
 class BookingsControllerTest < ActionController::TestCase
   setup do
     @booking = bookings(:one)
+    @slot = slots(:new)
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -18,10 +20,10 @@ class BookingsControllerTest < ActionController::TestCase
 
   test "should create booking" do
     assert_difference('Booking.count') do
-      post :create, booking: { project_id: @booking.project_id, slot_id: @booking.slot_id, venue_id: @booking.venue_id }
+      post :create, booking: { project_id: @booking.project_id, slot_id: @slot, venue_id: @booking.venue_id }
     end
 
-    assert_redirected_to booking_path(assigns(:booking))
+    assert_redirected_to new_booking_path(project_id: assigns(:booking).project)
   end
 
   test "should show booking" do
@@ -35,7 +37,7 @@ class BookingsControllerTest < ActionController::TestCase
   end
 
   test "should update booking" do
-    put :update, id: @booking, booking: { project_id: @booking.project_id, slot_id: @booking.slot_id, venue_id: @booking.venue_id }
+    put :update, id: @booking, booking: { project_id: @booking.project_id, slot_id: @slot, venue_id: @booking.venue_id }
     assert_redirected_to booking_path(assigns(:booking))
   end
 
@@ -44,6 +46,6 @@ class BookingsControllerTest < ActionController::TestCase
       delete :destroy, id: @booking
     end
 
-    assert_redirected_to bookings_path
+    assert_redirected_to new_booking_path(project_id: assigns(:booking).project)
   end
 end

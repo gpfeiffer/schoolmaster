@@ -3,6 +3,8 @@ require 'test_helper'
 class BondsControllerTest < ActionController::TestCase
   setup do
     @bond = bonds(:one)
+    @molecule = molecules(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -12,7 +14,7 @@ class BondsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, molecule_id: @molecule
     assert_response :success
   end
 
@@ -21,7 +23,7 @@ class BondsControllerTest < ActionController::TestCase
       post :create, bond: { atom_id: @bond.atom_id, molecule_id: @bond.molecule_id }
     end
 
-    assert_redirected_to bond_path(assigns(:bond))
+    assert_redirected_to molecule_path(assigns(:bond).molecule)
   end
 
   test "should show bond" do
@@ -36,7 +38,7 @@ class BondsControllerTest < ActionController::TestCase
 
   test "should update bond" do
     put :update, id: @bond, bond: { atom_id: @bond.atom_id, molecule_id: @bond.molecule_id }
-    assert_redirected_to bond_path(assigns(:bond))
+    assert_redirected_to molecule_path(assigns(:bond).molecule)
   end
 
   test "should destroy bond" do

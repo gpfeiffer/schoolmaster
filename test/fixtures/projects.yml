@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  author_id: 1
+  author: one
   title: MyString
+  year: 2015
 
 two:
-  author_id: 1
+  author: two
   title: MyString
+  year: 2015

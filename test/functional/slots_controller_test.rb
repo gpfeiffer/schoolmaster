@@ -3,6 +3,7 @@ require 'test_helper'
 class SlotsControllerTest < ActionController::TestCase
   setup do
     @slot = slots(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do

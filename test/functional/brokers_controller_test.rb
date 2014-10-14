@@ -3,6 +3,7 @@ require 'test_helper'
 class BrokersControllerTest < ActionController::TestCase
   setup do
     @broker = brokers(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do

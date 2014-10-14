@@ -8,7 +8,7 @@ one:
   work_mail: MyString
   home_url: MyString
   image_url: MyString
-  school: Mathematics
+  school: one
 
 two:
   title: Prof.
@@ -18,4 +18,4 @@ two:
   work_mail: MyString
   home_url: MyString
   image_url: MyString
-  school: Mathematics
+  school: two
