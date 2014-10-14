@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     students_by_currency = @students.group_by { |x| x.current? }
-    @students = students_by_currency[true] 
+    @students = students_by_currency[true] || []
     @former_students = students_by_currency[false] 
 
     respond_to do |format|
