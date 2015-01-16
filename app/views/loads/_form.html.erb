@@ -36,12 +36,17 @@
   <legend>Time Tabling</legend>
   <table width="100%">
     <tr>
-      <td><%= f.label :date, "Date (Year)" %></td>
+      <td title="Here, an academic year is represented by its January 1, or rather the year that this day falls in."><%= f.label :date, "Date (Year)" %></td>
       <td><%= f.number_field :date, :size => 4 %></td>
-      <td><%= f.label :weeks %></td>
+      <td title="The range of weeks in the semester, i.e., 1-6 for the first 6 weeks, or 7-12 for the last six."><%= f.label :weeks %></td>
       <td><%= f.text_field :weeks, :size => 10 %></td>
-      <td><%= f.label :times %></td>
+      <td title="A list of time slots with venues, separated by semicolons (;).  Each time slot consists of a 3-letter day of the week (Mon, Tue, Wed, Thu, or Fri) followed by a 2-digit hour of the day (i.e., 09 for 9am, or 13 for 1pm). A colon (:) is used to separate the venue, if present, from the time slot."><%= f.label :times %></td>
       <td><%= f.text_field :times, :size => 40 %></td>
+    </tr>
+    <tr>
+      <td></td><td>(e.g.: 2015 for 2014/2015)</td>
+      <td></td><td>(e.g.: 1-12)</td>
+      <td></td><td>(e.g.: Mon09:ABD-1020;Tue13:ADB-1020)</td>
     </tr>
   </table>
 </fieldset>
