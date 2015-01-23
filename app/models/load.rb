@@ -9,6 +9,11 @@ class Load < ActiveRecord::Base
   SEMESTERS = [1, 2]
 
   validates :semester, :inclusion => SEMESTERS
+  validates :times, format: {
+    with: /\A((^|;)(Mon|Tue|Wed|Thu|Fri)(09|1[0-7])(:[^;]*)?)*\z/,
+    message: "is not properly formatted"
+  }
+
 
   def slots
     times.split(";").map do |time|
