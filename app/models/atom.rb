@@ -3,7 +3,7 @@ class Atom < ActiveRecord::Base
 
   default_scope :order => :code
 
-  DISCIPLINES = %w{ Mathematics Applied_Mathematics Statistics Bioinformatics }
+  DISCIPLINES = %w{ Mathematics Applied_Mathematics Statistics Bioinformatics Other\ ... }
 
   validates :code, :title, :semester, :hours, :discipline, :presence => true
   validates :code, :uniqueness => true
