@@ -11,6 +11,7 @@ class LoadsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @loads }
+      format.xls { send_data Load.to_xls(@loads), content_type: 'application/vnd.ms-excel' }
     end
   end
 

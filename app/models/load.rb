@@ -35,4 +35,39 @@ class Load < ActiveRecord::Base
   def times_mlv
     times.gsub(/:/, ":#{atom.code} #{academic.short} ")
   end
+
+  # convert load into list of hours per academic
+  def account(academics)
+    l = academics.map { 0 }
+    l[academics.index(academic)] = hours
+    return l
+  end
+
+  def self.to_xls(loads)
+    book = Spreadsheet::Workbook.new
+    sheet = book.create_worksheet :name => 'lecture loads'
+
+    academics = loads.map(&:academic).sort.uniq
+    atoms = loads.map(&:atom).sort_by(&:code).uniq
+    loads_by_atom = loads.group_by(&:atom)
+
+    
+    sheet.row(0).concat %w(Code Module)
+    sheet.row(0).concat academics.map(&:short)
+    
+    format = Spreadsheet::Format.new :color => :blue, :weight => :bold
+    sheet.row(0).default_format = format
+
+    atoms.each_with_index do |atom, i|
+      sheet.row(i+1).concat [atom.code, atom.title]
+      accounts = loads_by_atom[atom].map { |x| x.account(academics) }
+      accounts = accounts.first.zip(*accounts[1 .. -1]).map(&:sum)
+      sheet.row(i+1).concat accounts.map { |x| x if x > 0 }
+    end
+    
+    sio = StringIO.new
+    book.write(sio)
+    return sio.string
+  end
+
 end
