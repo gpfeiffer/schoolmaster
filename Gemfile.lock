@@ -50,6 +50,7 @@ GEM
     erubis (2.7.0)
     execjs (2.2.1)
     hike (1.2.3)
+    htmlentities (4.3.3)
     i18n (0.6.11)
     journey (1.0.4)
     jquery-rails (3.1.2)
@@ -125,6 +126,7 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 3.2.2)
   devise
+  htmlentities
   jquery-rails
   json
   rails (= 3.2.19)

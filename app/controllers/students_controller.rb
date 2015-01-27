@@ -1,12 +1,16 @@
 class StudentsController < ApplicationController
-  load_and_authorize_resource
+  skip_before_filter :authenticate_user!, only: :index
+  load_and_authorize_resource except: :index
 
   # GET /students
   # GET /students.json
   def index
+    @students = Student.all
     students_by_currency = @students.group_by { |x| x.current? }
     @students = students_by_currency[true] || []
     @former_students = students_by_currency[false] 
+
+    @coder = HTMLEntities.new('html4')
 
     respond_to do |format|
       format.html # index.html.erb

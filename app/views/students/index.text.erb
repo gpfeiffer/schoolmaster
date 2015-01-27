@@ -5,9 +5,9 @@
 
 <% @students.each do |student| %>
   <tr>
-    <td><%= link_to_unless student.home_url.blank?, student, student.home_url %></td>
+    <td><%= link_to_unless student.home_url.blank?, @coder.encode(student.name.html_safe, :named), student.home_url %></td>
     <td><%= mail_to student.email %></td>
-    <td><%= student.room %></td>
+    <td><%= @coder.encode(student.room, :named) %></td>
     <td><%= student.work_phone %></td>
   </tr>
 <% end %>

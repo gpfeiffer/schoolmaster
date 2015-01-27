@@ -44,3 +44,4 @@ gem 'bluecloth'
 
 gem 'spreadsheet'
 
+gem 'htmlentities'
