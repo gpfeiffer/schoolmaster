@@ -1,4 +1,14 @@
 <% content_for :side do %>
+
+  <ul>
+    <% @loads_by_date.keys.sort.reverse.each do |key| %>
+        <li>
+        <%= link_to_unless_current academic_year_code(key), academic_path(:date => key) %>
+      </li>
+
+    <% end %>
+  </ul>
+
   <h3>Academic Staff</h3>
   <% @schools.each do |school| %>
     <h4><%= school %></h4>
@@ -20,9 +30,9 @@
   <%= @academic.extension %>
 </div>
 
-  <% @academic.loads.group_by(&:date).sort.reverse.each do |date, loads_by_date| %>
 <br />
-    <h3 class="edit-head">Teaching Load <%= academic_year_code(date) %> (<%= loads_by_date.map(&:hours).sum %> hrs)</h3>
+  <% loads_by_date = @loads_by_date[@date] %>
+    <h3 class="edit-head">Teaching Load <%= academic_year_code(@date) %> (<%= loads_by_date.map(&:hours).sum %> hrs)</h3>
     <ul>
       <% loads_by_date.sort_by { |x| [x.semester, x.atom.code] }.each do |load| %>
         <li>
@@ -35,12 +45,11 @@
 <div style="width: 100%;">
     <% loads_by_date.group_by(&:semester).sort.each do |semester, loads| %>
 <div style="display: inline-block;">
-      <b><%= academic_year_code(date) %>: Semester <%= semester %> (<%= loads.map(&:hours).sum %> hrs)</b>
+      <b><%= academic_year_code(@date) %>: Semester <%= semester %> (<%= loads.map(&:hours).sum %> hrs)</b>
       <%= times_table_for(loads.map(&:times_module).join(";")) %>
 </div>
     <% end %>
 </div>
-  <% end %>
 
 <% if @academic.proposals.any? %>
 <h3>Project Proposals</h3>

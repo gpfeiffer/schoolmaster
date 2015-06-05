@@ -15,12 +15,14 @@ class AcademicsController < ApplicationController
   # GET /academics/1
   # GET /academics/1.json
   def show
+    @date = (params[:date] || Academic.academic_year).to_i # fixme: make this the current acad. year
     @schools = School.all
     @active_supervisions = @academic.active_supervisions
     @complete_supervisions = @academic.complete_supervisions
     @active_committees = @academic.active_committees 
     @active_directions = @academic.active_directions
     @active_examinations = @academic.active_examinations
+    @loads_by_date = @academic.loads.group_by(&:date)
 
     respond_to do |format|
       format.html # show.html.erb

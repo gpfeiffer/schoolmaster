@@ -22,6 +22,10 @@ class Academic < ActiveRecord::Base
 
   default_scope :order => [:last, :first]
 
+  def self.academic_year(date = Date.today)
+    date.year + (date.month > 8 ? 1 : 0)
+  end
+
   def first_last
     "#{first} #{last}"
   end
