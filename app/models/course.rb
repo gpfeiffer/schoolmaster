@@ -12,6 +12,7 @@ class Course < ActiveRecord::Base
     "Bioinformatics",
     "Engineering",
     "Business",
+    "Other ...", 
   ]
 
   WORKS = %w(lecture tutorial lab self_study placement).map do |x| 
