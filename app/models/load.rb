@@ -1,5 +1,5 @@
 class Load < ActiveRecord::Base
-  attr_accessible :academic_id, :atom_id, :comment, :date, :hours, :semester, :times, :weeks
+  attr_accessible :academic_id, :atom_id, :comment, :date, :hours, :locked, :semester, :times, :weeks
 
   belongs_to :academic
   belongs_to :atom
@@ -14,6 +14,13 @@ class Load < ActiveRecord::Base
     message: "is not properly formatted"
   }
 
+  def locked?
+    locked
+  end
+
+  def unlocked?
+    not locked
+  end
 
   def slots
     times.split(";").map do |time|

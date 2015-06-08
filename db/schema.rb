@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141010142636) do
+ActiveRecord::Schema.define(:version => 20150608082442) do
 
   create_table "academics", :force => true do |t|
     t.string   "title"
@@ -163,13 +163,14 @@ ActiveRecord::Schema.define(:version => 20141010142636) do
     t.integer  "academic_id"
     t.integer  "atom_id"
     t.integer  "date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "times"
     t.string   "weeks"
     t.integer  "hours"
     t.text     "comment"
     t.integer  "semester"
+    t.boolean  "locked",      :default => false
   end
 
   create_table "molecules", :force => true do |t|

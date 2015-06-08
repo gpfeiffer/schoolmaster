@@ -28,7 +28,7 @@ class LoadsController < ApplicationController
   # GET /loads/new.json
   def new
     @load.atom_id = params[:atom_id]
-    @load.date = 2015
+    @load.date = 2016
 
     respond_to do |format|
       format.html # new.html.erb
