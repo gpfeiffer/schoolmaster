@@ -6,11 +6,12 @@ class Cohort < ActiveRecord::Base
   has_many :instances, :dependent => :destroy
   has_many :molecules, :through => :instances
 
+  # the year is encoded as the first letter of code
   def year
     code[0].to_i
   end
 
   def to_s
-    "#{code} #{name}"
+    "#{code} - #{name}"
   end
 end
