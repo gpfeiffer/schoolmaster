@@ -19,8 +19,9 @@ class Atom < ActiveRecord::Base
     "#{code}: #{title}"
   end
 
+  # the year is encoded as the first digit of code
   def year
-    code[2].to_i
+    code.match(/\d/)[0].to_i
   end
 
   def slots(date)
