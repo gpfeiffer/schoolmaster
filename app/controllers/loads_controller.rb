@@ -27,8 +27,16 @@ class LoadsController < ApplicationController
   # GET /loads/new
   # GET /loads/new.json
   def new
-    @load.atom_id = params[:atom_id]
-    @load.date = 2016
+    @atom = Atom.find(params[:atom_id])
+    @load.atom_id = @atom.id
+
+    # copy default values from atom
+    @load.semester = @atom.semester
+    @load.hours = @atom.hours
+
+    # set a default date and weeks
+    @load.date = 2016  # FIXME: make this date automatic
+    @load.weeks = "1-12"
 
     respond_to do |format|
       format.html # new.html.erb
