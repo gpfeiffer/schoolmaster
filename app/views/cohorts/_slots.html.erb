@@ -31,7 +31,11 @@
 		</tr>
 	        <tr>
 		  <td class="times-v" style="background: lightblue;">
-		    <%= link_to load.academic.name, load.academic, :title => load.academic.name %>
+		    <% if load.academic %>
+		      <%= link_to load.academic.name, load.academic, :title => load.academic.name %>
+		    <% else %>
+                      NN
+		    <% end %>
 		  </td>
 		</tr>
               <% end %>
