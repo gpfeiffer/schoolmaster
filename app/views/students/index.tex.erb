@@ -1,0 +1,10 @@
+\begin{description}
+
+<% @students.group_by { |x| x.supervisors.first }.sort.each do |academic, students| %>
+  \item[<%= academic.name %>]
+  <% students.each do |student| %>
+    <%= student.name %>\\
+  <% end %>
+
+<% end %>
+\end{description}
