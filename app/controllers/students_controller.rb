@@ -14,6 +14,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.tex
       format.text
       format.json { render :json => @students }
       format.xls { send_data Student.to_xls, content_type: 'application/vnd.ms-excel' }

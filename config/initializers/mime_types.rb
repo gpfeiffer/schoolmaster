@@ -5,3 +5,5 @@
 # Mime::Type.register_alias "text/html", :iphone
 Mime::Type.register "text/html", :htm
 Mime::Type.register "application/vnd.ms-excel", :xls
+Mime::Type.register "text/csv", :csv
+Mime::Type.register "text/tex", :tex

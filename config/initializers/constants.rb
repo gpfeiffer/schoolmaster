@@ -38,5 +38,6 @@ AREAS = [
   "Applied Mathematics",
   "Mathematics Education",
   "Statistics",
+  "Biostatistics",
   "Bioinformatics",
 ]

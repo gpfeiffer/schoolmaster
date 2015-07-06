@@ -59,8 +59,8 @@ class Ability
       end
 
 # comment out these 2 lines to hide project reports
-      can :read, Direction
-      can :show, Examination
+#      can :read, Direction
+#      can :show, Examination
     end
 
     # manage courses
