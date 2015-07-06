@@ -38,7 +38,12 @@
     <td width="70%"><%= load.title %></td>
   </tr>
 <tr class="load-bot">
-  <td><%= link_to load.academic.short, load.academic %></td>
+  <td><% if load.academic %>
+<%= link_to load.academic.short, load.academic %>
+<% else %>
+NN
+<% end %>
+</td>
   <td>weeks <%= load.weeks %></td>
   <td><%= load.times %></td>
 </tr>
