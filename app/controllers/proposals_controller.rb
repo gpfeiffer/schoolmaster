@@ -7,6 +7,7 @@ class ProposalsController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
+      format.csv
       format.json { render json: @proposals }
     end
   end
