@@ -1,0 +1,8 @@
+<h3>Lecture Loads</h3>
+<ul>
+  <% dates.each do |key| %>
+    <li>
+      <%= link_to_unless_current academic_year_code(key), loads_path(:date => key) %>
+    </li>
+  <% end %>
+</ul>

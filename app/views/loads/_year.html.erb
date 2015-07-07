@@ -1,0 +1,21 @@
+<% loads.group_by(&:semester).sort.each do |semester, loads_by_semester| %>
+  <td class="year">
+    <b>Year <%= year %>, Semester <%= semester %> (<%= loads_by_semester.map(&:hours).sum %> hrs)</b>
+    <table style="border-collapse: collapse; width: 100%">
+      <% loads_by_semester.sort_by(&:code).each do |load| %>
+        <tr class="load-top">
+          <td><%= link_to load.code, load %></td>
+          <td>(<%= load.hours %> hrs)</td>
+          <td width="70%"><%= load.title %></td>
+        </tr>
+      	<tr class="load-bot">
+      	  <td>
+      	    <%= link_to_if load.academic, load.short, load.academic %>
+      	  </td>
+      	  <td>weeks <%= load.weeks %></td>
+      	  <td><%= load.times %></td>
+      	</tr>
+      <% end %>
+    </table>
+  </td>
+<% end %>

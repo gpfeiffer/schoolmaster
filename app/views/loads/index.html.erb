@@ -1,13 +1,11 @@
+<%# --Side bar-- %>
+
 <% content_for :side do %>
-<h3>Lecture Loads</h3>
-<ul>
-<% @loads_by_date.keys.sort.reverse.each do |key| %>
-<li>
-<%= link_to_unless_current academic_year_code(key), loads_path(:date => key) %>
-</li>
+  <% render partial: 'dates', object: @loads_by_date.keys.sort.reverse %>
 <% end %>
-</ul>
-<% end %>
+
+
+<%# --Timetables-- %>
 
 <% @loads.group_by(&:semester).each do |semester, loads| %>
   <h2>Timetable <%= academic_year_code(@date) %>, Semester <%= semester %>.</h2>
@@ -15,69 +13,28 @@
 <% end %>
 
 
+<%# --Disciplines-- %>
+
 <h2><%= academic_year_code(@date) %> (<%= @loads.map(&:hours).sum %> hrs)</h2>
-
 <% @loads.group_by(&:discipline).each do |discipline, loads| %>
-
-<h1><%= discipline.titleize %> (<%= loads.map(&:hours).sum %> hrs)</h1>
-
-<table class="year">
-<% loads.group_by(&:year).sort.each do |year, loads_by_year| %>
-
-<tr>
-<% loads_by_year.group_by(&:semester).sort.each do |semester, loads_by_semester| %>
-
-<td class="year">
-   <b>Year <%= year %>, Semester <%= semester %> (<%= loads_by_semester.map(&:hours).sum %> hrs)</b>
-
-<table style="border-collapse: collapse; width: 100%">
-<% loads_by_semester.sort_by(&:code).each do |load| %>
-  <tr class="load-top">
-    <td><%= link_to load.code, load %></td>
-    <td>(<%= load.hours %> hrs)</td>
-    <td width="70%"><%= load.title %></td>
-  </tr>
-<tr class="load-bot">
-  <td>
-    <%= link_to_if load.academic, load.short, load.academic %>
-  </td>
-  <td>weeks <%= load.weeks %></td>
-  <td><%= load.times %></td>
-</tr>
-<% end %>
-</table>
-</td>
-
-<% end %>
-</tr>
-<% end %>
-</table>
-<br />
+  <h1><%= discipline.titleize %> (<%= loads.map(&:hours).sum %> hrs)</h1>
+  <table class="year">
+    <% loads.group_by(&:year).sort.each do |year, loads_by_year| %>
+      <tr><%= render partial: 'year', object: year, locals: { loads: loads_by_year } %></tr>
+    <% end %>
+  </table>
+  <br />
 <% end %>
 
+
+<%# --Lecturers-- %>
 
 <div class="volatile">
-<% my_loads = @loads.select(&:academic) %>
-<h1>Teaching Load <%= academic_year_code(@date) %>. (<%= my_loads.map(&:hours).sum %> hrs)</h1>
-
-<table>
-<% my_loads.group_by(&:academic).sort_by { |academic, loads| -loads.map(&:hours).sum }.each do |academic, loads| %>
-  <% total = loads.map(&:hours).sum %>
-<tr>
-  <td width="55"></td>
-  <td><b><%= link_to academic, academic %></b></td>
-  <td align="right"><%= total %></td>
-  <td width="300">  
-    <svg height="10"><rect width="<%= total %>" height="10" style="fill:rgb(255,0,0);"/></svg>
-  </td>
-</tr>
-<% loads.each do |load| %>
-<tr class="volatile">
-  <td align="right"><%= link_to load.code, load %></td>
-  <td><%= load.title %></td>
-  <td align="right"><%= load.hours %></td>
-</tr>
-<% end %>
-<% end %>
-</table>
+  <% my_loads = @loads.select(&:academic) %>
+  <h1>Teaching Load <%= academic_year_code(@date) %>. (<%= my_loads.map(&:hours).sum %> hrs)</h1>
+  <table>
+    <% my_loads.group_by(&:academic).sort_by { |academic, loads| -loads.map(&:hours).sum }.each do |academic, loads| %>
+      <%= render partial: 'academic', object: academic, locals: { loads: loads } %>
+    <% end %>
+  </table>
 </div>
