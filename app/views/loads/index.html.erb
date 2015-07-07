@@ -38,12 +38,9 @@
     <td width="70%"><%= load.title %></td>
   </tr>
 <tr class="load-bot">
-  <td><% if load.academic %>
-<%= link_to load.academic.short, load.academic %>
-<% else %>
-NN
-<% end %>
-</td>
+  <td>
+    <%= link_to_if load.academic, load.short, load.academic %>
+  </td>
   <td>weeks <%= load.weeks %></td>
   <td><%= load.times %></td>
 </tr>
@@ -60,10 +57,11 @@ NN
 
 
 <div class="volatile">
-<h1>Teaching Load <%= academic_year_code(@date) %>. (<%= @loads.map(&:hours).sum %> hrs)</h1>
+<% my_loads = @loads.select(&:academic) %>
+<h1>Teaching Load <%= academic_year_code(@date) %>. (<%= my_loads.map(&:hours).sum %> hrs)</h1>
 
 <table>
-<% @loads.group_by(&:academic).sort_by { |academic, loads| -loads.map(&:hours).sum }.each do |academic, loads| %>
+<% my_loads.group_by(&:academic).sort_by { |academic, loads| -loads.map(&:hours).sum }.each do |academic, loads| %>
   <% total = loads.map(&:hours).sum %>
 <tr>
   <td width="55"></td>

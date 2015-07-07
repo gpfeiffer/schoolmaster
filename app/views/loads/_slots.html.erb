@@ -26,11 +26,7 @@
                     <%= link_to load.code, load, :title => load.title %>
 		  </td>
 		  <td class="times-l">
-		    <% if load.academic %>
-		      <%= link_to load.academic.short, load.academic, :title => load.academic.name %>
-                    <% else %>
-                      NN
-		    <% end %>
+                    <%= link_to_if load.academic, load.short, load.academic, :title => load.name %>
 		  </td>
 		  <td class="times-v">
 		    <%= content_tag(:span, slot[:loc], :title => "weeks #{load.weeks}")%>

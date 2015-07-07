@@ -22,6 +22,14 @@ class Load < ActiveRecord::Base
     not locked
   end
 
+  def short
+    academic ? academic.short : "N.N."
+  end
+
+  def name
+    academic ? academic.name : "N.N."
+  end
+
   def slots
     times.split(";").map do |time|
       slot, loc = time.split(":")

@@ -3,7 +3,7 @@
 
 <p>
   <b>Lecturer:</b>
-  <%= link_to @load.academic, @load.academic %>
+  <%= link_to_if @load.academic, @load.name, @load.academic %>
 </p>
 
 <p>
@@ -23,5 +23,5 @@ semester <%= @load.semester %>.
 <% end %>
 <%= link_to 'Back', loads_path %>
 <div style="float:right;font-size:smaller">
-<%= @load.updated_at.strftime("(Updated on %a %b %d, %Y at %H:%M:%S.)") %>
+<%= @load.updated_at.strftime("(Last updated on %a %b %d, %Y at %H:%M:%S.)") %>
 </div>

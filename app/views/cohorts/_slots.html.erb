@@ -18,29 +18,25 @@
         <% slots_here = slots_by_day[col] %>
         <% if slots_here.present? %>
           <td class="times-long">
-	    <table class="times-inner">
+            <table class="times-inner">
               <% slots_here.sort_by { |x| x[:load].code }.each do |slot| %>
-	        <% load = slot[:load] %>
-	        <% molecule = slot[:molecule] %>
-	        <tr>
-		  <td class="times-m">
+                <% load = slot[:load] %>
+                <% molecule = slot[:molecule] %>
+                <tr>
+                  <td class="times-m">
                     <b><%= link_to molecule.code, molecule.course, :title => load.title %></b>
                     <%= link_to molecule.title, molecule.course, :title => load.title %>
 [<%= content_tag(:span, slot[:loc], :title => "weeks #{load.weeks}")%>]
-		  </td>
-		</tr>
-	        <tr>
-		  <td class="times-v" style="background: lightblue;">
-		    <% if load.academic %>
-		      <%= link_to load.academic.name, load.academic, :title => load.academic.name %>
-		    <% else %>
-                      NN
-		    <% end %>
-		  </td>
-		</tr>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="times-v" style="background: lightblue;">
+                    <%= link_to_if load.academic, load.name, load.academic %>
+                  </td>
+                </tr>
               <% end %>
-	    </table>
-	  </td>
+            </table>
+          </td>
         <% else %>
           <td class="times"></td>
         <% end %>
