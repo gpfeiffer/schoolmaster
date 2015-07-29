@@ -10,7 +10,7 @@ class Load < ActiveRecord::Base
 
   validates :semester, :inclusion => SEMESTERS
   validates :times, format: {
-    with: /\A((^|;)(Mon|Tue|Wed|Thu|Fri)(09|1[0-7])(:[^;]*)?)*\z/,
+    with: /\A((^|;)(Mon|Tue|Wed|Thu|Fri)(09|1[0-8])(:[^;]*)?)*\z/,
     message: "is not properly formatted"
   }
 
