@@ -4,7 +4,7 @@ class Load < ActiveRecord::Base
   belongs_to :academic
   belongs_to :atom
 
-  delegate :code, :discipline, :title, :year, :to => :atom
+  delegate :code, :discipline, :title, :year, :genuine?, :to => :atom
 
   SEMESTERS = [1, 2]
 
