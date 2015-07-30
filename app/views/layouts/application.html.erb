@@ -49,6 +49,12 @@ MathJax.Hub.Config({
         <%= link_to 'Presentations', venues_path %> |
       <% end %>
       <% end %>
+      <% if can? :manage, Atom %>
+        <%= link_to 'Atoms', atoms_path %> |
+      <% end %>
+      <% if can? :manage, Molecule %>
+        <%= link_to 'Molecules', molecules_path %> |
+      <% end %>
     </div>
     <div id="login"> |
       <% if user_signed_in? %>
