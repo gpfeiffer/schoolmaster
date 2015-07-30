@@ -43,8 +43,10 @@ MathJax.Hub.Config({
       <% if can? :read, Cohort %>
         <%= link_to 'Timetables', cohorts_path %> |
       <% end %>
+      <% if false %>
       <% if can? :read, Venue %>
         <%= link_to 'Presentations', venues_path %> |
+      <% end %>
       <% end %>
     </div>
     <div id="login"> |
