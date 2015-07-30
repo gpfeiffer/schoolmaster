@@ -21,7 +21,7 @@ sorted by Discipline, and (approximately) by Year and Semester.
   <tr>
     <td><%= link_to atom.code, atom %></td>
     <td>(<%= atom.hours %> hrs)</td>
-    <td><%= atom.title %></td>
+    <td><%= truncate atom.title, length: 50 %></td>
   </tr>
 <% end %>
 </table>

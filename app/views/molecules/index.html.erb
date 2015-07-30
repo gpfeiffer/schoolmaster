@@ -10,7 +10,7 @@
 <% @molecules.each do |molecule| %>
   <tr>
     <td><%= link_to molecule.code, molecule %></td>
-    <td><%= molecule.title %></td>
+    <td><%= truncate molecule.title, length: 50 %></td>
     <td><%= link_to molecule.course.code, molecule.course if molecule.course %></td>
   </tr>
 <% end %>
