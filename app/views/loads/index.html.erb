@@ -7,7 +7,7 @@
 
 <%# --Timetables-- %>
 
-<% @loads.group_by(&:semester).each do |semester, loads| %>
+<% @loads.group_by(&:semester).sort.each do |semester, loads| %>
   <h2>Timetable <%= academic_year_code(@date) %>, Semester <%= semester %>.</h2>
   <%= render :partial => 'slots', :object => loads.map(&:slots).sum %>
 <% end %>
