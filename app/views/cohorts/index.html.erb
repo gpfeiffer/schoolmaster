@@ -1,15 +1,23 @@
-<h1>Programmes</h1>
+<% @cohorts.group_by(&:type).sort.reverse.each do |type, cohorts_by_type| %>
 
+<h1><%= type %></h1>
 
-<% @cohorts.each do |cohort| %>
-<p> 
+<% cohorts_by_type.group_by(&:stream).each do |stream, cohorts| %>
+
+<h2><%= stream %></h2>
+
+<% cohorts.sort_by(&:code).each do |cohort| %>
   <b><%= link_to cohort.code, cohort %></b>
-  <%= cohort.name %>
-  <% if cohort.academic %>
+  <%= cohort.name %>, Year <%= cohort.year %>
+  <% if cohort.academic and can? :read, cohort.academic %>
     (<%= link_to cohort.academic, cohort.academic %>)
   <% end %>
-</p>
+  <br />
 <% end %>
+
+<% end %>
+<% end %>
+
 
 <br />
 

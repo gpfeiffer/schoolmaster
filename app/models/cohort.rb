@@ -11,6 +11,17 @@ class Cohort < ActiveRecord::Base
     code[0].to_i
   end
 
+  # stream or pathway
+  def type
+    /(?<=\d)[A-Z]{2,5}/.match(code) ? "Programmes" : "Pathways"
+  end
+
+  # the stream is the sequence of capital letters after the year
+  def stream
+    m = /(?<=\d)[A-Z]{2,5}/.match(code)
+    m ? m[0] : name
+  end
+
   def to_s
     "#{code} - #{name}"
   end

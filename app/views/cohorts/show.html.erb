@@ -1,3 +1,4 @@
+<% if can? :read, Load %>
 <% content_for :side do %>
   <ul>
     <% @instances_by_date.keys.each do |date| %>
@@ -15,6 +16,7 @@
     <% end %>
   </ul>
 <% end %>
+<% end %>
 
 <h3>Programmes <%= academic_year_code(@date) %></h3>
 <h1>
@@ -25,7 +27,7 @@
   <%= @cohort.description %>
 </p>
 
-<% if can? :read, Molecule %>
+<% if can? :read, Academic %>
 <p>
   <b>Coordinator:</b>
   <%= link_to(@cohort.academic, @cohort.academic) if @cohort.academic %>
@@ -50,6 +52,7 @@
 <% end %>
 <% end %>
 
+<div id="foot">
 <% if can? :edit, @cohort %>
   <%= link_to 'Edit', edit_cohort_path(@cohort) %> |
 <% end %>
@@ -57,3 +60,4 @@
   <%= link_to 'Destroy', @cohort, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <% end %>
 <%= link_to 'Back', cohorts_path %>
+</div>
