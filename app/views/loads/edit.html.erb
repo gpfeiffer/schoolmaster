@@ -1,5 +1,11 @@
 <h3>Editing Teaching Load</h3>
 
+<% if @load.locked %>
+<span style="color: red; font-weight: bold; font-size: 150%;">
+THIS LOAD IS LOCKED!  DO YOU REALLY WANT TO EDIT?
+</span>
+<% end %>
+
 <%= render 'form' %>
 
 <hr />
