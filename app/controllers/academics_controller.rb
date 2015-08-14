@@ -15,7 +15,6 @@ class AcademicsController < ApplicationController
   # GET /academics/1
   # GET /academics/1.json
   def show
-    @date = (params[:date] || Academic.academic_year).to_i # fixme: make this the current acad. year
     @schools = School.all
     @active_supervisions = @academic.active_supervisions
     @complete_supervisions = @academic.complete_supervisions
@@ -23,6 +22,8 @@ class AcademicsController < ApplicationController
     @active_directions = @academic.active_directions
     @active_examinations = @academic.active_examinations
     @loads_by_date = @academic.loads.group_by(&:date)
+    # @date = (params[:date] || Academic.academic_year).to_i 
+    @date = (params[:date] || @loads_by_date.keys.max).to_i
 
     respond_to do |format|
       format.html # show.html.erb
