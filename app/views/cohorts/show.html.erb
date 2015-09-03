@@ -24,7 +24,7 @@
 </h1>
 
 <p>
-  <%= @cohort.description %>
+  <%= @cohort.description.html_safe %>
 </p>
 
 <% if can? :read, Academic %>
