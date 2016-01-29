@@ -40,4 +40,5 @@ AREAS = [
   "Statistics",
   "Biostatistics",
   "Bioinformatics",
+  "Other ...",
 ]
