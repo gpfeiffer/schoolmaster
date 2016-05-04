@@ -1,8 +1,18 @@
-<p>
-  <b>Name:</b>
+<h3>Schools</h3>
+
+<h1>
   <%= @school.name %>
-</p>
+</h1>
+
+<ul>
+  <% @school.academics.each do |academic| %>
+    <li>
+      <%= link_to academic, academic %>
+    </li>
+  <% end %>
+</ul>
 
 
 <%= link_to 'Edit', edit_school_path(@school) %> |
+<%= link_to 'Destroy', @school, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', schools_path %>
