@@ -14,6 +14,7 @@ PROGRAMMES = [
   "PhD", 
   "PS1 Ph.D. (Science)",
   "SPS1 Structured Ph.D. (Science)",
+  "SPE1 Structured Ph.D. (Engineering)",
 ]
 
 # student status
