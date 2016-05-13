@@ -15,7 +15,7 @@
     </table>
 <% end %>
 
-<h3><%= link_to_unless_current project.title, project %></h3>
+<h3><%= link_to_unless_current project.title_or_blank, project %></h3>
 
 <%= content_tag :div, :class => (direction.open? ? "unlocked" : "locked") do %>
   <table class="dates">
