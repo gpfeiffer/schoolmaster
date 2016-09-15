@@ -36,6 +36,11 @@ class Ability
       end
     end
 
+    # director of graduate studies
+    if user.role? "DoGS"
+      can :manage, [Student, Supervision, Committee, Room]
+    end
+
     # manage projects
     if user.role? "Project Manager"
       can :manage, [Author, Project, Direction, Examination, Venue, Slot, Booking, Enrolment, Proposal]
