@@ -13,7 +13,8 @@
 
 <% @proposals.each do |proposal| %>
   <tr>
-    <td><%= truncate(proposal.title, :length => 80) %></td>
+    <td><%= truncate(proposal.title, :length => 50) %></td>
+    <td><%= proposal.updated_at %></td>
     <td><%= proposal.enrolment %></td>
     <td><%= proposal.academic %></td>
     <td><%= proposal.status %></td>
