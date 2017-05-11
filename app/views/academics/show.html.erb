@@ -33,7 +33,7 @@
 <br />
 <% loads_by_date = @loads_by_date[@date] %>
 <% if loads_by_date %>
-    <h3 class="edit-head">Teaching Load <%= academic_year_code(@date) %> (<%= loads_by_date.map(&:hours).sum %> hrs)</h3>
+    <h3 class="edit-head"><%= @title %> <%= academic_year_code(@date) %> (<%= loads_by_date.map(&:hours).sum %> hrs)</h3>
     <ul>
       <% loads_by_date.sort_by { |x| [x.semester, x.atom.code] }.each do |load| %>
         <li>
@@ -137,7 +137,7 @@
   </ul>
 <% end %>
 
-<%= render 'records' if can? :destroy, @academic %>
+<%= render 'records' if can? :read, @academic.records %>
 
 <hr />
 
