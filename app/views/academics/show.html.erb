@@ -81,7 +81,7 @@
         <% else %>
           <%= link_to_if can?(:show, direction), author, direction %> (<%= author.programme %>)
         <% end %>
-	[<%= direction.project.bookings.first %>]
+	<%= "[#{direction.project.bookings.first}]" if direction.project.bookings.any? %>
       </li>
     <% end %>
   </ul>
@@ -100,7 +100,7 @@
         <% else %>
           <%= link_to_if can?(:show, examination), author, examination %> (<%= author.programme %>)
         <% end %>
-	[<%= examination.project.bookings.first %>]
+	<%= "[#{examination.project.bookings.first}]" if examination.project.bookings.any? %>
       </li>
     <% end %>
   </ul>
@@ -119,7 +119,7 @@
 
 <% if @active_committees.any? %>
   <h3>GRC</h3>
-  <ul>  
+  <ul>
     <% @active_committees.each do |s| %>
       <li><%= link_to s.student, s.student %></li>
     <% end %>
