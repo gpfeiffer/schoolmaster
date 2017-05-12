@@ -2,7 +2,7 @@ module LoadsHelper
 
   # how to turn a string of DayHr:Loc's into a time-table
   def  times_table_for(times)
-    rows = %w{ 09 10 11 12 13 14 15 16 17 18 }
+    rows = %w{ 09 10 11 12 13 14 15 16 17 18 19 20 }
     cols = %w{ Mon Tue Wed Thu Fri }
     table = {}
     rows .each do |row|
