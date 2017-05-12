@@ -1,5 +1,7 @@
 <% @proposals.each do |proposal| %>
-    "<%= truncate(proposal.title, :length => 80) -%>", <%= proposal.enrolment -%>
+    "<%= truncate(proposal.title, :length => 80) -%>", <%= proposal.last -%>
+,    <%= proposal.first -%>
+,    <%= proposal.number -%>
 ,    <%= proposal.academic -%>
 ,    <%= proposal.status %>
 <% end %>

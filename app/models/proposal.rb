@@ -6,6 +6,8 @@ class Proposal < ActiveRecord::Base
 
   validates :title, :academic_id, :presence => true
 
+  delegate :first, :last, :number, to: :enrolment
+
   def title_and_supervisor
     "#{title}: #{academic}"
   end
