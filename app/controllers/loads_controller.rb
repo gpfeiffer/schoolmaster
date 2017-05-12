@@ -6,8 +6,11 @@ class LoadsController < ApplicationController
   def index
     @loads = @loads.group_by(&:genuine?)[true]
     @loads_by_date = @loads.group_by(&:date)
-    @date = params[:date] || @loads_by_date.keys.sort.last
+    # @date = params[:date] || @loads_by_date.keys.sort.last
+    @date = params[:date] || 2017
     @loads = @loads_by_date[@date.to_i]
+    @title = "Timetable"
+    @title = "Provisional #{@title}" if @date.to_i > 2017
 
     respond_to do |format|
       format.html # index.html.erb
