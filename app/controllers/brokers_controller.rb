@@ -15,6 +15,7 @@ class BrokersController < ApplicationController
   def show
     respond_to do |format|
       format.html # show.html.erb
+      format.tex
       format.json { render :json =>  @broker }
     end
   end

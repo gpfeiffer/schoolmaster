@@ -1,6 +1,6 @@
 <h1>Welcome ...</h1>
 <p>
-  ... to the World of Student Supervision!
+  ... to the World of Teaching and Learning!
 </p>
 
 <p>It is now <%= Time.now.strftime('%H:%M:%S (%Z) on %A, %B %d, %Y') %>.</p>
@@ -39,12 +39,11 @@ a list of <%= Cohort.all.count %> <%= link_to 'time tables', cohorts_path %>.
 </li>
 <% end %>
 </ul>
-<!--
 And you can:
 <ul>
 <li>
-<%= link_to 'enrol', new_enrolment_path(:user_id => current_user) %> for final year projects.
+  <%= link_to 'enrol', current_user && current_user.enrolment ? current_user.enrolment : new_enrolment_path(:user_id => current_user) %>
+ for final year projects.
 </li>
 </ul>
--->
 </p>

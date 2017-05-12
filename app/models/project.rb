@@ -67,7 +67,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.academic_year(date = Date.today)
-    date.year + (date.month > 9 ? 1 : 0)
+    date.year + (date.month > 8 ? 1 : 0)
   end
 
   def current?

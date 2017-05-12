@@ -22,8 +22,11 @@ class AcademicsController < ApplicationController
     @active_directions = @academic.active_directions
     @active_examinations = @academic.active_examinations
     @loads_by_date = @academic.loads.group_by(&:date)
-    # @date = (params[:date] || Academic.academic_year).to_i 
-    @date = (params[:date] || @loads_by_date.keys.max).to_i
+    @date = (params[:date] || Academic.academic_year).to_i 
+    # @date = (params[:date] || @loads_by_date.keys.max).to_i
+    @title = "Teaching Load"
+    @title = "Provisional #{@title}" if @date.to_i > 2017
+
 
     respond_to do |format|
       format.html # show.html.erb

@@ -6,6 +6,9 @@ class Enrolment < ActiveRecord::Base
   has_many :proposals, :dependent => :destroy
 
   validates :first, :last, :number, :presence => true
+  validates :number, :user_id, uniqueness: true
+
+  delegate :email, to: :user
 
   def name_number
     "#{first} #{last} (#{number})"

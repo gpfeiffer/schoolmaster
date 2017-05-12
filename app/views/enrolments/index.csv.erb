@@ -1,0 +1,8 @@
+<% @enrolments.group_by(&:number).each do |number, enrolments| %>
+   <% enrolment = enrolments.first %>
+    <%= enrolment.last -%>
+, <%= enrolment.first -%>
+,    <%= enrolment.number -%>
+,    <%= enrolment.email %>
+<% end %>
+

@@ -11,7 +11,7 @@
     <% students.each do |student| %>
       <tr>
         <td><%= link_to '[Mail]', student.mailto %></td>
-        <td><%= image_tag student.photo_url, :size => "16x16", :alt => '[img]' %></td>
+        <td><%= image_tag student.photo_url, :size => "20x20", :alt => '[img]' %></td>
         <td><%= student.registration_or_blank %></td>
         <td>
           <%= link_to student, student %>
