@@ -25,6 +25,8 @@ MathJax.Hub.Config({
       <% if user_signed_in? %>
 	<% if current_user.academic %>
           <%= link_to 'Home', current_user.academic %> |
+	<% elsif current_user.enrolment %>
+          <%= link_to 'Home', current_user.enrolment %> |
 	<% else %>
           <%= link_to 'Home', root_path %> |
         <% end %>
