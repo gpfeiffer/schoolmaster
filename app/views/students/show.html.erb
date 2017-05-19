@@ -16,7 +16,7 @@
 <p>
   <%= @student.registration_or_blank %>
   | <%= @student.extension %>
-  | <%= @student.email %>
+  | <%= link_to @student.email, @student.mailto %>
 <% if not @student.home_url.blank? %>
   | <%= @student.home_url %>
 <% end %>
