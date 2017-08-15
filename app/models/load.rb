@@ -42,6 +42,32 @@ class Load < ActiveRecord::Base
     end
   end
 
+  # check a list of slotted loads for clashes
+  def self.mark_clashing(slots)
+    slots_by_academic = slots.select { |x| x[:load].academic.present? }
+                        .group_by { |x| x[:load].academic }
+    slots_by_academic.each do |academic, slots|
+      if slots.size > 1
+        # check weeks
+        weeks = Hash.new(0)
+        slots.each do |slot|
+          Range.new(*slot[:load].weeks.split("-").map(&:to_i)).each do |i|
+            weeks[i] += 1
+          end
+        end
+        clashing = weeks.keys.select { |k| weeks[k] > 1 }.sort
+        if clashing.size > 1 and clashing = (clashing.first .. clashing.last).to_a
+          clashing = (clashing.first .. clashing.last).to_s
+        else
+          clashing = clashing.join(",")
+        end
+        slots.each do |slot|
+          slot[:clashing] = clashing
+        end
+      end
+    end
+  end
+
   def times_module
     times.gsub(/(?<=:)[^;]*/, atom.code)
   end

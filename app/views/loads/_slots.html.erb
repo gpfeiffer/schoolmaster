@@ -19,15 +19,23 @@
         <% if slots_here.present? %>
           <td class="times-long">
 	    <table class="times-inner">
+	      <% Load.mark_clashing(slots_here) %>
               <% slots_here.sort_by { |x| x[:load].code }.each do |slot| %>
 	        <% load = slot[:load] %>
 	        <tr>
 		  <td class="times-m">
                     <%= link_to load.code, load, :title => load.title %>
 		  </td>
+		  <% if slot[:clashing].present? %>
+		  <td class="times-l" style="background:salmon">
+                    <%= link_to_if load.academic, load.short, load.academic, :title => load.name %><br>
+		    <%= slot[:clashing] %>
+		  </td>
+		  <% else %>
 		  <td class="times-l">
                     <%= link_to_if load.academic, load.short, load.academic, :title => load.name %>
 		  </td>
+		  <% end %>
 		  <td class="times-v">
 		    <%= content_tag(:span, slot[:loc], :title => "weeks #{load.weeks}")%>
 		  </td>
