@@ -10,13 +10,10 @@
   <table>
     <% students.each do |student| %>
       <tr>
-        <td><%= link_to '[Mail]', student.mailto %></td>
-        <td><%= image_tag student.photo_url, :size => "20x20", :alt => '[img]' %></td>
-        <td><%= student.registration_or_blank %></td>
+        <td><%= image_tag student.photo_url, :size => "40x40", :alt => '[img]' %></td>
         <td>
-          <%= link_to student, student %>
-        </td>
-        <td>
+	<%= student.registration_or_blank %>
+          <%= link_to student, student %><br />
           (supervised by <%= student.supervisors.to_sentence %>)
         </td>
       </tr>
