@@ -4,22 +4,26 @@ module LoadsHelper
   def  times_table_for(times)
     rows = %w{ 09 10 11 12 13 14 15 16 17 18 19 20 }
     cols = %w{ Mon Tue Wed Thu Fri }
+
+    # initialize table
     table = {}
     rows .each do |row|
       table[row] = {}
       cols.each do |col|
-        table[row][col] = ""
+        table[row][col] = []
       end
     end
 
+    # populate table
     times.split(';').each do |time|
       if time.present?
         slot, loc = time.split(":")
         day, hr = slot[0,3], slot[3,2]
-        table[hr][day] += loc || '...'
+        table[hr][day] << loc || '...'
       end
     end
 
+    # transform table into html
     content_tag(:table, :class => "times") do
       content_tag(:tr) do
         content_tag(:th, "", :class => "times") +
@@ -31,8 +35,10 @@ module LoadsHelper
         content_tag(:tr) do
           content_tag(:th, row + ":00", :class => "times") +
           cols.map do |col|
-            if table[row][col] != ""
-              content_tag(:td, table[row][col], :class => "times", :bgcolor => "lightgreen")
+            if table[row][col].size > 1
+              content_tag(:td, table[row][col].join("<br>").html_safe, :class => "times", :bgcolor => "red")
+            elsif table[row][col].size > 0
+              content_tag(:td, table[row][col][0], :class => "times", :bgcolor => "lightgreen")
             else
               content_tag(:td, '', :class => "times")
             end
