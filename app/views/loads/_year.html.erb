@@ -13,7 +13,7 @@
       	    <%= link_to_if load.academic, load.short, load.academic %>
       	  </td>
       	  <td>weeks <%= load.weeks %></td>
-      	  <td><%= load.times %></td>
+      	  <td width="65%"><%= load.times.split(";").join("; ") %></td>
       	</tr>
       <% end %>
     </table>
