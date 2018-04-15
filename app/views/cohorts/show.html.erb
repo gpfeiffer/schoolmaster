@@ -33,7 +33,7 @@
   <%= link_to(@cohort.academic, @cohort.academic) if @cohort.academic %>
 </p>
 
-<table style="border: 1px solid grey;">
+<table style="border: 1px solid grey;" class="year">
 <% @instances.sort_by(&:code).each do |instance| %>
 <tr>
 <td><%= link_to instance.molecule, instance.molecule %></td>
