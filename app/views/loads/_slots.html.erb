@@ -29,7 +29,7 @@
 		  <% if slot[:clashing].present? %>
 		  <td class="times-l" style="background:salmon">
                     <%= link_to_if load.academic, load.short, load.academic, :title => load.name %><br>
-		    <%= slot[:clashing] %>
+		    <%#= slot[:clashing] %>
 		  </td>
 		  <% else %>
 		  <td class="times-l">
