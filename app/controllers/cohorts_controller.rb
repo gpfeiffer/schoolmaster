@@ -16,10 +16,10 @@ class CohortsController < ApplicationController
   def show
     @instances_by_date = @cohort.instances.group_by(&:date)
     #@date = params[:date] || @instances_by_date.keys.max
-    @date = params[:date] || 2017
+    @date = params[:date] || 2018
     @instances = @instances_by_date[@date.to_i] || []
     @title = "Timetable"
-    @title = "Provisional #{@title}" if @date.to_i > 2017
+#    @title = "Provisional #{@title}" if @date.to_i > 2017
 
     respond_to do |format|
       format.html # show.html.erb

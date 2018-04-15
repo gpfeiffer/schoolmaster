@@ -25,7 +25,7 @@ class AcademicsController < ApplicationController
     @date = (params[:date] || Academic.academic_year).to_i 
     # @date = (params[:date] || @loads_by_date.keys.max).to_i
     @title = "Teaching Load"
-    @title = "Provisional #{@title}" if @date.to_i > 2017
+#    @title = "Provisional #{@title}" if @date.to_i > 2017
 
 
     respond_to do |format|
