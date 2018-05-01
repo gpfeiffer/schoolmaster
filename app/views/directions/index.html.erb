@@ -25,7 +25,9 @@
   <%= render directions %>
 <% else %>
   <% @directions_by_programme.each do |programme, directions| %>
-    <h2><%= link_to programme, directions_path(:programme => programme) %></h2>
+    <% if programme %>
+      <h2><%= link_to programme, directions_path(:programme => programme) %></h2>
+    <% end %>
     <%= render directions %>
   <% end %>
 <% end %>
