@@ -20,7 +20,7 @@
 
 <% @projects.sort_by { |project| project.author.last_first }.each do |project| %>
   <tr>
-    <td><%= project.author.last_first %></td>
+    <td><%= link_to project.author.last_first, project %></td>
     <td><%= project.supervisor.a_last if project.supervisor %></td>
     <td><%= project.examiners.map { |x| x.a_last }.to_sentence %></td>
   </tr>
