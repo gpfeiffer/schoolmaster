@@ -111,4 +111,29 @@ class Load < ActiveRecord::Base
     return sio.string
   end
 
+  def csv_row
+    [
+      code,
+      title,
+      discipline,
+      short,
+      date,
+      semester,
+      slots.map { |slot| "#{slot[:day]}@#{slot[:hr]}" }.join(" "),
+      slots.map { |slot| "#{slot[:loc]}" }.join("; "),
+      hours,
+      weeks,
+      comment,
+    ]
+  end
+
+  def self.to_csv(loads)
+    headers = %w{code title discipline name year sem times venues hours weeks comment}
+    CSV.generate(headers: true) do |csv|
+      csv << headers
+      loads.each do |load|
+        csv << load.csv_row
+      end
+    end
+  end
 end
