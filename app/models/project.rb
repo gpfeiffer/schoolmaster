@@ -38,7 +38,44 @@ class Project < ActiveRecord::Base
       examinations.first.report_mark and 
       (direction.report_mark - examinations.first.report_mark).abs > 10
   end
+ 
+  # new marking scheme, overrides the one below.
+  def marks
+    s = direction
+    e = examinations.first
+    all = { s: { a: (s.mark_a or 0),
+                 b: (s.mark_b or 0),
+                 c: (s.mark_c or 0),
+                 d: (s.mark_d or 0),
+                 e: (s.mark_e or 0),
+                 f: (s.mark_f or 0)
+               } }
+    if e
+      all[:e] = { b: (e.mark_b or 0),
+                  c: (e.mark_c or 0),
+                  d: (e.mark_d or 0),
+                  e: (e.mark_e or 0)
+                }
+    else
+      all[:e] = { b: 0, c: 0, d: 0, e: 0 }
+    end
+    all
+  end
 
+  def discordance
+    m = marks
+    (m[:s].slice(:b, :c, :d, :e).values.sum - m[:e].values.sum).abs
+  end
+  
+  def critical?
+    discordance > 10
+  end
+    
+  def total
+    m = marks
+    m[:s][:a] + m[:s][:f] + (m[:s].slice(:b, :c, :d, :e).values.sum + m[:e].values.sum) / 2
+  end
+  
   # marks.
   WEIGHTS = [0.6, 0.4]
 

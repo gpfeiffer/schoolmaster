@@ -9,6 +9,7 @@
 </p>
 
 <table>
+<!--
 <tr>
   <td align="right"><b>Presentation mark:</b></td>
   <td align="right"><%= @examination.presentation_mark %></td>
@@ -18,6 +19,43 @@
   <td align="right"><b>Report mark:</b></td>
   <td align="right"><%= @examination.report_mark %></td>
 </tr>
+-->
+<tr>
+  <td align="right"><b>Mark B:</b></td>
+  <td align="right"><%= @examination.mark_b %></td>
+  <td>
+    <%= Direction::WEIGHT[:b] %>%
+    (<%= link_to Direction::LABEL[:b], "#", title: Direction::TEXT[:b] %>)
+  </td>
+</tr>
+
+<tr>
+  <td align="right"><b>Mark C:</b></td>
+  <td align="right"><%= @examination.mark_c %></td>
+  <td>
+    <%= Direction::WEIGHT[:c] %>%
+    (<%= link_to Direction::LABEL[:c], "#", title: Direction::TEXT[:c] %>)
+  </td>
+</tr>
+
+<tr>
+  <td align="right"><b>Mark D:</b></td>
+  <td align="right"><%= @examination.mark_d %></td>
+  <td>
+    <%= Direction::WEIGHT[:d] %>%
+    (<%= link_to Direction::LABEL[:d], "#", title: Direction::TEXT[:d] %>)
+  </td>
+</tr>
+
+<tr>
+  <td align="right"><b>Mark E:</b></td>
+  <td align="right"><%= @examination.mark_e %></td>
+  <td>
+    <%= Direction::WEIGHT[:e] %>%
+    (<%= link_to Direction::LABEL[:e], "#", title: Direction::TEXT[:e] %>)
+  </td>
+</tr>
+
 </table>
 
 <p>
@@ -27,5 +65,7 @@
 
 </span>
 
-<%= link_to 'Edit', edit_examination_path(@examination) %> |
+<% if can? :update, @examination %>
+  <%= link_to 'Edit', edit_examination_path(@examination) %> |
+<% end %>
 <%= link_to 'Back', @examination.academic %>

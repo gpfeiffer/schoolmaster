@@ -14,7 +14,23 @@
     <%= f.hidden_field :project_id %>
     <%= f.hidden_field :academic_id %>
 
+<p>
+  <b>&rsaquo; Choose</b> a mark from the dropdown menu for each attribute below.<br />
+  <b>&rsaquo; Mouse-over</b> the attribute name for further details.<br />
+  <b>&rsaquo; Write</b> a brief comment on your assessment in the space provided.<br />
+  <b>&rsaquo; Uncheck</b> the box at the bottom before submitting the final report.<br />
+  <br />
+  There are
+  <%= link_to "detailed guidelines", "#{root_path}7124719479/FYP_MarkingGuideline.pdf"%>
+  on the marking of projects across these attributes.<br />
+  The
+  <%= link_to "collation of marks", "#{root_path}7124719479/FYP_Collation of marks_Advisory.PDF"%>
+  document describes how the individual marks
+  are processed to yield an overall project mark.
+</p>
+
 <table>
+<!--
   <tr>
     <td align="right"><%= f.label :midterm_mark %>:</td>
     <td><%= f.select :midterm_mark, (0..100).step(5), :include_blank => true %>%</td>
@@ -26,6 +42,55 @@
   <tr>
     <td align="right"><%= f.label :report_mark %>:</td>
     <td><%= f.select :report_mark, (0..100).step(5), :include_blank => true %>%</td>
+  </tr>
+-->
+  <tr>
+    <td align="right"><%= f.label :mark_a, "A" %>:</td>
+    <td><%= f.select :mark_a, (0..10), :include_blank => true %></td>
+    <td>
+      <%= Direction::WEIGHT[:a] %>%
+      (<%= link_to Direction::LABEL[:a], "#", title: Direction::TEXT[:a] %>)
+    </td>
+  </tr>
+  <tr>
+    <td align="right"><%= f.label :mark_b, "B" %>:</td>
+    <td><%= f.select :mark_b, (0..10), :include_blank => true %></td>
+    <td>
+      <%= Direction::WEIGHT[:b] %>%
+      (<%= link_to Direction::LABEL[:b], "#", title: Direction::TEXT[:b] %>)
+    </td>
+  </tr>
+  <tr>
+    <td align="right"><%= f.label :mark_c, "C" %>:</td>
+    <td><%= f.select :mark_c, (0..20), :include_blank => true %></td>
+    <td>
+      <%= Direction::WEIGHT[:c] %>%
+      (<%= link_to Direction::LABEL[:c], "#", title: Direction::TEXT[:c] %>)
+    </td>
+  </tr>
+  <tr>
+    <td align="right"><%= f.label :mark_d, "D" %>:</td>
+    <td><%= f.select :mark_d, (0..20), :include_blank => true %></td>
+    <td>
+      <%= Direction::WEIGHT[:d] %>%
+      (<%= link_to Direction::LABEL[:d], "#", title: Direction::TEXT[:d] %>)
+    </td>
+  </tr>
+  <tr>
+    <td align="right"><%= f.label :mark_e, "E" %>:</td>
+    <td><%= f.select :mark_e, (0..20), :include_blank => true %></td>
+    <td>
+      <%= Direction::WEIGHT[:e] %>%
+      (<%= link_to Direction::LABEL[:e], "#", title: Direction::TEXT[:e] %>)
+    </td>
+  </tr>
+  <tr>
+    <td align="right"><%= f.label :mark_f, "F" %>:</td>
+    <td><%= f.select :mark_f, (0..20), :include_blank => true %></td>
+    <td>
+      <%= Direction::WEIGHT[:f] %>%
+      (<%= link_to Direction::LABEL[:f], "#", title: Direction::TEXT[:f] %>)
+    </td>
   </tr>
 </table>
 

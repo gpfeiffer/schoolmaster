@@ -1,12 +1,13 @@
 <% project = direction.project %>
 <%= content_tag :div, :class => project.marked? ? "mark" : "mark-prelim" do %>
-  <%= project.total_mark -%>
+  <% total = project.total %>
+  <%= total > 0 ? total : "??" -%>
 <% end %>
   &nbsp;
   <%= content_tag :div, :style => "display:inline", :class => project.critical? ? "alert" : "" do %> 
     <%= project.author.registration %>: <%= project.author %>.
     <% if project.critical? %>
-     (<%= "#{direction.report_mark} - #{project.examinations.first.report_mark}" %>)
+     (<%= project.discordance %>)
     <% end %> 
   <% end %> 
 <% if project.penalty > 0 %>
@@ -19,9 +20,17 @@
 
 <%= content_tag :div, :class => (direction.open? ? "unlocked" : "locked") do %>
   <table class="dates">
+<!--
     <tr><td>Midterm Report</td><td align="right"><%= direction.midterm_mark %></td></tr>
     <tr><td>Presentation</td><td align="right"><%= direction.presentation_mark %></td></tr>
     <tr><td>Report</td><td align="right"><%= direction.report_mark %></td></tr>
+-->
+    <tr><td>A</td><td align="right"><%= direction.mark_a %></td></tr>
+    <tr><td>B</td><td align="right"><%= direction.mark_b %></td></tr>
+    <tr><td>C</td><td align="right"><%= direction.mark_c %></td></tr>
+    <tr><td>D</td><td align="right"><%= direction.mark_d %></td></tr>
+    <tr><td>E</td><td align="right"><%= direction.mark_e %></td></tr>
+    <tr><td>F</td><td align="right"><%= direction.mark_f %></td></tr>
   </table>
   <b><%= project.supervisor %> (Supervisor):</b>
   <%= direction.comment %>
@@ -30,8 +39,14 @@
 <% project.examinations.each do |examination| %>
   <%= content_tag :div, :class => (examination.open? ? "unlocked" : "locked") do %>
     <table class="dates">
+<!--
       <tr><td>Presentation</td><td align="right"><%= examination.presentation_mark %></td></tr>
       <tr><td>Report</td><td align="right"><%= examination.report_mark %></td></tr>
+-->
+      <tr><td>B</td><td align="right"><%= examination.mark_b %></td></tr>
+      <tr><td>C</td><td align="right"><%= examination.mark_c %></td></tr>
+      <tr><td>D</td><td align="right"><%= examination.mark_d %></td></tr>
+      <tr><td>E</td><td align="right"><%= examination.mark_e %></td></tr>
     </table>
     <b><%= examination.academic %>:</b>
     <%= examination.comment %>
