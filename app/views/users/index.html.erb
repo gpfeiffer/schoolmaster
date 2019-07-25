@@ -9,6 +9,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @users.each do |user| %>
@@ -20,6 +21,7 @@
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%= user.academic.name if user.academic %></td>
+    <td><%= user.roles.map(&:name).join("; ") %></td>
   </tr>
 <% end %>
 </table>
