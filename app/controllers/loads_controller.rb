@@ -7,13 +7,14 @@ class LoadsController < ApplicationController
     @loads = @loads.group_by(&:genuine?)[true]
     @loads_by_date = @loads.group_by(&:date)
     # @date = params[:date] || @loads_by_date.keys.sort.last
-    @date = params[:date] || 2018
+    @date = params[:date] || 2020
     @loads = @loads_by_date[@date.to_i]
     @title = "Timetable"
-#    @title = "Provisional #{@title}" if @date.to_i > 2017
+#    @title = "Provisional #{@title}" if @date.to_i > 2019
 
     respond_to do |format|
       format.html # index.html.erb
+      format.csv { send_data Load.to_csv(@loads) }
       format.json { render json: @loads }
       format.xls { send_data Load.to_xls(@loads), content_type: 'application/vnd.ms-excel' }
     end
@@ -39,7 +40,7 @@ class LoadsController < ApplicationController
     @load.hours = @atom.hours
 
     # set a default date and weeks
-    @load.date = 2016  # FIXME: make this date automatic
+    @load.date = 2020  # FIXME: make this date automatic
     @load.weeks = "1-12"
 
     respond_to do |format|
