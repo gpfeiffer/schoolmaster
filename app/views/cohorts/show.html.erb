@@ -1,7 +1,7 @@
 <% if can? :read, Load %>
 <% content_for :side do %>
   <ul>
-    <% @instances_by_date.keys.each do |date| %>
+    <% @instances_by_date.keys.sort.reverse.each do |date| %>
       <li><%= link_to_unless_current academic_year_code(date), cohort_path(@cohort, :date => date) %></li>
     <% end %>
   </ul>
