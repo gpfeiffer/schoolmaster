@@ -47,3 +47,5 @@ gem 'spreadsheet'
 gem 'htmlentities'
 
 gem 'erd'
+
+gem 'yaml_db'
